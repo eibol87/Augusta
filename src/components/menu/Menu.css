@@ -1,0 +1,57 @@
+*{
+	box-sizing: border-box;
+}
+.Menu{
+	width: 260px;
+	float: left;
+	margin-right: -100%;
+	border-color: black 10px;
+	/*border: 1px solid red;*/
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.Menu--lu {
+    margin: 0;
+    padding: 5px 20px;
+    list-style: none;
+}
+.Menu--lu > li {
+	padding:5px 0px 5px 0px;
+}
+.Menu--lu > li > a{
+	padding: 0 10px 0 0;
+    font-size: 13px;
+    color: #8da0aa;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 34px;
+}
+.Menu--lu > li > a:hover{
+	border: transparent solid 1px;
+    border-radius: 3px;
+    border-color: #d1d9dd;
+
+}
+.Menu--li--header{
+	text-transform: uppercase;
+    font-size: 12px;
+    padding: 5px 0;
+    font-weight: 700;
+    color: #000;
+}
+.Menu--divider{
+	background: #dfe8f1;
+	height: 1px;
+	margin: 2px 0;
+	height: 1px;
+    margin: 10px 0;
+}
+.Menu--glyph-icon {
+	opacity: .60;
+	color: #0093d9;
+	font-size: 18px;
+	text-align: center;
+    opacity: .30;
+    margin-right: 10px;
+    margin-left: 10px;
+}
