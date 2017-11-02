@@ -1,8 +1,5 @@
 .Menu{
 	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	width: 260px;
-	float: left;
-	margin-right: -100%;
 	border-color: black 10px;
 }
 .Menu--lu {

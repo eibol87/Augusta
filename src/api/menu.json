@@ -2,12 +2,12 @@
 	{
 		"category": "Altas",
 		"items":[
+			{"id": 2, "title": "Clientes", "link": "/clients", "icon": "fa fa-address-book-o"},
+			{"id": 6, "title": "Proveedores", "link": "/provider", "icon": "fa fa-tree"},
 			{"id": 1, "title": "Articulos", "link": "/", "icon": "fa fa-archive"},
-			{"id": 2, "title": "Clientes", "link": "/", "icon": "fa fa-address-book-o"},
 			{"id": 3, "title": "Cobros", "link": "/", "icon": "fa fa-usd"},
 			{"id": 4, "title": "Complentos", "link": "/", "icon": "fa fa-address-book-o"},
-			{"id": 5, "title": "Pagos", "link": "/", "icon": "fa fa-money"},
-			{"id": 6, "title": "Proveedores", "link": "/", "icon": "fa fa-tree"}
+			{"id": 5, "title": "Pagos", "link": "/", "icon": "fa fa-money"}
 		]
 	},
 	{
@@ -29,5 +29,4 @@
 			{"id": 3, "title": "Top Ten", "link": "/", "icon": "fa fa-star"}
 		]
 	}
-
 ]
