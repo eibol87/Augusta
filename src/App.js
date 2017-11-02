@@ -13,10 +13,10 @@ class App extends Component {
     	<Grid bsClass="false">
         <Header />
         <Row>
-          <Col xs={3} sm={3} md={3} lg={3}>
+          <Col className="App--menu--left" xs={3} sm={3} md={3} lg={3}>
             <Menu />
           </Col>
-          <Col xs={9} sm={9} md={9} lg={9}>
+          <Col xs={12} sm={9} md={9} lg={9}>
     	    	<BrowserRouter>
     	    		<Main />
     	     	</BrowserRouter>
