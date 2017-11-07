@@ -20,8 +20,8 @@ class DataTable extends Component {
   }
  	
   render(){
-    return(
-      <Table className="DataTable--fontColor DataTable--coloRows" striped bordered condensed hover>
+  	return(
+      <Table className="DataTable" striped bordered condensed hover>
 		    <thead>
 		      <tr>
 		      	<th>#</th>
@@ -31,12 +31,11 @@ class DataTable extends Component {
 		      </tr>
 		    </thead>
 		    <tbody>
-		    	{this.state.tbody.map((td) =>
+		    	{this.state.tbody.map((client) =>
            	<tr>
-		        <td>{td.id}</td>
-		        <td>{td.nombre_negocio}</td>
-		        <td>{td.direccion_cliente}</td>
-		        <td>{td.telefono}</td>
+            {client.map((data)=>
+  						<td>{data}</td>
+            )}
 		      </tr>
           )}
 		    </tbody>
