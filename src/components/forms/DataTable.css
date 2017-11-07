@@ -1,0 +1,9 @@
+.DataTable--fontColor{
+	color: #8da0aa;
+}
+.DataTable--coloRows>tbody>tr:nth-of-type(odd){
+	background-color: #f9f9f9;
+}
+.DataTable--coloRows>thead>tr:nth-of-type(odd){
+	background-color: #F9FAFE;
+}

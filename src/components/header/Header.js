@@ -1,26 +1,26 @@
 import React from 'react';
-import {Navbar,Nav,NavItem,NavDropdown,MenuItem} from 'react-bootstrap';
+import {Navbar,Nav,NavDropdown,MenuItem} from 'react-bootstrap';
+import './Header.css'
 import data from '../../api/menu.json'
 
-import './Header.css'
 
 const Header = () => (
- <Navbar inverse collapseOnSelect>
+ <Navbar inverse collapseOnSelect className="Header--Navbar">
     <Navbar.Header>
       <Navbar.Brand>
-        <a href="#">Augusta</a>
+        <a href="/">Augusta</a>
       </Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>
     <Navbar.Collapse>
-      <Nav>
+      <Nav className="Header--Nav--showMenu">
       {data.map((menu) => {
          return (
-            <NavDropdown eventKey={menu.id} title={menu.category} id={menu.category}>
-              {menu.items.map((items) =>
-                 <MenuItem href={items.link} eventKey={menu.id}>{items.title}</MenuItem>
-                )}
-            </NavDropdown>
+              <NavDropdown eventKey={menu.id} title={menu.category} id={menu.category}>
+                {menu.items.map((items) =>
+                   <MenuItem href={items.link} eventKey={menu.id}>{items.title}</MenuItem>
+                  )}
+              </NavDropdown>
         )
       })}
       </Nav>

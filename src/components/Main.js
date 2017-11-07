@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom'
-import App from '../App'
 import Clients from './clients/Clients.js'
 import Provider from './provider/Provider.js'
-import Menu from './menu/Menu'
 
 const Main = (props) => {
   return (
