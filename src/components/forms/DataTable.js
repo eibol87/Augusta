@@ -26,7 +26,14 @@ class DataTable extends Component {
   handleChange (e) {
   	let match =[]
   	this.state.tbody.filter((data) =>{
-  	  data.filter(function(element){
+  	 //  data.filter(function(element){
+	  	// 	if(element.indexOf(e.target.value) != -1){
+	  	// 		console.log("bucle:", element)
+				// 	match.push(data)
+				// 	return data
+	  	// 	}
+  		// })
+  		data.some(function(element){
 	  		if(element.indexOf(e.target.value) != -1){
 	  			console.log("bucle:", element)
 					match.push(data)
