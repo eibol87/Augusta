@@ -7,16 +7,32 @@ class DataTable extends Component {
 	constructor () {
 	  	super()
 	    this.state = {
+	    	resultSearch:[],
 	    	tbody:[],
-	    	thead:[]
+	    	thead:[],
+	    	value: ''
 	    }
+	     this.handleChange = this.handleChange.bind(this)
     }
   componentWillReceiveProps (nextProps) {
   	this.setState(
     { 
     	tbody:[...nextProps.tbody],
+    	resultSearch:[...nextProps.tbody],
     	thead:[...nextProps.thead] 
    	})
+  }
+ 
+  handleChange (e) {
+  	//e.preventDefault()
+  	const filter = this.state.tbody.filter((data) =>{
+			if(data.indexOf(e.target.value)==1){
+				//console.log(data)
+				return data
+  		}
+  	})
+  	console.log(filter)
+  	this.setState({ resultSearch: filter })
   }
  	
   render(){
@@ -24,10 +40,10 @@ class DataTable extends Component {
   		<div>
 	  		  <Col sm={4} className="DataTable--inputSearch--left pull-left">
 			  		<FormGroup bsSize="medium">
-			 	     <FormControl type="text" placeholder="Search in table..." />
+			 	     <FormControl type="text" onChange={this.handleChange} placeholder="Search in table..." />
 						</FormGroup>
 				  </Col>
-				  <Col sm={2} className="DataTable--selectPage--left pull-right">
+				  <Col sm={2} className="DataTable--selectPage--right pull-right">
 		  			<select class="form-control">
 					    <option>5</option>
 					    <option>10</option>
@@ -44,7 +60,7 @@ class DataTable extends Component {
 			      </tr>
 			    </thead>
 			    <tbody>
-				   	{this.state.tbody.map((client) =>
+				   	{this.state.resultSearch.map((client) =>
 	           	<tr>
 		            {client.map((data)=>
 		  						<td>{data}</td>
