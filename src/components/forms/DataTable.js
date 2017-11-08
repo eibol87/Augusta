@@ -28,9 +28,8 @@ class DataTable extends Component {
   	this.state.tbody.forEach((data) =>{
   		data.some(function(element){
 	  		if(element.toLowerCase().indexOf(e.target.value.toLowerCase()) != -1){
-	  			console.log("bucle:", element)
-					match.push(data)
-					return data
+	  			match.push(data)
+					return true
 	  		}
   		})
   	})
@@ -61,7 +60,7 @@ class DataTable extends Component {
 			    <thead>
 			      <tr>
 			      	{this.state.thead.map((th) =>
-								<th>{th} <i class="fa fa-sort" aria-hidden="true"></i></th>
+								<th>{th}</th>
 			     		)}
 			      </tr>
 			    </thead>
