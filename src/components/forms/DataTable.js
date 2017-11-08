@@ -24,18 +24,19 @@ class DataTable extends Component {
   }
  
   handleChange (e) {
-  	//e.preventDefault()
-  	const filter = this.state.tbody.filter((data) =>{
-			if(data.indexOf(e.target.value)==1){
-				//console.log(data)
-				return data
-  		}
+  	let match =[]
+  	this.state.tbody.filter((data) =>{
+  	  data.filter(function(element){
+	  		if(element.indexOf(e.target.value) != -1){
+	  			console.log("bucle:", element)
+					match.push(data)
+					return data
+	  		}
+  		})
   	})
-  	console.log(filter)
-  	if(e.target.value != ''){
-			this.setState({ resultSearch: filter })
+  	if(e.target.value !== ''){
+			this.setState({ resultSearch: match })
   	}else{
-  		console.log("vacio")
   		this.setState({ resultSearch: this.state.tbody })
   	}
   }
