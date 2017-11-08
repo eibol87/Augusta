@@ -27,7 +27,7 @@ class DataTable extends Component {
   	let match =[]
   	this.state.tbody.forEach((data) =>{
   		data.some(function(element){
-	  		if(element.indexOf(e.target.value) != -1){
+	  		if(element.toLowerCase().indexOf(e.target.value) != -1){
 	  			console.log("bucle:", element)
 					match.push(data)
 					return data
