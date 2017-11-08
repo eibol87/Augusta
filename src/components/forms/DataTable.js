@@ -32,7 +32,12 @@ class DataTable extends Component {
   		}
   	})
   	console.log(filter)
-  	this.setState({ resultSearch: filter })
+  	if(e.target.value != ''){
+			this.setState({ resultSearch: filter })
+  	}else{
+  		console.log("vacio")
+  		this.setState({ resultSearch: this.state.tbody })
+  	}
   }
  	
   render(){
