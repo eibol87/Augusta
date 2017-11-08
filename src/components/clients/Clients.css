@@ -1,6 +1,23 @@
-.Clients{
+.Client{
 	background: #fafcfe;
+	min-height: 700px;
 }
-.client{
+.Client--panel{
 	padding: 35px 20px 20px 20px;
+	margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-color: #dfe8f1;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+.DataTable>thead>tr{
+	background-color: #F9FAFE;
+}
+.DataTable--inputSearch--left{
+	padding-left: 0px;
+}
+.DataTable--selectPage--left{
+	padding-right: 0px;
 }

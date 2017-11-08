@@ -7,7 +7,7 @@ class Clients extends Component {
 	constructor(){
 		super()
 		this.state={
-			thead:['Cliente','Direccion Cliente','Teléfono','Poblacion','Reparto'],
+			thead:['Id','Cliente','Direccion Cliente','Teléfono','Poblacion','Reparto'],
 			clients:[]
 			}
 		}
@@ -18,20 +18,22 @@ class Clients extends Component {
 			clients:[...clients[0].Clients] 
 		})
 	}
-	getClientsForShowtable(){
+	getClientsForShowTable(){
 		return this.state.clients.map((client) => {
-			return [client.cliente,client.nombre_negocio,client.direccion_cliente,client.telefono,client.poblacion,client.reparto]
+			return [client.id,client.nombre_negocio,client.direccion_cliente,client.telefono,client.poblacion,client.reparto]
 		})
 	}
 
   render(){
-  	console.log("getClients: ",this.getClientsForShowtable())
     return(
-    	<div className="client">
-	    	<DataTable 
-	    		thead={this.state.thead} 
-	    		tbody={this.getClientsForShowtable()}
-	    	/>
+    	<div className="Client">
+    	<h2>Clientes</h2>
+	    	<div className="Client--panel">
+    			<DataTable 
+		    		thead={this.state.thead} 
+		    		tbody={this.getClientsForShowTable()}
+		    	/>
+		   </div>
 	    </div>
     )
   }
