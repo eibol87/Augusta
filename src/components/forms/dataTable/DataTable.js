@@ -39,24 +39,28 @@ class DataTable extends Component {
   		this.setState({ resultSearch: this.state.tbody })
   	}
   }
+  getNumberOfItemsForPage () {
+    return Math.floor(this.state.tbody.length / this.state.numberItemsForPage)
+  }
+  getResultsLimitForPage () {
+    const startPosition = ((this.props.match.params.page * this.state.numberItemsForPage) - this.state.numberItemsForPage)
+    const endPosition = (this.props.match.params.page * this.state.numberItemsForPage)
+    return this.state.results.slice(startPosition, endPosition)
+  }
  	
   render(){
   	return(
   		<div>
-	  		  <Col sm={4} className="DataTable--inputSearch--left pull-left">
-			  		<FormGroup bsSize="medium">
-			 	     <FormControl type="text" onChange={this.handleChange} placeholder="Search in table..." />
-						</FormGroup>
-				  </Col>
-				  <Col sm={2} className="DataTable--selectPage--right pull-right">
-		  			<select class="form-control">
-					    <option>5</option>
-					    <option>10</option>
-					    <option>15</option>
-					    <option>20</option>
-					  </select>
-				  </Col>
-	      <Table className="DataTable" striped bordered condensed hover>
+  		<Col sm={4} >
+			 		<span>{this.state.resultSearch.length} registros encontrados</span>
+				</Col>
+	  		<Col sm={4} className="DataTable--inputSearch--left pull-right">
+			 		<FormGroup bsSize="medium">
+			    	<FormControl type="text" onChange={this.handleChange} placeholder="Search in table..." />
+					</FormGroup>
+				</Col>
+			  <div className="scroll">
+		  	<Table className="DataTable table-fixed" striped bordered condensed hover>
 			    <thead>
 			      <tr>
 			      	{this.state.thead.map((th) =>
@@ -75,6 +79,7 @@ class DataTable extends Component {
 			    </tbody>
 	  		</Table>
 	  		</div>
+	  	</div>
     )
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DataTable from '../forms/DataTable';
+import DataTable from '../forms/dataTable/DataTable';
 import clients from '../../api/clients.json'
 import './Clients.css'
 
@@ -20,7 +20,7 @@ class Clients extends Component {
 	}
 	getClientsForShowTable(){
 		return this.state.clients.map((client) => {
-			return [client.id,client.nombre_negocio,client.direccion_cliente,client.telefono,client.poblacion,client.reparto]
+			return [...this.state.thead]
 		})
 	}
 

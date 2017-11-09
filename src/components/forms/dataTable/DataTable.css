@@ -1,6 +1,7 @@
 .DataTable{
 	color: #8da0aa;
 }
+
 .DataTable thead>tr>th{
 	font-weight: bold;
 	color: black;
@@ -9,11 +10,8 @@
 .DataTable tbody>tr>td{
 	padding: 10px;
 }
-/*
-.DataTable>tbody>tr:nth-of-type(odd){
-	background-color: #f9f9f9;
+.scroll{
+	max-height:400px; 
+	overflow:auto;
+	width: 100%;
 }
-.DataTable>thead>tr:nth-of-type(odd){
-	background-color: #F9FAFE;
-}
-*/
