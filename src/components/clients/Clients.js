@@ -20,7 +20,7 @@ class Clients extends Component {
 	}
 	getClientsForShowTable(){
 		return this.state.clients.map((client) => {
-			return [...this.state.thead]
+			return [client.id,client.nombre_negocio,client.direccion_cliente,client.telefono,client.poblacion,client.reparto]
 		})
 	}
 
