@@ -8,7 +8,7 @@ const Main = (props) => {
     <div>
       <Switch>
         <Route exact path='/' />
-        <Route path='/clients' component={Clients} />
+        <Route path='/clients' render={() => (<Clients />)} />
         <Route path='/provider' component={Provider} />
       </Switch>
     </div>

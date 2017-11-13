@@ -7,7 +7,7 @@ class Clients extends Component {
 	constructor(){
 		super()
 		this.state={
-			thead:['Id','Cliente','Direccion Cliente','Teléfono','Poblacion','Reparto'],
+			thead:['id','Cliente','Direccion Cliente','Teléfono','Poblacion','Reparto'],
 			clients:[]
 			}
 		}
@@ -15,7 +15,7 @@ class Clients extends Component {
 	componentDidMount(){
 		this.setState(
 		{
-			clients:[...clients[0].Clients] 
+			clients:[...clients] 
 		})
 	}
 	getClientsForShowTable(){
@@ -23,8 +23,8 @@ class Clients extends Component {
 			return [client.id,client.nombre_negocio,client.direccion_cliente,client.telefono,client.poblacion,client.reparto]
 		})
 	}
-
-  render(){
+	
+  render(props){
     return(
     	<div className="Client">
     	<h2>Clientes</h2>
