@@ -1,0 +1,19 @@
+[
+{
+    "id": 1,
+    "entry_date": "2013-11-20T23:32:18Z",
+    "contact": "Pepito Lopez",
+    "address": "c/ Sicilia 324",
+    "city": "Madrid",
+    "contact_id": "43431179-A",
+    "fiscal_name": "Pepito S.L.",
+    "fiscal_address": "C/sicilia 324",
+    "fiscal_city": "Madrid",
+    "fiscal_id": "43431179-A",
+    "type": "COMPANY",
+    "phone": "933995909",
+    "inactive": false,
+    "notes": "su telefono e s934455443, es de barcelona pero solo esta 2 dias",
+    "delivery_type": "TALLER",
+    "delivery_days": ["MON", "THU"]
+}]

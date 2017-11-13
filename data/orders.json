@@ -1,0 +1,31 @@
+[
+{
+    "id": 1,
+    "customer_id": 1,
+    "entry_date": "2013-11-20T23:32:18Z",
+    "output_date": "2013-11-20T23:32:18Z",
+    "final_customer_code": "537",
+    "articles": [
+    {
+        "type": "pantalon",
+        "leather": "ante",
+        "color": "blanco",
+        "complements": ["cinturon"],
+        "price": 20.5
+    },
+    {
+        "type": "bolso",
+        "leather": "napa",
+        "color": "negro",
+        "price": 10
+    },
+    {
+        "type": "pantalon",
+        "leather": "nobuck",
+        "color": "negro",
+        "price": 14.5
+    }],
+    "notes": "cuidado con esta prenda que tiene el bolsillo roto",
+    "barcode": "0200012",
+    "state": "PENDING",
+}]
