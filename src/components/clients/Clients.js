@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import DataTable from '../forms/dataTable/DataTable';
-import clients from '../../api/clients.json'
+import clients from '../../data/customers.json'
 import './Clients.css'
 
 class Clients extends Component {
 	constructor(){
 		super()
 		this.state={
-			thead:['id','Cliente','Direccion Cliente','Teléfono','Poblacion','Reparto'],
+			thead:['id','contacto','Dirección','Nombre Fiscal','Teléfono','Entrega','Dias'],
 			clients:[]
 			}
 		}
@@ -20,7 +20,7 @@ class Clients extends Component {
 	}
 	getClientsForShowTable(){
 		return this.state.clients.map((client) => {
-			return [client.id,client.nombre_negocio,client.direccion_cliente,client.telefono,client.poblacion,client.reparto]
+			return [client.id,client.contact,client.address,client.fiscal_name,client.phone,client.delivery_type,client.delivery_days]
 		})
 	}
 	

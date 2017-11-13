@@ -13,7 +13,7 @@
     "type": "COMPANY",
     "phone": "933995909",
     "inactive": false,
-    "notes": "su telefono e s934455443, es de barcelona pero solo esta 2 dias",
-    "delivery_type": "TALLER",
-    "delivery_days": ["MON", "THU"]
+    "notes": "su telefono es 934455443, es de barcelona pero solo esta 2 dias",
+    "delivery_type": "Reparto",
+    "delivery_days": ["Lunes", "Miercoles"]
 }]

@@ -27,12 +27,14 @@ class DataTable extends Component {
   	let match =[]
   	this.state.tbody.forEach((data) =>{
   		data.some(function(element){
-	  		if(element.toLowerCase().indexOf(e.target.value.toLowerCase()) != -1){
+  			if(String(element).toLowerCase().indexOf(e.target.value.toLowerCase()) != -1){
 	  			match.push(data)
+	  			console.log(element)
 					return true
 	  		}
   		})
   	})
+  	
   	if(e.target.value !== ''){
 			this.setState({ resultSearch: match })
   	}else{

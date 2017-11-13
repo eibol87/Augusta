@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Menu.css'
-import data from '../../api/menu.json'
+import data from './menu.json'
 
 class Menu extends Component {
 	render(){

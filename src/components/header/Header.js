@@ -1,7 +1,7 @@
 import React from 'react';
 import {Navbar,Nav,NavDropdown,MenuItem} from 'react-bootstrap';
 import './Header.css'
-import data from '../../api/menu.json'
+import data from '../menu/menu.json'
 
 
 const Header = () => (
