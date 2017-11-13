@@ -1,6 +1,46 @@
 [{
-	"type": "pantalones",
-	"leather": "ante",
+	"type": "Pantalon",
+	"leather": "Ante",
+	"base_price": 15
+},
+{
+	"type": "Chaqutea",
+	"leather": "Nobuk",
+	"base_price": 20
+},
+{
+	"type": "Cortina",
+	"base_price": 7
+},
+{
+	"type": "Falda",
+	"leather": "Ante",
+	"base_price": 17
+},
+{
+	"type": "Nórdico",
+	"base_price": 12
+},
+{
+	"type": "Plumas",
+	"base_price": 7
+},
+{
+	"type": "Cazadora",
+	"leather": "Pekari",
+	"base_price": 25
+},
+{
+	"type": "Vestido",
+	"base_price": 10
+},
+{
+	"type": "Piel de vaca",
+	"base_price": 30
+},
+{
+	"type": "Chaqueta",
+	"leather": "Nobuk color",
 	"base_price": 15
 }
 ]

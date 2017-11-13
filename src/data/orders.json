@@ -2,30 +2,211 @@
 {
     "id": 1,
     "customer_id": 1,
-    "entry_date": "2013-11-20T23:32:18Z",
-    "output_date": "2013-11-20T23:32:18Z",
-    "final_customer_code": "537",
+    "entry_date": "2017-09-20T23:32:18Z",
     "articles": [
     {
-        "type": "pantalon",
-        "leather": "ante",
-        "color": "blanco",
+        "final_customer_code": "537",
+        "barcode": "0200012",
+        "type": "Pantalon",
+        "leather": "Ante",
+        "color": "Blanco",
         "complements": ["cinturon"],
+        "notes": "Bolsillo derecho roto, coser",
         "price": 20.5
     },
     {
-        "type": "bolso",
-        "leather": "napa",
-        "color": "negro",
+        "final_customer_code": "538",
+        "barcode": "0200013",
+        "type": "Bolso",
+        "leather": "Napa",
+        "color": "Negro",
         "price": 10
     },
     {
-        "type": "pantalon",
-        "leather": "nobuck",
-        "color": "negro",
+        "final_customer_code": "539",
+        "barcode": "0200022",
+        "type": "Pantalon",
+        "leather": "Nobuck",
+        "color": "Negro",
         "price": 14.5
     }],
-    "notes": "cuidado con esta prenda que tiene el bolsillo roto",
-    "barcode": "0200012",
     "state": "PENDING",
-}]
+},
+{
+    "id": 2,
+    "customer_id": 2,
+    "entry_date": "2017-01-01T23:32:18Z",
+    "articles": [
+    {
+        "final_customer_code": "2845",
+        "barcode": "0200021",
+        "type": "Cortina",
+        "color": "Blanco",
+        "price": 7
+    }
+    ],
+    "state": "PENDING",
+},
+{
+    "id": 3,
+    "customer_id": 2,
+    "entry_date": "2017-01-02T23:32:18Z",
+    "output_date": "2017-01-03T23:32:18Z",
+    "articles": [
+    {
+        "final_customer_code": "282478",
+        "barcode": "0200020",
+        "type": "Falda",
+        "leather": "Ante",
+        "color": "Blanco",
+        "price": 7
+    }
+    ],
+    "state": "SALIDO",
+},
+{
+    "id": 4,
+    "customer_id": 3,
+    "entry_date": "2017-03-13T23:32:18Z",
+    "articles": [
+    {
+        "final_customer_code": "CONCHI",
+        "barcode": "0200015",
+        "type": "Cazadora",
+        "leather": "Pekari",
+        "color": "Negro",
+        "notes": "Teñir a rojo",
+        "price": 25
+    }
+    ],
+    "state": "FINALIZADO",
+},
+{
+    "id": 5,
+    "customer_id": 7,
+    "entry_date": "2017-03-15T23:32:18Z",
+    "articles": [
+    {
+        "final_customer_code": "2352",
+        "barcode": "0200025",
+        "type": "Cazadora",
+        "leather": "Pekari",
+        "color": "Negro",
+        "notes": "Teñir a rojo",
+        "price": 25
+    }
+    ],
+    "state": "FINALIZADO",
+},
+{
+    "id": 6,
+    "customer_id": 6,
+    "entry_date": "2017-04-15T23:32:18Z",
+    "output_date": "2017-04-17T23:32:18Z",
+    "articles": [
+    {
+        "final_customer_code": "31de",
+        "barcode": "0200026",
+        "type": "Nórdico",
+        "color": "Blanco",
+        "price": 12
+    },
+    {
+        "final_customer_code": "31df",
+        "barcode": "0200027",
+        "type": "Nórdico",
+        "color": "Blanco",
+        "price": 12
+    },
+    {
+        "final_customer_code": "31d5",
+        "barcode": "0200028",
+        "type": "Nórdico",
+        "color": "Blanco",
+        "price": 12
+    },
+    {
+        "final_customer_code": "3123",
+        "barcode": "0200029",
+        "type": "Nórdico",
+        "color": "Blanco",
+        "price": 12
+    },
+    {
+        "final_customer_code": "3109",
+        "barcode": "0200029",
+        "type": "Nórdico",
+        "color": "Blanco",
+        "price": 12
+    }
+    ],
+    "state": "FINALIZADO",
+},
+{
+    "id": 7,
+    "customer_id": 3,
+    "entry_date": "2017-04-01T23:32:18Z",
+    "articles": [
+    {
+        "final_customer_code": "2309",
+        "barcode": "0200026",
+        "type": "Vestido",
+        "complements": ["velo","guantes","tiras"],
+        "color": "Verde",
+        "notes": "Coser manga derecha",
+        "price": 10
+    }
+    ],
+    "state": "PENDING",
+},
+{
+    "id": 8,
+    "customer_id": 6,
+    "entry_date": "2017-04-02T23:32:18Z",
+    "articles": [
+    {
+        "final_customer_code": "f2d2",
+        "barcode": "0200027",
+        "type": "Chaqueta",
+        "leather": "Pekari",
+        "complements": ["guantes"],
+        "color": "Negro",
+        "price": 15
+    }
+    ],
+    "state": "FINALIZADO",
+},
+{
+    "id": 9,
+    "customer_id": 6,
+    "entry_date": "2017-04-03T23:32:18Z",
+    "articles": [
+    {
+        "final_customer_code": "f2d6",
+        "barcode": "0200029",
+        "type": "Pantalon",
+        "leather": "Pekari",
+        "complements": ["Cinturon"],
+        "color": "Azul",
+        "price": 15
+    }
+    ],
+    "state": "FINALIZADO",
+},
+{
+    "id": 10,
+    "customer_id": 8,
+    "entry_date": "2017-04-03T23:32:18Z",
+    "output_date": "2017-04-05T23:32:18Z",
+    "articles": [
+    {
+        "final_customer_code": "Juan",
+        "barcode": "0200030",
+        "type": "Nórdico",
+        "color": "Blanco",
+        "price": 12
+    }
+    ],
+    "state": "SALIDO",
+}
+]

@@ -7,7 +7,7 @@ class Clients extends Component {
 	constructor(){
 		super()
 		this.state={
-			thead:['id','contacto','Dirección','Nombre Fiscal','Teléfono','Entrega','Dias'],
+			thead:['id','Contacto','Dirección','Ciudad','Teléfono','Cliente','Nombre fiscal'],
 			clients:[]
 			}
 		}
@@ -20,7 +20,7 @@ class Clients extends Component {
 	}
 	getClientsForShowTable(){
 		return this.state.clients.map((client) => {
-			return [client.id,client.contact,client.address,client.fiscal_name,client.phone,client.delivery_type,client.delivery_days]
+			return [client.id,client.contact,client.address,client.city,client.phone,client.type,client.fiscal_name]
 		})
 	}
 	
