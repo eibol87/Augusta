@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Col,ControlLabel,FormControl,Button } from 'react-bootstrap'
-import {checkLogin} from '../../services/Api'
+import {checkLogin} from '../../services/Auth'
 import  {Redirect} from 'react-router'
 import './Login.css'
 
