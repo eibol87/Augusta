@@ -2,14 +2,20 @@
 	{
 		"category": "Altas",
 		"items":[
-			{"id": 2, "title": "Clientes", "link": "/customers", "icon": "fa fa-address-book-o"},
-			{"id": 1, "title": "Articulos", "link": "/articulos", "icon": "fa fa-black-tie"}
+			{"id": 1, "title": "Clientes", "link": "/customers", "icon": "fa fa-address-book-o"},
+			{"id": 2, "title": "Articulos", "link": "/articulos", "icon": "fa fa-black-tie"}
 		]
 	},
 	{
 		"category": "Gestión",
 		"items":[
 			{"id": 3, "title": "Pedidos", "link": "/pedidos", "icon": "fa fa-shopping-basket"}
+		]
+	},
+	{
+		"category": "Mi cuenta",
+		"items":[
+			{"id": 4, "title": "Log out", "link": "/login", "icon": "fa fa-sign-out"}
 		]
 	}
 ]

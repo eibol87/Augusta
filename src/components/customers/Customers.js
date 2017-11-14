@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DataTable from '../forms/dataTable/DataTable';
-import customers from '../../data/customers.json'
+import {getCustomers} from '../../services/Api'
 import './Customers.css'
 
 class Customers extends Component {
@@ -13,10 +13,13 @@ class Customers extends Component {
 		}
 	
 	componentDidMount(){
-		this.setState(
-		{
-			customers:[...customers] 
-		})
+		getCustomers()
+		.then(response =>
+			this.setState(
+			{
+				customers:[...response] 
+			})
+		)
 	}
 	getcustomersForShowTable(){
 		return this.state.customers.map((customers) => {

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.17.1",
     "electron-builder": "^19.45.4",
     "jquery": "^3.2.1",
     "normalize.css": "^7.0.0",
