@@ -1,6 +1,6 @@
 import React from 'react';
 import {Redirect, Route} from 'react-router'
-import {getSessionStorage} from '../../services/Auth.js'
+import {getSessionStorage} from '../../services/LocalStorage'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (

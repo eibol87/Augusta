@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { setSessionStorage } from './LocalStorage.js'
 
 export function checkLogin(email,password){
   const url= `http://localhost:3004/login`
@@ -15,13 +16,6 @@ export function checkLogin(email,password){
     .catch(function (error) {
       console.log(error);
     });
-}
-
-export function setSessionStorage(token){
-  sessionStorage.setItem('token', token);
-}
-export function getSessionStorage(){
-  return sessionStorage.getItem('token');
 }
 
 

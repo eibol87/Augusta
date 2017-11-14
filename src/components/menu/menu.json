@@ -15,7 +15,7 @@
 	{
 		"category": "Mi cuenta",
 		"items":[
-			{"id": 4, "title": "Log out", "link": "/login", "icon": "fa fa-sign-out"}
+			{"id": 4, "title": "Log out", "link": "/logout", "icon": "fa fa-sign-out"}
 		]
 	}
 ]
