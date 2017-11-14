@@ -1,15 +1,13 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom'
-import Clients from './clients/Clients.js'
-import Provider from './provider/Provider.js'
+import Customers from './customers/Customers.js'
 
 const Main = (props) => {
   return (
     <div>
       <Switch>
         <Route exact path='/' />
-        <Route path='/clients' render={() => (<Clients />)} />
-        <Route path='/provider' component={Provider} />
+        <Route path='/customers' render={() => (<Customers />)} />
       </Switch>
     </div>
   )

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import './Menu.css'
 import data from './menu.json'
 
@@ -13,10 +14,10 @@ class Menu extends Component {
 								<li key={menu.id} className="Menu--li--header"><span>{menu.category}</span></li>
 								{menu.items.map((items) =>
 									<li key={menu.id}>
-						      	<a href={items.link}>
-						      		<i className={`${items.icon} Menu--glyph-icon`} aria-hidden="true"></i>
-					         		<span>{items.title}</span>
-						       	</a>
+						      		<Link to={items.link}>
+						      			<i className={`${items.icon} Menu--glyph-icon`} aria-hidden="true"></i>
+					         			<span>{items.title}</span>
+						       		</Link>
 				         	</li>
 								)}
 							</div>

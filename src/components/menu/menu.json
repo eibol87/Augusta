@@ -2,26 +2,14 @@
 	{
 		"category": "Altas",
 		"items":[
-			{"id": 2, "title": "Clientes", "link": "/clients", "icon": "fa fa-address-book-o"},
-			{"id": 1, "title": "Articulos", "link": "/", "icon": "fa fa-archive"},
-			{"id": 3, "title": "Cobros", "link": "/", "icon": "fa fa-usd"}
+			{"id": 2, "title": "Clientes", "link": "/customers", "icon": "fa fa-address-book-o"},
+			{"id": 1, "title": "Articulos", "link": "/articulos", "icon": "fa fa-black-tie"}
 		]
 	},
 	{
-		"category": "Stock",
+		"category": "Gestión",
 		"items":[
-			{"id": 1, "title": "Entradas", "link": "/", "icon": "fa fa-sign-in"},
-			{"id": 2, "title": "Buscar", "link": "/", "icon": "fa fa-search"},
-			{"id": 3, "title": "Finalizar", "link": "/", "icon": "fa fa-address-book-o"},
-			{"id": 4, "title": "Salidas", "link": "/", "icon": "fa fa-address-book-o"},
-			{"id": 5, "title": "Facturar", "link": "/", "icon": "fa fa-address-book-o"},
-			{"id": 6, "title": "Lista Facturas", "link": "/", "icon": "fa fa-address-book-o"}
-		]
-	},
-	{
-		"category": "Listados",
-		"items":[
-			{"id": 1, "title": "Por dias de salida", "link": "/", "icon": "fa fa-address-book-o"}
+			{"id": 3, "title": "Pedidos", "link": "/pedidos", "icon": "fa fa-shopping-basket"}
 		]
 	}
 ]

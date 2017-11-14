@@ -10,19 +10,17 @@ import './App.css'
 class App extends Component {
   render() {
     return (
+      <BrowserRouter>
     	<Grid bsClass="false">
         <Header />
-        <Row>
           <Col className="App--menu--left" xs={2} sm={2} md={2} lg={2}>
             <Menu />
           </Col>
           <Col xs={12} sm={10} md={10} lg={10}>
-    	    	<BrowserRouter>
     	    		<Main />
-    	     	</BrowserRouter>
-          </Col>
-        </Row>
-	    </Grid>
+    	    </Col>
+      </Grid>
+     </BrowserRouter>
     );
   }
 }

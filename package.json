@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "electron-builder": "^19.45.4",
     "jquery": "^3.2.1",
     "normalize.css": "^7.0.0",
     "react": "^16.0.0",
@@ -10,18 +11,25 @@
     "react-dom": "^16.0.0",
     "react-icons-kit": "^1.0.7",
     "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
     "react-sidenav": "^2.1.2",
     "redux": "^3.7.2"
   },
+  "homepage": "./",
+  "main": "src/electron-starter.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "dev": "nf start -p 3000"
   },
   "devDependencies": {
+    "electron": "1.7.9",
+    "electron-winstaller": "^2.6.3",
     "redux-devtools": "^3.4.0"
   }
 }

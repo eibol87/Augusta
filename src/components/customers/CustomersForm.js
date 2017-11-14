@@ -1,5 +1,5 @@
-import './Clients.css'
- <div className="Clients">
+import './Customers.css'
+ <div className="customer">
          <Form horizontal>
           <FormGroup controlId="formHorizontalEmail">
             <Col componentClass={ControlLabel} sm={2}>
