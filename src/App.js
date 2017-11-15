@@ -13,10 +13,10 @@ class App extends Component {
       <BrowserRouter>
     	<Grid bsClass="false">
         <Header />
-          <Col className="App--menu--left" xs={2} sm={2} md={2} lg={2}>
+          <Col className="nopadding App--menu--left" xs={2} sm={2} md={2} lg={2}>
             <Menu />
           </Col>
-          <Col xs={12} sm={10} md={10} lg={10}>
+          <Col className="nopadding background" xs={12} sm={10} md={10} lg={10}>
     	    		<Main />
     	    </Col>
       </Grid>

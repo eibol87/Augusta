@@ -1,8 +1,4 @@
-.Customers{
-	background: #fafcfe;
-	min-height: 700px;
-}
-.Customers--panel{
+.Customers-panel{
 	padding: 35px 20px 20px 20px;
 	margin-bottom: 20px;
   background-color: #fff;
@@ -12,12 +8,18 @@
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
   box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
-.DataTable>thead>tr{
-	background-color: #F9FAFE;
+.Customers-title{
+    font-weight: 300 !important;
+    font-size: 22px;
+    text-transform: uppercase;
+    padding: 0;
+    font-weight: 100;
+    margin: 0;
+    color: #414C59;
+    padding-top: 10px;
 }
-.DataTable--inputSearch--left{
-	padding-left: 0px;
-}
-.DataTable--selectPage--right{
-	padding-right: 0px;
+.Customers-subTitle{
+	font-weight: 300;
+	opacity: 0.6;
+	padding-bottom: 5px;
 }

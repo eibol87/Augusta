@@ -7,7 +7,7 @@ class Articles extends Component {
 	constructor(){
 		super()
 		this.state={
-			thead:['Tipo','Categoría','Precio Base'],
+			thead:['Tipo','Categoría','Precio Base','Precio medio','Clientes'],
 			articles:[]
 			}
 		}
@@ -23,7 +23,10 @@ class Articles extends Component {
 	}
 	getBodyTable(){
 		return this.state.articles.map((articles) => {
-			return [articles.type,articles.leather,articles.base_price]
+			const sum = (articles.assign_prices.reduce((acc, sum) => acc + Number(sum) ,0))
+			const avg= (sum/articles.assign_prices.length).toFixed(2)
+
+			return [articles.type,articles.leather,articles.base_price,avg,articles.prices_per_customer.length]
 		})
 	}
 	

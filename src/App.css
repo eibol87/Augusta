@@ -4,7 +4,13 @@
 .App{
 	display: inline-block;
 }
-
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+.background{
+	background: #fafcfe;
+}
 @media (max-width: 767px) {
   .App--menu--left {
     display: none;
