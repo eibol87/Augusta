@@ -7,7 +7,7 @@ class Orders extends Component {
 	constructor(){
 		super()
 		this.state={
-			thead:['Fecha entrada','Articulos','Estado'],
+			thead:['Fecha entrada','Cliente','Número de articulos','Estado'],
 			orders:[]
 			}
 		}
@@ -24,7 +24,7 @@ class Orders extends Component {
 	getBodyTable(){
 		return this.state.orders.map((orders) => {
 			console.log(orders)
-			return [orders.entry_date,orders.articles,orders.state]
+			return [orders.entry_date,orders.customer_id.contact,orders.articles.length,orders.state]
 		})
 	}
 	
