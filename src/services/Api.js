@@ -28,8 +28,8 @@ export function getArticles (){
     });
 }
 
-export function getOrders (){
-   const url= `http://localhost:3004/orders`
+export function getOrders (filter='orders'){
+   const url= `http://localhost:3004/${filter}`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
@@ -40,3 +40,4 @@ export function getOrders (){
       console.log(error);
     });
 }
+

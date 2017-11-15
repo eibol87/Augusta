@@ -10,8 +10,8 @@
 		"category": "Gestión",
 		"items":[
 			{"id": 3, "title": "Buscar", "link": "/orders", "icon": "fa fa-search"},
-			{"id": 4, "title": "Finalizar", "link": "/orders", "icon": "fa fa-check-square-o"},
-			{"id": 4, "title": "Salidas", "link": "/orders", "icon": "fa fa-credit-card"}
+			{"id": 4, "title": "Finalizar", "link": "/ordersByPending", "icon": "fa fa-check-square-o"},
+			{"id": 4, "title": "Salidas", "link": "/ordersByFinalized", "icon": "fa fa-credit-card"}
 		]
 	},
 	{
