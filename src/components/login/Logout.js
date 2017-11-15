@@ -9,6 +9,6 @@ const Logout = () => {
 	return(
 		<Redirect to="/login" push />
 		)
-	}
+	}	
 
 export default Logout

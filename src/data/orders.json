@@ -1,6 +1,5 @@
-[
+
 {
-    "id": 1,
     "customer_id": 1,
     "entry_date": "2017-09-20T23:32:18Z",
     "articles": [
@@ -30,10 +29,9 @@
         "color": "Negro",
         "price": 14.5
     }],
-    "state": "PENDING",
-},
+    "state": "PENDING"
+}
 {
-    "id": 2,
     "customer_id": 2,
     "entry_date": "2017-01-01T23:32:18Z",
     "articles": [
@@ -45,10 +43,9 @@
         "price": 7
     }
     ],
-    "state": "PENDING",
-},
+    "state": "PENDING"
+}
 {
-    "id": 3,
     "customer_id": 2,
     "entry_date": "2017-01-02T23:32:18Z",
     "output_date": "2017-01-03T23:32:18Z",
@@ -62,10 +59,9 @@
         "price": 7
     }
     ],
-    "state": "SALIDO",
-},
+    "state": "SALIDO"
+}
 {
-    "id": 4,
     "customer_id": 3,
     "entry_date": "2017-03-13T23:32:18Z",
     "articles": [
@@ -79,10 +75,9 @@
         "price": 25
     }
     ],
-    "state": "FINALIZADO",
-},
+    "state": "FINALIZADO"
+}
 {
-    "id": 5,
     "customer_id": 7,
     "entry_date": "2017-03-15T23:32:18Z",
     "articles": [
@@ -96,10 +91,9 @@
         "price": 25
     }
     ],
-    "state": "FINALIZADO",
-},
+    "state": "FINALIZADO"
+}
 {
-    "id": 6,
     "customer_id": 6,
     "entry_date": "2017-04-15T23:32:18Z",
     "output_date": "2017-04-17T23:32:18Z",
@@ -140,10 +134,9 @@
         "price": 12
     }
     ],
-    "state": "FINALIZADO",
-},
+    "state": "FINALIZADO"
+}
 {
-    "id": 7,
     "customer_id": 3,
     "entry_date": "2017-04-01T23:32:18Z",
     "articles": [
@@ -157,10 +150,9 @@
         "price": 10
     }
     ],
-    "state": "PENDING",
-},
+    "state": "PENDING"
+}
 {
-    "id": 8,
     "customer_id": 6,
     "entry_date": "2017-04-02T23:32:18Z",
     "articles": [
@@ -174,10 +166,9 @@
         "price": 15
     }
     ],
-    "state": "FINALIZADO",
-},
+    "state": "FINALIZADO"
+}
 {
-    "id": 9,
     "customer_id": 6,
     "entry_date": "2017-04-03T23:32:18Z",
     "articles": [
@@ -191,10 +182,9 @@
         "price": 15
     }
     ],
-    "state": "FINALIZADO",
-},
+    "state": "FINALIZADO"
+}
 {
-    "id": 10,
     "customer_id": 8,
     "entry_date": "2017-04-03T23:32:18Z",
     "output_date": "2017-04-05T23:32:18Z",
@@ -207,6 +197,5 @@
         "price": 12
     }
     ],
-    "state": "SALIDO",
+    "state": "SALIDO"
 }
-]

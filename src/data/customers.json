@@ -1,7 +1,5 @@
 [
 {
-    "id": 1,
-    "entry_date": "2013-11-20T23:32:18Z",
     "contact": "Pepito Lopez",
     "address": "c/ Sicilia 324 2-4 08025",
     "city": "Madrid",
@@ -18,8 +16,6 @@
     "delivery_days": ["Lunes", "Miercoles"]
 },
 {
-    "id": 2,
-    "entry_date": "2015-12-21T23:32:18Z",
     "contact": "Abel Canet",
     "address": "c/ Castillejos 325 2-3 entresuelo 08025",
     "city": "Barcelona",
@@ -30,8 +26,6 @@
     "delivery_type": "Taller"
 },
 {
-    "id": 3,
-    "entry_date": "2012-01-10T23:32:18Z",
     "contact": "Juan Manuel",
     "address": "c/ sant cucgat 1 08021",
     "city": "San cugat",
@@ -47,8 +41,6 @@
     "delivery_days": ["Lunes", "Jueves"]
 },
 {
-    "id": 4,
-    "entry_date": "2016-05-10T23:32:18Z",
     "contact": "Conchi",
     "address": "c/ valencia 34 09823",
     "city": "Barcelona",
@@ -64,8 +56,6 @@
     "delivery_days": ["Lunes-Mañana"]
 },
 {
-    "id": 5,
-    "entry_date": "2017-01-12T23:32:18Z",
     "contact": "Manuel lopez",
     "address": "c/ alivi 124 08024",
     "city": "Sat just",
@@ -81,8 +71,6 @@
     "delivery_days": ["Lunes-tarde"]
 },
 {
-    "id": 6,
-    "entry_date": "2017-03-12T23:32:18Z",
     "contact": "Gerson Canet",
     "address": "c/ montaña 14 1-2 08027",
     "city": "Castelldefels",
@@ -99,8 +87,6 @@
     "delivery_days": ["Lunes-tarde","Lunes-mañana","jueves"]
 },
 {
-    "id": 7,
-    "entry_date": "2015-01-24T23:32:18Z",
     "contact": "Josue Canet",
     "address": "c/ circumvalacio 4 08025",
     "city": "badalona",
@@ -111,8 +97,6 @@
     "delivery_type": "Taller"
 },
 {
-    "id": 8,
-    "entry_date": "2015-02-21T23:32:18Z",
     "contact": "Juana de arco",
     "address": "c/ francia 4 9283",
     "city": "Ruan",
@@ -123,8 +107,6 @@
     "delivery_type": "Taller"
 },
 {
-    "id": 9,
-    "entry_date": "2015-03-13T23:32:18Z",
     "contact": "Socrates",
     "address": "c/ grecia 4 98234",
     "city": "Atenas",
@@ -135,7 +117,6 @@
     "delivery_type": "Taller"
 },
 {
-    "id": 10,
     "entry_date": "2011-02-10T23:32:18Z",
     "contact": "Manlleu",
     "address": "c/ social 5 1-3 08023",

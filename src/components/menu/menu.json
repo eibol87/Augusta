@@ -3,13 +3,13 @@
 		"category": "Altas",
 		"items":[
 			{"id": 1, "title": "Clientes", "link": "/customers", "icon": "fa fa-address-book-o"},
-			{"id": 2, "title": "Articulos", "link": "/articulos", "icon": "fa fa-black-tie"}
+			{"id": 2, "title": "Articulos", "link": "/articles", "icon": "fa fa-black-tie"}
 		]
 	},
 	{
 		"category": "Gestión",
 		"items":[
-			{"id": 3, "title": "Pedidos", "link": "/pedidos", "icon": "fa fa-shopping-basket"}
+			{"id": 3, "title": "Pedidos", "link": "/orders", "icon": "fa fa-shopping-basket"}
 		]
 	},
 	{

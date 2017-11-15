@@ -15,3 +15,28 @@ export function getCustomers (){
       console.log(error);
     });
 }
+export function getArticles (){
+   const url= `http://localhost:3004/articles`
+    return axios.get(url,{
+        headers: {
+           Authorization: `${token}`
+        }
+    })
+    .then(response => response.data)
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
+export function getOrders (){
+   const url= `http://localhost:3004/orders`
+    return axios.get(url,{
+        headers: {
+           Authorization: `${token}`
+        }
+    })
+    .then(response => response.data)
+    .catch(function (error) {
+      console.log(error);
+    });
+}
