@@ -1,201 +1,60 @@
-
 {
-    "customer_id": 1,
-    "entry_date": "2017-09-20T23:32:18Z",
-    "articles": [
-    {
-        "final_customer_code": "537",
-        "barcode": "0200012",
-        "type": "Pantalon",
-        "leather": "Ante",
-        "color": "Blanco",
-        "complements": ["cinturon"],
-        "notes": "Bolsillo derecho roto, coser",
-        "price": 20.5
-    },
-    {
-        "final_customer_code": "538",
-        "barcode": "0200013",
-        "type": "Bolso",
-        "leather": "Napa",
-        "color": "Negro",
-        "price": 10
-    },
-    {
-        "final_customer_code": "539",
-        "barcode": "0200022",
-        "type": "Pantalon",
-        "leather": "Nobuck",
-        "color": "Negro",
-        "price": 14.5
-    }],
-    "state": "PENDING"
-}
-{
-    "customer_id": 2,
+    "_id": "5a0c0e2a63bb9ae2b6d99438",
+    "customer_id": "5a0c0ac463bb9ae2b6d99323",
     "entry_date": "2017-01-01T23:32:18Z",
-    "articles": [
-    {
-        "final_customer_code": "2845",
-        "barcode": "0200021",
-        "type": "Cortina",
-        "color": "Blanco",
-        "price": 7
-    }
-    ],
-    "state": "PENDING"
+    "articles": ["5a0c9af063bb9ae2b6d9bd5a"]
 }
 {
-    "customer_id": 2,
-    "entry_date": "2017-01-02T23:32:18Z",
-    "output_date": "2017-01-03T23:32:18Z",
-    "articles": [
-    {
-        "final_customer_code": "282478",
-        "barcode": "0200020",
-        "type": "Falda",
-        "leather": "Ante",
-        "color": "Blanco",
-        "price": 7
-    }
-    ],
-    "state": "SALIDO"
-}
-{
-    "customer_id": 3,
+    "_id": "5a0c0e2a63bb9ae2b6d99439",
+    "customer_id": "5a0c0ac463bb9ae2b6d99323",
     "entry_date": "2017-03-13T23:32:18Z",
-    "articles": [
-    {
-        "final_customer_code": "CONCHI",
-        "barcode": "0200015",
-        "type": "Cazadora",
-        "leather": "Pekari",
-        "color": "Negro",
-        "notes": "Teñir a rojo",
-        "price": 25
-    }
-    ],
-    "state": "FINALIZADO"
+    "articles": ["5a0c9af063bb9ae2b6d9bd5b"]
 }
 {
-    "customer_id": 7,
+    "_id": "5a0c0e2a63bb9ae2b6d9943a",
+    "customer_id": "5a0c0ac463bb9ae2b6d99323",
     "entry_date": "2017-03-15T23:32:18Z",
-    "articles": [
-    {
-        "final_customer_code": "2352",
-        "barcode": "0200025",
-        "type": "Cazadora",
-        "leather": "Pekari",
-        "color": "Negro",
-        "notes": "Teñir a rojo",
-        "price": 25
-    }
-    ],
-    "state": "FINALIZADO"
+    "articles": ["5a0c9af063bb9ae2b6d9bd5c"]
 }
 {
-    "customer_id": 6,
-    "entry_date": "2017-04-15T23:32:18Z",
-    "output_date": "2017-04-17T23:32:18Z",
-    "articles": [
-    {
-        "final_customer_code": "31de",
-        "barcode": "0200026",
-        "type": "Nórdico",
-        "color": "Blanco",
-        "price": 12
-    },
-    {
-        "final_customer_code": "31df",
-        "barcode": "0200027",
-        "type": "Nórdico",
-        "color": "Blanco",
-        "price": 12
-    },
-    {
-        "final_customer_code": "31d5",
-        "barcode": "0200028",
-        "type": "Nórdico",
-        "color": "Blanco",
-        "price": 12
-    },
-    {
-        "final_customer_code": "3123",
-        "barcode": "0200029",
-        "type": "Nórdico",
-        "color": "Blanco",
-        "price": 12
-    },
-    {
-        "final_customer_code": "3109",
-        "barcode": "0200029",
-        "type": "Nórdico",
-        "color": "Blanco",
-        "price": 12
-    }
-    ],
-    "state": "FINALIZADO"
-}
-{
-    "customer_id": 3,
+    "_id": "5a0c0e2a63bb9ae2b6d9943b",
+    "customer_id": "5a0c0ac463bb9ae2b6d99324",
     "entry_date": "2017-04-01T23:32:18Z",
-    "articles": [
-    {
-        "final_customer_code": "2309",
-        "barcode": "0200026",
-        "type": "Vestido",
-        "complements": ["velo","guantes","tiras"],
-        "color": "Verde",
-        "notes": "Coser manga derecha",
-        "price": 10
-    }
-    ],
-    "state": "PENDING"
+    "articles": ["5a0c9af063bb9ae2b6d9bd5d"]
 }
 {
-    "customer_id": 6,
+    "_id": "5a0c0e2a63bb9ae2b6d9943c",
+    "customer_id": "5a0c0ac463bb9ae2b6d99324",
+    "entry_date": "2017-04-15T23:32:18Z",
+    "articles": ["5a0c9af063bb9ae2b6d9bd5e", "5a0c9af063bb9ae2b6d9bd5f", "5a0c9af063bb9ae2b6d9bd60", "5a0c9af063bb9ae2b6d9bd61", "5a0c9af063bb9ae2b6d9bd62"]
+}
+{
+    "_id": "5a0c0e2a63bb9ae2b6d9943d",
+    "customer_id": "5a0c0ac463bb9ae2b6d9932c",
     "entry_date": "2017-04-02T23:32:18Z",
-    "articles": [
-    {
-        "final_customer_code": "f2d2",
-        "barcode": "0200027",
-        "type": "Chaqueta",
-        "leather": "Pekari",
-        "complements": ["guantes"],
-        "color": "Negro",
-        "price": 15
-    }
-    ],
-    "state": "FINALIZADO"
+    "articles": ["5a0c9af063bb9ae2b6d9bd63", "5a0c9af063bb9ae2b6d9bd64"]
 }
 {
-    "customer_id": 6,
+    "_id": "5a0c0e2a63bb9ae2b6d9943e",
+    "customer_id": "5a0c0ac463bb9ae2b6d99329",
     "entry_date": "2017-04-03T23:32:18Z",
-    "articles": [
-    {
-        "final_customer_code": "f2d6",
-        "barcode": "0200029",
-        "type": "Pantalon",
-        "leather": "Pekari",
-        "complements": ["Cinturon"],
-        "color": "Azul",
-        "price": 15
-    }
-    ],
-    "state": "FINALIZADO"
+    "articles": ["5a0c9af063bb9ae2b6d9bd65"]
 }
 {
-    "customer_id": 8,
+    "_id": "5a0c0e2a63bb9ae2b6d9943f",
+    "customer_id": "5a0c0ac463bb9ae2b6d99329",
+    "entry_date": "2017-01-02T23:32:18Z",
+    "articles": ["5a0c9af063bb9ae2b6d9bd66"]
+}
+{
+    "_id": "5a0c0e2a63bb9ae2b6d99440",
+    "customer_id": "5a0c0ac463bb9ae2b6d99329",
+    "entry_date": "2017-09-20T23:32:18Z",
+    "articles": ["5a0c9af063bb9ae2b6d9bd67", "5a0c9af063bb9ae2b6d9bd68"]
+}
+{
+    "_id": "5a0c0e2a63bb9ae2b6d99441",
+    "customer_id": "5a0c0ac463bb9ae2b6d99328",
     "entry_date": "2017-04-03T23:32:18Z",
-    "output_date": "2017-04-05T23:32:18Z",
-    "articles": [
-    {
-        "final_customer_code": "Juan",
-        "barcode": "0200030",
-        "type": "Nórdico",
-        "color": "Blanco",
-        "price": 12
-    }
-    ],
-    "state": "SALIDO"
+    "articles": ["5a0c9af063bb9ae2b6d9bd69"]
 }

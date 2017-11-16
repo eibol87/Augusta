@@ -3,20 +3,23 @@
 		"category": "Altas",
 		"items":[
 			{"id": 1, "title": "Clientes", "link": "/customers", "icon": "fa fa-address-book-o"},
-			{"id": 2, "title": "Articulos", "link": "/articles", "icon": "fa fa-black-tie"}
+			{"id": 2, "title": "Articulos", "link": "/articlesPrices", "icon": "fa fa-black-tie"}
 		]
 	},
 	{
-		"category": "Gestión",
+		"category": "Acciones",
 		"items":[
-			{"id": 3, "title": "Buscar", "link": "/orders", "icon": "fa fa-search"},
-			{"id": 4, "title": "Finalizar", "link": "/ordersByPending", "icon": "fa fa-check-square-o"},
-			{"id": 4, "title": "Salidas", "link": "/ordersByFinalized", "icon": "fa fa-credit-card"}
+			{"id": 4, "title": "Finalizar", "link": "/articlesByPending", "icon": "fa fa-check-square-o"},
+			{"id": 4, "title": "Salidas", "link": "/articlesByFinalized", "icon": "fa fa-credit-card"},
+			{"id": 3, "title": "Buscar", "link": "/orders", "icon": "fa fa-search"}
+			
 		]
 	},
 	{
 		"category": "Contabilidad",
 		"items":[
+			{"id": 3, "title": "Albaran", "link": "/orders", "icon": "fa fa-sticky-note-o"},
+			{"id": 4, "title": "Facturas", "link": "/articlesByDelivered", "icon": "fa fa-money"},
 			{"id": 5, "title": "Cobros", "link": "/login", "icon": "fa fa-eur"}
 		]
 	},

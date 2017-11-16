@@ -1,0 +1,66 @@
+[{
+	"type": "Pantalon",
+	"leather": "Ante",
+	"base_price": 20,
+	"assign_prices":[],
+	"prices_per_customer":[{"id_customer":1,"prices":20}]
+},
+{
+	"type": "Chaqutea",
+	"leather": "Nobuk",
+	"base_price": 20,
+	"assign_prices":[],
+	"prices_per_customer":[{"id_customer":1,"prices":20}]
+},
+{
+	"type": "Cortina",
+	"base_price": 7,
+	"assign_prices":[],
+	"prices_per_customer":[{"id_customer":1,"prices":20}]
+},
+{
+	"type": "Falda",
+	"leather": "Ante",
+	"base_price": 17,
+	"assign_prices":[],
+	"prices_per_customer":[{"id_customer":1,"prices":20}]
+},
+{
+	"type": "Nórdico",
+	"base_price": 12,
+	"assign_prices":[],
+	"prices_per_customer":[{"id_customer":1,"prices":20}]
+},
+{
+	"type": "Plumas",
+	"base_price": 7,
+	"assign_prices":[],
+	"prices_per_customer":[{"id_customer":1,"prices":20}]
+},
+{
+	"type": "Cazadora",
+	"leather": "Pekari",
+	"base_price": 25,
+	"assign_prices":[],
+	"prices_per_customer":[{"id_customer":1,"prices":20}]
+},
+{
+	"type": "Vestido",
+	"base_price": 10,
+	"assign_prices":[],
+	"prices_per_customer":[{"id_customer":1,"prices":20}]
+},
+{
+	"type": "Piel de vaca",
+	"base_price": 30,
+	"assign_prices":[],
+	"prices_per_customer":[{"id_customer":1,"prices":20}]
+},
+{
+	"type": "Chaqueta",
+	"leather": "Nobuk color",
+	"base_price": 15,
+	"assign_prices":[],
+	"prices_per_customer":[{"id_customer":1,"prices":20}]
+}
+]

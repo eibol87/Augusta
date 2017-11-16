@@ -3,7 +3,7 @@ import DataTable from '../../forms/dataTable/DataTable';
 import {getArticles} from '../../../services/Api'
 import '../../customers/Customers.css'
 
-class Finalized extends Component {
+class Delivered extends Component {
 	constructor(){
 		super()
 		this.state={
@@ -13,7 +13,7 @@ class Finalized extends Component {
 		}
 	
 	componentDidMount(){
-		getArticles('?state=finalized')
+		getArticles('?state=delivered')
 			.then(response =>
 				this.setState(
 				{
@@ -42,4 +42,4 @@ class Finalized extends Component {
   }
 }
 
-export default Finalized
+export default Delivered

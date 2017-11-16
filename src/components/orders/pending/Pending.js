@@ -1,30 +1,29 @@
 import React, { Component } from 'react';
 import DataTable from '../../forms/dataTable/DataTable';
-import {getOrders} from '../../../services/Api'
+import {getArticles} from '../../../services/Api'
 import '../../customers/Customers.css'
 
 class Pending extends Component {
 	constructor(){
 		super()
 		this.state={
-			thead:['Fecha entrada','Cliente','Número de articulos','Estado'],
-			orders:[]
+			thead:['Cliente','Tipo','Piel','Color','Estado','Código de barras'],
+			articles:[]
 			}
 		}
 	
 	componentDidMount(){
-		getOrders('ordersByPending')
+		getArticles('?state=pending')
 			.then(response =>
 				this.setState(
 				{
-					orders:[...response] 
+					articles:[...response] 
 				})
 			)
 	}
 	getBodyTable(){
-		return this.state.orders.map((orders) => {
-			console.log(orders)
-			return [orders.entry_date,orders.customer_id.contact,orders.articles.length,orders.state]
+		return this.state.articles.map((article) => {
+			return [article.customer_id.contact,article.type,article.leather,article.color,article.state,article.barcode]
 		})
 	}
 	

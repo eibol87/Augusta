@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
 import DataTable from '../forms/dataTable/DataTable';
-import {getArticles} from '../../services/Api'
+import {getArticlesPrices} from '../../services/Api'
 import '../customers/Customers.css'
 
-class Articles extends Component {
+class ArticlesPrices extends Component {
 	constructor(){
 		super()
 		this.state={
 			thead:['Tipo','Categoría','Precio Base','Precio medio','Clientes'],
-			articles:[]
+			articlesPrices:[]
 			}
 		}
 	
 	componentDidMount(){
-		getArticles()
+		getArticlesPrices()
 			.then(response =>
 				this.setState(
 				{
-					articles:[...response] 
+					articlesPrices:[...response] 
 				})
 			)
 	}
 	getBodyTable(){
-		return this.state.articles.map((articles) => {
-			const sum = (articles.assign_prices.reduce((acc, sum) => acc + Number(sum) ,0))
-			const avg= (sum/articles.assign_prices.length).toFixed(2)
+		return this.state.articlesPrices.map((articlesPrices) => {
+			const sum = (articlesPrices.assign_prices.reduce((acc, sum) => acc + Number(sum) ,0))
+			const avg= (sum/articlesPrices.assign_prices.length).toFixed(2)
 
-			return [articles.type,articles.leather,articles.base_price,avg,articles.prices_per_customer.length]
+			return [articlesPrices.type,articlesPrices.leather,articlesPrices.base_price,avg,articlesPrices.prices_per_customer.length]
 		})
 	}
 	
@@ -45,4 +45,4 @@ class Articles extends Component {
   }
 }
 
-export default Articles
+export default ArticlesPrices
