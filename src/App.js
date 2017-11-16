@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import Main from './components/routes/Main'
 import Menu from './components/menu/Menu'
 import Header from './components/header/Header'
-import { Grid, Row, Col } from 'react-bootstrap'
+import { Grid, Col } from 'react-bootstrap'
 import './App.css'
 
 

@@ -23,7 +23,6 @@ class Orders extends Component {
 	}
 	getBodyTable(){
 		return this.state.orders.map((orders) => {
-			console.log(orders)
 			return [orders.entry_date,orders.customer_id.contact,orders.articles.length,orders.state]
 		})
 	}

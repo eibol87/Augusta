@@ -27,10 +27,9 @@ class DataTable extends Component {
   	let match =[]
   	this.state.tbody.forEach((data) =>{
   		data.some(function(element){
-  			if(String(element).toLowerCase().indexOf(e.target.value.toLowerCase()) != -1){
+  			if(String(element).toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1){
 	  			match.push(data)
-	  			console.log(element)
-					return true
+	  			return true
 	  		}
   		})
   	})
@@ -58,7 +57,7 @@ class DataTable extends Component {
   		<div>
 	  		<Col sm={8} className="DataTable--inputSearch--left pull-left">
 	  			{this.state.thead.map((columnsName,index) =>
-						<a class="btn btn-default btn-md DataTable--button--column" name={index+2} onClick={this.handleChangeButton} href="#" data-column="0">{columnsName}</a>
+						<a class="btn btn-default btn-md DataTable--button--column" name={index+2} onClick={this.handleChangeButton} data-column="0">{columnsName}</a>
 					)}
 	  		</Col>
 	  		<Col sm={4} className="DataTable--inputSearch--left pull-right">

@@ -19,8 +19,7 @@
 		"category": "Contabilidad",
 		"items":[
 			{"id": 3, "title": "Albaran", "link": "/orders", "icon": "fa fa-sticky-note-o"},
-			{"id": 4, "title": "Facturas", "link": "/articlesByDelivered", "icon": "fa fa-money"},
-			{"id": 5, "title": "Cobros", "link": "/login", "icon": "fa fa-eur"}
+			{"id": 4, "title": "Facturas", "link": "/articlesByDelivered", "icon": "fa fa-money"}
 		]
 	},
 	{
