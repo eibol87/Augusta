@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import DataTable from '../forms/dataTable/DataTable';
 import {getOrders} from '../../services/Api'
-import '../customers/Customers.css'
+import PanelContainer from '../panelContainer/PanelContainer.js'
 
 class Orders extends Component {
 	constructor(){
@@ -29,17 +29,14 @@ class Orders extends Component {
 	
   render(){
     return(
-    	<div className="Customers">
-    	<h2>Orders</h2>
-	    	<div className="Customers--panel">
+    	
     			<DataTable 
 		    		thead={this.state.thead} 
 		    		tbody={this.getBodyTable()}
 		    	/>
-		   </div>
-	    </div>
+		
     )
   }
 }
 
-export default Orders
+export default PanelContainer(Orders)

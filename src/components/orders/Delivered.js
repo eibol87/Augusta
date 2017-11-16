@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import DataTable from '../../forms/dataTable/DataTable';
-import {getArticles} from '../../../services/Api'
-import '../../customers/Customers.css'
+import DataTable from '../forms/dataTable/DataTable';
+import {getArticles} from '../../services/Api'
+import PanelContainer from '../panelContainer/PanelContainer.js'
 
 class Delivered extends Component {
 	constructor(){
@@ -29,17 +29,13 @@ class Delivered extends Component {
 	
   render(){
     return(
-    	<div className="Customers">
-    	<h2>Finalizar</h2>
-	    	<div className="Customers--panel">
+    	
     			<DataTable 
 		    		thead={this.state.thead} 
 		    		tbody={this.getBodyTable()}
 		    	/>
-		   </div>
-	    </div>
     )
   }
 }
 
-export default Delivered
+export default PanelContainer(Delivered)

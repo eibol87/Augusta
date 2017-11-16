@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import DataTable from '../../forms/dataTable/DataTable';
-import {getArticles} from '../../../services/Api'
-import '../../customers/Customers.css'
+import DataTable from '../forms/dataTable/DataTable';
+import {getArticles} from '../../services/Api'
+import PanelContainer from '../panelContainer/PanelContainer.js'
 
 class Pending extends Component {
 	constructor(){
@@ -29,17 +29,12 @@ class Pending extends Component {
 	
   render(){
     return(
-    	<div className="Customers">
-    	<h2>Pendiente</h2>
-	    	<div className="Customers--panel">
     			<DataTable 
 		    		thead={this.state.thead} 
 		    		tbody={this.getBodyTable()}
 		    	/>
-		   </div>
-	    </div>
-    )
+	     )
   }
 }
 
-export default Pending
+export default PanelContainer(Pending)

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import DataTable from '../../forms/dataTable/DataTable';
-import {getArticles} from '../../../services/Api'
-import '../../customers/Customers.css'
+import DataTable from '../forms/dataTable/DataTable';
+import {getArticles} from '../../services/Api'
+import PanelContainer from '../panelContainer/PanelContainer.js'
 
-class Finalized extends Component {
+class Articles extends Component {
 	constructor(){
 		super()
 		this.state={
@@ -13,7 +13,7 @@ class Finalized extends Component {
 		}
 	
 	componentDidMount(){
-		getArticles('?state=finalized')
+		getArticles('')
 			.then(response =>
 				this.setState(
 				{
@@ -29,17 +29,13 @@ class Finalized extends Component {
 	
   render(){
     return(
-    	<div className="Customers">
-    	<h2>Finalizar</h2>
-	    	<div className="Customers--panel">
+    	
     			<DataTable 
 		    		thead={this.state.thead} 
 		    		tbody={this.getBodyTable()}
 		    	/>
-		   </div>
-	    </div>
-    )
+	    )
   }
 }
 
-export default Finalized
+export default PanelContainer(Articles)

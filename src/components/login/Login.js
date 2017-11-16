@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Form, FormGroup, Col,ControlLabel,FormControl,Button } from 'react-bootstrap'
 import {checkLogin} from '../../services/Auth'
 import  {Redirect} from 'react-router'
-import './Login.css'
+import PanelContainer from '../panelContainer/PanelContainer.js'
+
 
 class Login extends Component{
 	constructor(){
@@ -40,12 +41,14 @@ class Login extends Component{
 	}
 	render(){
 		return (
-			<Form horizontal>
+
+		<Form horizontal>
+		
 	    <FormGroup controlId="formHorizontalEmail">
 	      <Col componentClass={ControlLabel} sm={2}>
 	        Email
 	      </Col>
-	      <Col sm={10}>
+	      <Col sm={4} >
 	        <FormControl onChange={this.handleChangeEmail} type="email" name="username" placeholder="Email" />
 	      </Col>
 	    </FormGroup>
@@ -53,7 +56,7 @@ class Login extends Component{
 	      <Col componentClass={ControlLabel} sm={2}>
 	        Password
 	      </Col>
-	      <Col sm={10}>
+	      <Col sm={4}>
 	        <FormControl onChange={this.handleChangePassword} type="password" name="password" placeholder="Password" />
 	      </Col>
 	    </FormGroup>
@@ -67,9 +70,10 @@ class Login extends Component{
 	      {
         this.state.login ? <Redirect to="/" push /> : ''
       }
+      
 	  </Form>
   	)
 	}
 }
 
-export default Login
+export default PanelContainer(Login)

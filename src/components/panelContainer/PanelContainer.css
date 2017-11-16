@@ -1,24 +1,7 @@
-*{
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-.App{
-	display: inline-block;
-}
-.nopadding {
-   padding: 0 !important;
-   margin: 0 !important;
-}
-.background{
-	background: #fafcfe;
-}
-@media (max-width: 767px) {
-  .App--menu--left {
-    display: none;
-  }
-}
-.Customers-panel{
+.PanelContainer-panel{
 	padding: 35px 20px 20px 20px;
 	margin-bottom: 20px;
+  margin-right: 10px;
   background-color: #fff;
   border: 1px solid transparent;
   border-color: #dfe8f1;
@@ -26,7 +9,7 @@
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
   box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
-.Customers-title{
+.PanelContainer-title{
     font-weight: 300 !important;
     font-size: 22px;
     text-transform: uppercase;
@@ -36,7 +19,7 @@
     color: #414C59;
     padding-top: 10px;
 }
-.Customers-subTitle{
+.PanelContainer-subTitle{
 	font-weight: 300;
 	opacity: 0.6;
 	padding-bottom: 5px;

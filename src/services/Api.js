@@ -4,7 +4,19 @@ const token ='Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhMGFlMTkxNm
 
 
 export function getCustomers (){
-   const url= `http://localhost:3004/customers`
+   const url= `http://localhost:3000/customers`
+    return axios.get(url,{
+        headers: {
+           Authorization: `${token}`
+        }
+    })
+    .then(response => response.data)
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+export function getCustomerById (id){
+   const url= `http://localhost:3000/customer/${id}`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
@@ -16,7 +28,7 @@ export function getCustomers (){
     });
 }
 export function getArticlesPrices (){
-   const url= `http://localhost:3004/articlesPrices`
+   const url= `http://localhost:3000/articlesPrices`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
@@ -29,7 +41,7 @@ export function getArticlesPrices (){
 }
 
 export function getOrders (filter='orders'){
-   const url= `http://localhost:3004/${filter}`
+   const url= `http://localhost:3000/${filter}`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
@@ -41,7 +53,7 @@ export function getOrders (filter='orders'){
     });
 }
 export function getArticles (state){
-   const url= `http://localhost:3004/articles${state}`
+   const url= `http://localhost:3000/articles${state}`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`

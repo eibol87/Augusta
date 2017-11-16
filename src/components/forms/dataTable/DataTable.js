@@ -55,16 +55,19 @@ class DataTable extends Component {
   render(){
   	return(
   		<div>
+  		{/*
 	  		<Col sm={8} className="DataTable--inputSearch--left pull-left">
 	  			{this.state.thead.map((columnsName,index) =>
 						<a class="btn btn-default btn-md DataTable--button--column" name={index+2} onClick={this.handleChangeButton} data-column="0">{columnsName}</a>
 					)}
 	  		</Col>
+	  		*/}
 	  		<Col sm={4} className="DataTable--inputSearch--left pull-right">
 	  			<FormGroup bsSize="medium">
 			    	<FormControl type="text" onChange={this.handleChange} placeholder="Search in table..." />
 					</FormGroup>
 				</Col>
+				
 			  <div className="scroll">
 		  	<Table className="DataTable table-fixed" striped bordered condensed hover>
 			    <thead>
@@ -79,7 +82,11 @@ class DataTable extends Component {
 				   	{this.state.resultSearch.map((client) =>
 	           	<tr>
 	           		<td> 
+	           		<i class="fa fa-pencil" aria-hidden="true"></i>
+	           		<i class="fa fa-eye" aria-hidden="true"></i>
+	           			{/*
 	           			<Checkbox id={client[0]} className="DataTable-checkbox"></Checkbox>
+	           				*/}
 	           		</td>
 		            {client.map((data)=>
 		  						<td>{data}</td>
@@ -87,6 +94,14 @@ class DataTable extends Component {
 		         	</tr>
 	          )}
 			    </tbody>
+			     <thead>
+			      <tr>
+			      	<th></th>
+			      	{this.state.thead.map((columnsName) =>
+								<th>{columnsName}</th>
+			     		)}
+			      </tr>
+			    </thead>
 	  		</Table>
 	  		</div>
 	  		<span>{this.state.resultSearch.length} registros encontrados</span>
