@@ -11,7 +11,7 @@
 		"items":[
 			{"id": 4, "title": "Finalizar", "link": "/articlesByPending", "icon": "fa fa-check-square-o"},
 			{"id": 4, "title": "Salidas", "link": "/articlesByFinalized", "icon": "fa fa-credit-card"},
-			{"id": 3, "title": "Buscar", "link": "/orders", "icon": "fa fa-search"}
+			{"id": 3, "title": "Buscar", "link": "/articles", "icon": "fa fa-search"}
 			
 		]
 	},

@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom'
 import Customers from '../customers/Customers.js'
 import ArticlesPrices from '../articlesPrices/ArticlesPrices.js'
+import Articles from '../orders/articles/Articles.js'
 import Orders from '../orders/Orders.js'
 import Pending from '../orders/pending/Pending.js'
 import Finalized from '../orders/finalized/Finalized.js'
@@ -23,6 +24,7 @@ const Main = (props) => {
         <PrivateRoute path="/articlesByPending" component={Pending}/>
         <PrivateRoute path="/articlesByFinalized" component={Finalized}/>
         <PrivateRoute path="/articlesByDelivered" component={Delivered}/>
+         <PrivateRoute path="/articles" component={Articles}/>
       </Switch>
     </div>
   )
