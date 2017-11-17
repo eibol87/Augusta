@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
-    "dotenv": "^4.0.0",
     "electron-builder": "^19.45.4",
     "jquery": "^3.2.1",
     "normalize.css": "^7.0.0",
@@ -13,12 +12,10 @@
     "react-bootstrap-table": "^4.1.4",
     "react-dom": "^16.0.0",
     "react-icons-kit": "^1.0.7",
-    "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
-    "react-sidenav": "^2.1.2",
-    "redux": "^3.7.2"
+    "react-sidenav": "^2.1.2"
   },
   "homepage": "./",
   "main": "src/electron-starter.js",
@@ -32,7 +29,6 @@
   },
   "devDependencies": {
     "electron": "1.7.9",
-    "electron-winstaller": "^2.6.3",
-    "redux-devtools": "^3.4.0"
+    "electron-winstaller": "^2.6.3"
   }
 }

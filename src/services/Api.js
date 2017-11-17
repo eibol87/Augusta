@@ -45,9 +45,9 @@ export function getPricesList (){
     });
 }
 
-export function getOrders (filter='orders'){
+export function getDeliveryNotes (){
    const token = `Bearer ${getSessionStorage()}`
-   const url= `${urlLocal}${filter}`
+   const url= `${urlLocal}deliveryNotes`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`

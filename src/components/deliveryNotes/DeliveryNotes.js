@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import {getOrders} from '../../services/Api'
+import {getDeliveryNotes} from '../../services/Api'
 import PanelContainer from '../panelContainer/PanelContainer.js'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
-class Orders extends Component {
+class DeliveryNotes extends Component {
 	constructor(){
 		super()
 		this.state={
-			thead:['Fecha entrada','Cliente','Número de articulos','Estado'],
-			orders:[{
+			deliveryNotes:[{
 				_id:'',
 				entry_date:'',
 				customer_name:'',
@@ -18,25 +17,20 @@ class Orders extends Component {
 		}
 	
 	componentDidMount(){
-		getOrders()
+		getDeliveryNotes()
 			.then(response =>
 				this.setState({
-					orders: [...response]
-					.map(function (order){
+					deliveryNotes: [...response]
+					.map(function (deliveryNote){
 						return ({
-							_id:order._id,
-							entry_date:order.entry_date,
-							customer_name:order.customer_id.contact,
-							numberOfArticles:[...order.articles].length
+							_id:deliveryNote._id,
+							entry_date:deliveryNote.entry_date,
+							customer_name:deliveryNote.customer_id.contact,
+							numberOfArticles:[...deliveryNote.articles].length
 						})
 					})
 				})
 			)
-	}
-	getBodyTable(){
-		return this.state.orders.map((orders) => {
-			return [orders.entry_date,orders.customer_id.contact,orders.articles.length]
-		})
 	}
 	
   render(){
@@ -44,7 +38,7 @@ class Orders extends Component {
     <BootstrapTable 
      	className="BootstrapTable-style" 
      	striped hover condensed height='300' 
-     	data={ this.state.orders } 
+     	data={ this.state.deliveryNotes } 
      	options={{defaultSortName:'entry_date', defaultSortOrder: 'asc' }} 
      	trClassName={this.rowClassNameFormat}>
 	     <TableHeaderColumn dataField='entry_date' isKey dataSort filter={ { type: 'TextFilter', delay: 100 } }>Fecha entrada'</TableHeaderColumn>
@@ -56,4 +50,4 @@ class Orders extends Component {
   }
 }
 
-export default PanelContainer(Orders)
+export default PanelContainer(DeliveryNotes)
