@@ -3,7 +3,7 @@
 		"category": "Altas",
 		"items":[
 			{"id": 1, "title": "Clientes", "link": "/customers", "icon": "fa fa-address-book-o"},
-			{"id": 2, "title": "Articulos", "link": "/articlesPrices", "icon": "fa fa-black-tie"}
+			{"id": 2, "title": "Tarifa Precios", "link": "/pricesList", "icon": "fa fa-black-tie"}
 		]
 	},
 	{

@@ -41,3 +41,10 @@
 	opacity: 0.6;
 	padding-bottom: 5px;
 }
+.BootstrapTable-style{
+  color: #8da0aa;
+}
+.BootstrapTable-tr-intermitate-color {
+  
+  background-color: #f9f9f9;
+}

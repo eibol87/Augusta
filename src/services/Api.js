@@ -27,8 +27,8 @@ export function getCustomerById (id){
       console.log(error);
     });
 }
-export function getArticlesPrices (){
-   const url= `http://localhost:3000/articlesPrices`
+export function getPricesList (){
+   const url= `http://localhost:3000/pricesList`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
