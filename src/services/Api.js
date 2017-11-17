@@ -1,10 +1,13 @@
 import axios from 'axios'
+import {getSessionStorage} from './LocalStorage'
 
-const token ='Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhMGFlMTkxNmM2OGY5OWU1YTI5ZjgxNCIsImlhdCI6MTUxMDY2MjU1Mn0.XQmqdFRadVan5O474bPQZnbAIh6dpHMeGzjJq1L-O-I'
 
+const urlLocal ='http://localhost:3000/'
+const herokuUrl='https://api-augusta.herokuapp.com/'
 
 export function getCustomers (){
-   const url= `http://localhost:3000/customers`
+  const token = `Bearer ${getSessionStorage()}`
+   const url= `${urlLocal}customers`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
@@ -16,7 +19,8 @@ export function getCustomers (){
     });
 }
 export function getCustomerById (id){
-   const url= `http://localhost:3000/customer/${id}`
+   const token = `Bearer ${getSessionStorage()}`
+   const url= `${urlLocal}customer/${id}`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
@@ -28,7 +32,8 @@ export function getCustomerById (id){
     });
 }
 export function getPricesList (){
-   const url= `http://localhost:3000/pricesList`
+   const token = `Bearer ${getSessionStorage()}`
+   const url= `${urlLocal}pricesList`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
@@ -41,7 +46,8 @@ export function getPricesList (){
 }
 
 export function getOrders (filter='orders'){
-   const url= `http://localhost:3000/${filter}`
+   const token = `Bearer ${getSessionStorage()}`
+   const url= `${urlLocal}${filter}`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
@@ -53,9 +59,9 @@ export function getOrders (filter='orders'){
     });
 }
 export function getArticles (state){
-  console.log(state)
+  const token = `Bearer ${getSessionStorage()}`
   const paramsState= (state) ? `?state=${state}` :''
-   const url= `http://localhost:3000/articles${paramsState}`
+   const url= `${urlLocal}articles${paramsState}`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`

@@ -82,7 +82,6 @@ class Articles extends Component {
 	}
 	
   render(){
-  	const NameCustomer = (this.state.customer_fiscal_name == '') ? 'customer_contact' : 'customer_fiscal_name'
   	  return(
     	<BootstrapTable 
      	className="BootstrapTable-style" 
