@@ -17,6 +17,7 @@ class PricesList extends Component {
 			}]
 			}
 		}
+
 	componentDidMount(){
 		getPricesList()
 			.then(response =>
@@ -36,6 +37,9 @@ class PricesList extends Component {
 				})
 			)
 	}
+	priceFormatter(cell, row) {
+	  return `${cell} <i class='glyphicon glyphicon-eur'></i>`;
+	}
 	
   render(){
     return(
@@ -47,8 +51,8 @@ class PricesList extends Component {
      	trClassName={this.rowClassNameFormat}>
 	     	<TableHeaderColumn dataField='type' isKey dataSort filter={ { type: 'TextFilter', delay: 100 } }>Tipo</TableHeaderColumn>
 	      <TableHeaderColumn dataField='leather' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Categoría</TableHeaderColumn>
-	      <TableHeaderColumn dataField='base_price' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Precio Base</TableHeaderColumn>
-	      <TableHeaderColumn dataField='prices_per_customer' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Precio Medio</TableHeaderColumn>
+	      <TableHeaderColumn dataField='base_price' dataFormat={ this.priceFormatter } dataSort filter={ { type: 'TextFilter', delay: 100 } }>Precio Base</TableHeaderColumn>
+	      <TableHeaderColumn dataField='prices_per_customer' dataFormat={ this.priceFormatter } dataSort filter={ { type: 'TextFilter', delay: 100 } }>Precio Medio</TableHeaderColumn>
       </BootstrapTable>
     )
   }

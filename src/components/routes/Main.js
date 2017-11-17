@@ -3,11 +3,8 @@ import { Switch, Route } from 'react-router-dom'
 import Customers from '../customers/Customers.js'
 import Customer from '../customers/Customer.js'
 import PricesList from '../pricesList/PricesList.js'
-import Articles from '../orders/Articles.js'
-import Orders from '../orders/Orders.js'
-import Pending from '../orders/Pending.js'
-import Finalized from '../orders/Finalized.js'
-import Delivered from '../orders/Delivered.js'
+import Articles from '../articles/Articles.js'
+import Orders from '../articles/Orders.js'
 import Login from '../login/Login.js'
 import Logout from '../login/Logout.js'
 import PrivateRoute from './PrivateRoute.js'
@@ -25,9 +22,7 @@ const Main = (props) => {
         <PrivateRoute path="/customer/:id" component={Customer}/>
         <PrivateRoute path="/pricesList" component={PricesList}/>
         <PrivateRoute path="/orders" component={Orders}/>
-        <PrivateRoute path="/articlesByPending" component={Pending}/>
-        <PrivateRoute path="/articlesByFinalized" component={Finalized}/>
-        <PrivateRoute path="/articlesByDelivered" component={Delivered}/>
+        <PrivateRoute path="/articles/:state" component={Articles}/>
         <PrivateRoute path="/articles" component={Articles}/>
       </Switch>
     </div>

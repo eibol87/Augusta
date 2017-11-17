@@ -53,7 +53,9 @@ export function getOrders (filter='orders'){
     });
 }
 export function getArticles (state){
-   const url= `http://localhost:3000/articles${state}`
+  console.log(state)
+  const paramsState= (state) ? `?state=${state}` :''
+   const url= `http://localhost:3000/articles${paramsState}`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
