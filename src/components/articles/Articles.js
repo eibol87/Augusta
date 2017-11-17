@@ -7,6 +7,7 @@ class Articles extends Component {
 	constructor(){
 		super()
 		this.state={
+			url:'',
 			articles:[{
 				_id:'',
 				final_customer_code:'',
@@ -24,6 +25,31 @@ class Articles extends Component {
 			}]
 			}
 		}
+	componentWillReceiveProps(nextProps){
+		getArticles(this.props.match.params.state)
+			.then(response =>
+				this.setState({
+					articles: [...response]
+					.map(function (article){
+						return ({
+							_id:article._id,
+							final_customer_code:article.final_customer_code,
+							barcode:article.barcode,
+							type:article.type,
+							leather:article.leather,
+							color:article.color,
+							state:article.state,
+							price:article.price,
+							complements:[...article.complements],
+							customer_contact:article.customer_id.contact,
+							customer_fiscal_name:article.customer_id.fiscal_name
+								
+						})
+					})
+				})
+				)
+
+	}
 	componentDidMount(){
 		getArticles(this.props.match.params.state)
 			.then(response =>
