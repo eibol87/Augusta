@@ -69,7 +69,7 @@ class CustomersParticular extends Component {
       <div> { content } </div>
     );}
   render(props){
-   
+   const tdStyle={whiteSpace: 'normal'}
     return(
      <BootstrapTable 
      	className="BootstrapTable-style" 
@@ -85,10 +85,10 @@ class CustomersParticular extends Component {
           columnWidth: 25}}
       trClassName={this.rowClassNameFormat}>
         <TableHeaderColumn dataField='count' hidden={ true } isKey={ true } dataSort filter={ { type: 'TextFilter', delay: 100 } }>Cliente</TableHeaderColumn>
-       	<TableHeaderColumn dataField='contact' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Contacto</TableHeaderColumn>
-        <TableHeaderColumn dataField='phone' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Teléfono</TableHeaderColumn>
-        <TableHeaderColumn dataField='email' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Email</TableHeaderColumn>
-        <TableHeaderColumn dataField='city' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Ciudad</TableHeaderColumn>
+       	<TableHeaderColumn dataField='contact' tdStyle={tdStyle} dataSort filter={ { type: 'TextFilter', delay: 100 } }>Contacto</TableHeaderColumn>
+        <TableHeaderColumn dataField='phone' tdStyle={tdStyle} dataSort filter={ { type: 'TextFilter', delay: 100 } }>Teléfono</TableHeaderColumn>
+        <TableHeaderColumn dataField='email' tdStyle={tdStyle} dataSort filter={ { type: 'TextFilter', delay: 100 } }>Email</TableHeaderColumn>
+        <TableHeaderColumn dataField='city' tdStyle={tdStyle} dataSort filter={ { type: 'TextFilter', delay: 100 } }>Ciudad</TableHeaderColumn>
      </BootstrapTable>
 
 		)
@@ -98,10 +98,11 @@ class CustomersParticular extends Component {
 class BSTable extends React.Component {
   render() {
     if (this.props.data) {
+       const tdStyle={whiteSpace: 'normal'}
       return (
         <BootstrapTable data={ this.props.data }>
-          <TableHeaderColumn dataField='address' isKey={ true }>Dirección</TableHeaderColumn>
-          <TableHeaderColumn dataField='notes'>Notas</TableHeaderColumn>
+          <TableHeaderColumn dataField='address' tdStyle={tdStyle} isKey={ true }>Dirección</TableHeaderColumn>
+          <TableHeaderColumn dataField='notes'tdStyle={tdStyle}>Notas</TableHeaderColumn>
         </BootstrapTable>);
     } else {
       return (<p>?</p>);
