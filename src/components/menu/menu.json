@@ -1,17 +1,23 @@
 [
 	{
-		"category": "Altas",
+		"category": "Clientes",
 		"items":[
-			{"id": 1, "title": "Clientes", "link": "/customers", "icon": "fa fa-address-book-o"},
-			{"id": 2, "title": "Tarifa Precios", "link": "/pricesList", "icon": "fa fa-black-tie"}
+			{"id": 1, "title": "Empresas", "link": "/customers/empresa", "icon": "fa fa-address-book-o"},
+			{"id": 2, "title": "Particulares", "link": "/customers/particular", "icon": "fa fa-black-tie"}
+		]
+	},
+	{
+		"category": "Artículos",
+		"items":[
+			{"id": 3, "title": "Buscar", "link": "/articles", "icon": "fa fa-search"},
+			{"id": 2, "title": "Tarifa de precios", "link": "/pricesList", "icon": "fa fa-black-tie"}
 		]
 	},
 	{
 		"category": "Acciones",
 		"items":[
 			{"id": 4, "title": "Finalizar", "link": "/articles/pending", "icon": "fa fa-check-square-o"},
-			{"id": 4, "title": "Salidas", "link": "/articles/finalized", "icon": "fa fa-credit-card"},
-			{"id": 3, "title": "Buscar", "link": "/articles", "icon": "fa fa-search"}
+			{"id": 4, "title": "Salidas", "link": "/articles/finalized", "icon": "fa fa-credit-card"}
 			
 		]
 	},

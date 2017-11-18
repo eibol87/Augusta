@@ -26,21 +26,6 @@
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
   box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
-.Customers-title{
-    font-weight: 300 !important;
-    font-size: 22px;
-    text-transform: uppercase;
-    padding: 0;
-    font-weight: 100;
-    margin: 0;
-    color: #414C59;
-    padding-top: 10px;
-}
-.Customers-subTitle{
-	font-weight: 300;
-	opacity: 0.6;
-	padding-bottom: 5px;
-}
 .BootstrapTable-style{
   color: #8da0aa;
 }

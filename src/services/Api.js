@@ -5,22 +5,10 @@ import {getSessionStorage} from './LocalStorage'
 const urlLocal ='http://localhost:3000/'
 const herokuUrl='https://api-augusta.herokuapp.com/'
 
-export function getCustomers (){
+export function getCustomers (customer){
   const token = `Bearer ${getSessionStorage()}`
-   const url= `${urlLocal}customers`
-    return axios.get(url,{
-        headers: {
-           Authorization: `${token}`
-        }
-    })
-    .then(response => response.data)
-    .catch(function (error) {
-      console.log(error);
-    });
-}
-export function getCustomerById (id){
-   const token = `Bearer ${getSessionStorage()}`
-   const url= `${urlLocal}customer/${id}`
+   const paramsCustomer= (customer) ? `?customer=${customer}` :''
+   const url= `${urlLocal}customers/${paramsCustomer}`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
