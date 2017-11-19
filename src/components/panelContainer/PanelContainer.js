@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import './PanelContainer.css'
 
 const PanelContainer = (ComposedComponent) => class extends Component {
-  
-
-	render() {
+  	render() {
     return (
       <div>
         <h2 className="PanelContainer-title">Texto de la sección</h2>
