@@ -4,6 +4,9 @@ import CustomersEnterprise from '../customers/CustomersEnterprise.js'
 import CustomersParticular from '../customers/CustomersParticular.js'
 import PricesList from '../pricesList/PricesList.js'
 import Articles from '../articles/Articles.js'
+import PendingArticles from '../articles/PendingArticles.js'
+import FinalizedArticles from '../articles/FinalizedArticles.js'
+import DeliveredArticles from '../articles/DeliveredArticles.js'
 import DeliveryNotes from '../deliveryNotes/DeliveryNotes.js'
 import Login from '../login/Login.js'
 import Logout from '../login/Logout.js'
@@ -14,14 +17,16 @@ const Main = (props) => {
     <div>
       <Switch>
         <Route exact path='/' />
-        <Route path='/login' render={() => (<Login />)} />
-        <Route path='/logout' render={() => (<Logout />)} />
+        <Route path='/login' component={Login} />
+        <Route path='/logout' component={Logout}  />
         <PrivateRoute path="/customers/empresa" component={CustomersEnterprise}/>
         <PrivateRoute path="/customers/particular" component={CustomersParticular}/>
-        <PrivateRoute path="/pricesList" component={PricesList}/>
+        <PrivateRoute path="/priceslist" component={PricesList}/>
         <PrivateRoute path="/deliveryNotes" component={DeliveryNotes}/>
-        <PrivateRoute path="/articles/:state" component={Articles}/>
-        <PrivateRoute path="/articles" component={Articles}/>
+        <PrivateRoute path="/findarticles" component={Articles}/>
+        <PrivateRoute path="/articles/pending" component={PendingArticles}/>
+        <PrivateRoute path="/articles/finalized" component={FinalizedArticles}/>
+        <PrivateRoute path="/articles/delivered" component={DeliveredArticles}/>
       </Switch>
     </div>
   )

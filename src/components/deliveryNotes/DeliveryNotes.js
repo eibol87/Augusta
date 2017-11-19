@@ -49,9 +49,9 @@ class DeliveryNotes extends Component {
      	data={ this.state.deliveryNotes } 
      	options={{defaultSortName:'entry_date', defaultSortOrder: 'asc' }} 
      	trClassName={this.rowClassNameFormat}>
+	     <TableHeaderColumn dataField='customer_name' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Cliente</TableHeaderColumn>
 	     <TableHeaderColumn dataField='entry_date' dataFormat={ this.dateFormatter } isKey dataSort filter={ { type: 'DateFilter', delay: 100 } }>Fecha entrada'</TableHeaderColumn>
-	      <TableHeaderColumn dataField='customer_name' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Cliente</TableHeaderColumn>
-	      <TableHeaderColumn dataField='numberOfArticles'  dataSort filter={ { type: 'TextFilter', delay: 100 } }>Número de articulos</TableHeaderColumn>
+	     <TableHeaderColumn dataField='numberOfArticles'  dataSort filter={ { type: 'TextFilter', delay: 100 } }>Número de articulos</TableHeaderColumn>
 	    </BootstrapTable>
 	    </div>
 		

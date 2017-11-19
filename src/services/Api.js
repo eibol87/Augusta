@@ -30,8 +30,7 @@ export function getPricesList (){
     .then(response => response.data)
     .catch(function (error) {
       console.log(error);
-    });
-}
+    });}
 
 export function getDeliveryNotes (){
    const token = `Bearer ${getSessionStorage()}`
@@ -44,12 +43,11 @@ export function getDeliveryNotes (){
     .then(response => response.data)
     .catch(function (error) {
       console.log(error);
-    });
-}
+    });}
 export function getArticles (state){
   const token = `Bearer ${getSessionStorage()}`
   const paramsState= (state) ? `?state=${state}` :''
-   const url= `${urlLocal}articles${paramsState}`
+   const url= `${urlLocal}articles/${paramsState}`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`

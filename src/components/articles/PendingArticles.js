@@ -4,16 +4,10 @@ import PanelContainer from '../panelContainer/PanelContainer.js'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import Moment from 'moment'
 
-class Articles extends Component {
+class PendingArticles extends Component {
 	constructor(){
 		super()
 		this.state={
-			url:'',
-			states:{ 
-				pending: 'pending',
-		 	 finalized: 'finalized',
-		 	 delivered: 'delivered'
-		 	},
 			articles:[{
 				_id:'',
 				final_customer_code:'',
@@ -32,7 +26,7 @@ class Articles extends Component {
 			}
 		}
 	componentDidMount(){
-		getArticles()
+		getArticles('pending')
 			.then(response =>
 				this.setState({
 					articles: [...response]
@@ -61,9 +55,6 @@ class Articles extends Component {
 		cell =new Date(cell)
 		return `${('0' + cell.getDate()).slice(-2)}/${('0' + (cell.getMonth() + 1)).slice(-2)}/${cell.getFullYear()}`;
 	}
-	enumFormatter(cell, row, enumObject) {
-		return enumObject[cell];
-	}
 	
   render(){
   	  return(
@@ -78,11 +69,10 @@ class Articles extends Component {
 	    <TableHeaderColumn dataField='leather'dataSort filter={ { type: 'TextFilter', delay: 100 } }>Tipo</TableHeaderColumn>
 	    <TableHeaderColumn dataField='color' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Color</TableHeaderColumn>
     	<TableHeaderColumn dataField='entry_date' width='245'dataFormat={ this.dateFormatter } dataSort filter={ { type: 'DateFilter', delay: 100 } }>Alta</TableHeaderColumn>
-     	<TableHeaderColumn dataField='state' dataSort filterFormatted dataFormat={ this.enumFormatter } formatExtraData={ this.state.states } filter={ { type: 'SelectFilter', options: this.state.states } }>Estado</TableHeaderColumn>
-      <TableHeaderColumn dataField='barcode' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Código de barras</TableHeaderColumn> 
+     	<TableHeaderColumn dataField='barcode' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Código de barras</TableHeaderColumn> 
       </BootstrapTable>
 	    )
   }
 }
 
-export default PanelContainer(Articles)
+export default PanelContainer(PendingArticles)

@@ -9,15 +9,15 @@
 	{
 		"category": "Artículos",
 		"items":[
-			{"id": 3, "title": "Buscar", "link": "/articles", "icon": "fa fa-search"},
-			{"id": 2, "title": "Tarifa de precios", "link": "/pricesList", "icon": "fa fa-black-tie"}
+			{"id": 3, "title": "Buscar", "link": "/findarticles", "icon": "fa fa-search"},
+			{"id": 2, "title": "Tarifa de precios", "link": "/priceslist", "icon": "fa fa-black-tie"}
 		]
 	},
 	{
 		"category": "Acciones",
 		"items":[
 			{"id": 4, "title": "Finalizar", "link": "/articles/pending", "icon": "fa fa-check-square-o"},
-			{"id": 4, "title": "Salidas", "link": "/articles/finalized", "icon": "fa fa-credit-card"}
+			{"id": 4, "title": "Entregar", "link": "/articles/finalized", "icon": "fa fa-credit-card"}
 			
 		]
 	},
