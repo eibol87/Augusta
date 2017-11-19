@@ -3,21 +3,21 @@
 		"category": "Clientes",
 		"items":[
 			{"id": 1, "title": "Empresas", "link": "/customers/empresa", "icon": "fa fa-address-book-o"},
-			{"id": 2, "title": "Particulares", "link": "/customers/particular", "icon": "fa fa-black-tie"}
+			{"id": 2, "title": "Particulares", "link": "/customers/particular", "icon": "fa fa-address-book"}
 		]
 	},
 	{
 		"category": "Artículos",
 		"items":[
 			{"id": 3, "title": "Buscar", "link": "/findarticles", "icon": "fa fa-search"},
-			{"id": 2, "title": "Tarifa de precios", "link": "/priceslist", "icon": "fa fa-black-tie"}
+			{"id": 2, "title": "Tarifa de precios", "link": "/priceslist", "icon": "fa fa-list-ol"}
 		]
 	},
 	{
 		"category": "Acciones",
 		"items":[
 			{"id": 4, "title": "Finalizar", "link": "/articles/pending", "icon": "fa fa-check-square-o"},
-			{"id": 4, "title": "Entregar", "link": "/articles/finalized", "icon": "fa fa-credit-card"}
+			{"id": 4, "title": "Entregar", "link": "/articles/finalized", "icon": "fa fa-car"}
 			
 		]
 	},
@@ -25,7 +25,7 @@
 		"category": "Contabilidad",
 		"items":[
 			{"id": 3, "title": "Albaran", "link": "/deliveryNotes", "icon": "fa fa-sticky-note-o"},
-			{"id": 4, "title": "Facturas", "link": "/articles/delivered", "icon": "fa fa-money"}
+			{"id": 4, "title": "Facturas", "link": "/articles/delivered", "icon": "fa fa-list-alt"}
 		]
 	},
 	{
