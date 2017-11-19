@@ -66,7 +66,7 @@ class Articles extends Component {
 							state:article.state,
 							price:article.price,
 							complements:[...article.complements],
-							customer_contact:article.customer_id.contact,
+							customer_contact:(article.customer_id.fiscal_name) ? article.customer_id.fiscal_name : article.customer_id.contact,
 							customer_fiscal_name:article.customer_id.fiscal_name
 								
 						})
@@ -90,8 +90,8 @@ class Articles extends Component {
      	options={{defaultSortName:'customer_contact', defaultSortOrder: 'asc' }} 
      	trClassName={this.rowClassNameFormat}>
 	    <TableHeaderColumn dataField='customer_contact' isKey dataSort filter={ { type: 'TextFilter', delay: 100 } }>Cliente</TableHeaderColumn>
-	    <TableHeaderColumn dataField='type' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Tipo</TableHeaderColumn>
-	    <TableHeaderColumn dataField='leather' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Piel</TableHeaderColumn>
+	    <TableHeaderColumn dataField='type' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Artículo</TableHeaderColumn>
+	    <TableHeaderColumn dataField='leather' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Tipo</TableHeaderColumn>
 	    <TableHeaderColumn dataField='color' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Color</TableHeaderColumn>
     	<TableHeaderColumn dataField='state' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Estado</TableHeaderColumn>
      	<TableHeaderColumn dataField='barcode' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Código de barras</TableHeaderColumn>
