@@ -60,7 +60,7 @@ class PendingArticles extends Component {
   	  return(
     	<BootstrapTable 
      	className="BootstrapTable-style" 
-     	striped hover condensed height='300' 
+     	striped hover condensed  
      	data={ this.state.articles } 
      	options={{defaultSortName:'customer_contact', defaultSortOrder: 'asc' }} 
      	trClassName={this.rowClassNameFormat}>

@@ -73,7 +73,7 @@ class CustomersParticular extends Component {
     return(
      <BootstrapTable 
      	className="BootstrapTable-style" 
-     	hover condensed height='300' 
+     	hover condensed  
       data={ this.state.customer } 
      	options={{defaultSortName:'contact', defaultSortOrder: 'asc',  expandBy: 'column' }} 
       expandableRow={ this.isExpandableRow }

@@ -8,7 +8,7 @@ const herokuUrl='https://api-augusta.herokuapp.com/'
 export function getCustomers (customer){
   const token = `Bearer ${getSessionStorage()}`
    const paramsCustomer= (customer) ? `?customer=${customer}` :''
-   const url= `${herokuUrl}customers/${paramsCustomer}`
+   const url= `${urlLocal}customers/${paramsCustomer}`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
@@ -21,7 +21,7 @@ export function getCustomers (customer){
 }
 export function getCustomersPayments (){
   const token = `Bearer ${getSessionStorage()}`
-   const url= `${herokuUrl}customers/payments`
+   const url= `${urlLocal}customers/payments`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
@@ -34,7 +34,7 @@ export function getCustomersPayments (){
 }
 export function getPricesList (){
    const token = `Bearer ${getSessionStorage()}`
-   const url= `${herokuUrl}pricesList`
+   const url= `${urlLocal}pricesList`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
@@ -47,7 +47,7 @@ export function getPricesList (){
 
 export function getDeliveryNotes (){
    const token = `Bearer ${getSessionStorage()}`
-   const url= `${herokuUrl}deliveryNotes`
+   const url= `${urlLocal}deliveryNotes`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
@@ -60,7 +60,7 @@ export function getDeliveryNotes (){
 export function getArticles (state){
   const token = `Bearer ${getSessionStorage()}`
   const paramsState= (state) ? `?state=${state}` :''
-   const url= `${herokuUrl}articles/${paramsState}`
+   const url= `${urlLocal}articles/${paramsState}`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`

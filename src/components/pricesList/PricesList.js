@@ -45,7 +45,7 @@ class PricesList extends Component {
     return(
     	<BootstrapTable 
      	className="BootstrapTable-style" 
-     	striped hover condensed height='300' 
+     	striped hover condensed 
      	data={ this.state.pricesList } 
      	options={{defaultSortName:'type', defaultSortOrder: 'asc' }} 
      	trClassName={this.rowClassNameFormat}>

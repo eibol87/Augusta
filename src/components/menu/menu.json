@@ -24,6 +24,7 @@
 	{
 		"category": "Contabilidad",
 		"items":[
+			{"id": 4, "title": "Cobros", "link": "/customers/payments", "icon": "fa fa-money"},
 			{"id": 3, "title": "Albaran", "link": "/deliveryNotes", "icon": "fa fa-sticky-note-o"},
 			{"id": 4, "title": "Facturas", "link": "/articles/delivered", "icon": "fa fa-list-alt"}
 		]

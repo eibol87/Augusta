@@ -11,6 +11,7 @@ class DeliveryNotes extends Component {
 		this.state={
 			deliveryNotes:[{
 				_id:'',
+        id:'',
 				entry_date:'',
 				customer_name:'',
 				numberOfArticles:''
@@ -26,6 +27,7 @@ class DeliveryNotes extends Component {
 					.map(function (deliveryNote){
 						return ({
 							_id:deliveryNote._id,
+              id:deliveryNote.id,
 							entry_date:Moment(deliveryNote.entry_date).format('L'),
 							customer_name:deliveryNote.customer_id.contact,
 							numberOfArticles:[...deliveryNote.articles].length
@@ -45,11 +47,12 @@ class DeliveryNotes extends Component {
    
     <BootstrapTable 
      	className="BootstrapTable-style" 
-     	striped hover condensed height='300' 
+     	striped hover condensed 
      	data={ this.state.deliveryNotes } 
      	options={{defaultSortName:'entry_date', defaultSortOrder: 'asc' }} 
      	trClassName={this.rowClassNameFormat}>
-	     <TableHeaderColumn dataField='customer_name' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Cliente</TableHeaderColumn>
+	     <TableHeaderColumn dataField='id' dataSort filter={ { type: 'TextFilter', delay: 100 } }>id</TableHeaderColumn>
+       <TableHeaderColumn dataField='customer_name' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Cliente</TableHeaderColumn>
 	     <TableHeaderColumn dataField='entry_date' dataFormat={ this.dateFormatter } isKey dataSort filter={ { type: 'DateFilter', delay: 100 } }>Fecha entrada'</TableHeaderColumn>
 	     <TableHeaderColumn dataField='numberOfArticles'  dataSort filter={ { type: 'TextFilter', delay: 100 } }>Número de articulos</TableHeaderColumn>
 	    </BootstrapTable>

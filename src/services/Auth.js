@@ -5,7 +5,7 @@ export function checkLogin(email,password){
   const herokuUrl='https://api-augusta.herokuapp.com/login'
   const url= `http://localhost:3000/login`
   const body ={username: email, password:password}
-  return axios.post(herokuUrl,body)
+  return axios.post(url,body)
     .then(function(response){
       if(response === undefined){
         return false
