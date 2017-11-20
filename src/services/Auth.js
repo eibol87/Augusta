@@ -2,9 +2,10 @@ import axios from 'axios'
 import { setSessionStorage } from './LocalStorage.js'
 
 export function checkLogin(email,password){
+  const herokuUrl='https://api-augusta.herokuapp.com/login'
   const url= `http://localhost:3000/login`
   const body ={username: email, password:password}
-  return axios.post(url,body)
+  return axios.post(herokuUrl,body)
     .then(function(response){
       if(response === undefined){
         return false
