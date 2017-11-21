@@ -52,12 +52,11 @@ class Payments extends Component {
       options={{defaultSortName:'client', defaultSortOrder: 'asc' }} 
       trClassName={this.rowClassNameFormat}>
         <TableHeaderColumn dataField='client' isKey dataSort filter={ { type: 'TextFilter', delay: 100 } }>Cliente</TableHeaderColumn>
-        <TableHeaderColumn dataField='plusInvoces' dataFormat={ this.dateFormatter } dataSort filter={ { type: 'TextFilter', delay: 100 } }>Facturado</TableHeaderColumn>
-        <TableHeaderColumn dataField='plusAllPayments' dataFormat={ this.dateFormatter } dataSort filter={ { type: 'TextFilter', delay: 100 } }>Pagado</TableHeaderColumn>
-        <TableHeaderColumn dataField='debt' dataFormat={ this.dateFormatter } dataSort filter={ { type: 'TextFilter', delay: 100 } }>Diferencia</TableHeaderColumn>
+        <TableHeaderColumn dataField='plusInvoces' dataFormat={ this.priceFormatter } dataSort filter={ { type: 'TextFilter', delay: 100 } }>Facturado</TableHeaderColumn>
+        <TableHeaderColumn dataField='plusAllPayments' dataFormat={ this.priceFormatter } dataSort filter={ { type: 'TextFilter', delay: 100 } }>Pagado</TableHeaderColumn>
+        <TableHeaderColumn dataField='debt' dataFormat={ this.priceFormatter } dataSort filter={ { type: 'TextFilter', delay: 100 } }>Diferencia</TableHeaderColumn>
       </BootstrapTable>
       </div>
-    
     )
   }
 }

@@ -16,18 +16,18 @@ class CustomersParticular extends Component {
         contact_id: '',
         phone: '',
         expand:[{
+          id:'',
           address:'',
           notes: '',
         }]
       }],
       edited: []
 			}
-      this.editedProdNameClassName = this.editedProdNameClassName.bind(this);
       this.onAfterSaveCell = this.onAfterSaveCell.bind(this)
 		}
      // collect which cell that user edited
   onAfterSaveCell({ id }, cellName) {
-    //console.log( id, cellName )
+    console.log( id, cellName )
     this.setState({
       edited: [ ...this.state.edited, { id, cellName } ]
     })
@@ -48,6 +48,7 @@ class CustomersParticular extends Component {
               contact_id: customer.contact_id,
               phone: customer.phone,
               expand: [{
+                 id:customer._id,
                 notes: customer.notes,
                 address:customer.address
               }]
@@ -78,9 +79,6 @@ class CustomersParticular extends Component {
       <div> { content } </div>
     );}
   
-  editedProdNameClassName(fieldValue, row) {
-    return this.editedClassName(row, 'contact');
-  }
   editedClassName(row, cellName) {
     const result = this.state.edited.find(e => e.id === row.id && cellName === e.cellName);
     return result ? 'edited-class' : '';
@@ -89,9 +87,9 @@ class CustomersParticular extends Component {
     const lastIndex = this.state.edited.length
     const data =this.state.edited[lastIndex -1]
     const cellname = data.cellName
+    const body = {};
     const busqueda =this.state.customer.filter(element => element.id === data.id )
-    const body = new Object;
-    body[cellname] =busqueda[0][cellname]
+    body[cellname] = busqueda[0][cellname]
     UpdateCustomer(data.id,body)
   }
   render(props){
@@ -101,10 +99,10 @@ class CustomersParticular extends Component {
    const cellEditProp = {mode: 'dbclick', blurToSave: true, afterSaveCell: this.onAfterSaveCell}
     return(
      <BootstrapTable 
-     cellEdit={ cellEditProp }
+      cellEdit={ cellEditProp }
      	className="BootstrapTable-style" 
      	hover condensed  
-      data={ this.state.customer } 
+      data={ this.state.customer }
      	options={{defaultSortName:'contact', defaultSortOrder: 'asc',  expandBy: 'column' }} 
       expandableRow={ this.isExpandableRow }
       expandComponent={ this.expandComponent }
@@ -114,27 +112,60 @@ class CustomersParticular extends Component {
           expandColumnComponent: this.expandColumnComponent,
           columnWidth: 25}}
       trClassName={this.rowClassNameFormat}>
-        <TableHeaderColumn dataField='id' hidden={ true } isKey={ true } dataSort filter={ { type: 'TextFilter', delay: 100 } }>Cliente</TableHeaderColumn>
-       	<TableHeaderColumn dataField='contact' columnClassName={ this.editedProdNameClassName } tdStyle={tdStyle} dataSort filter={ { type: 'TextFilter', delay: 100 } }>Contacto</TableHeaderColumn>
+        <TableHeaderColumn dataField='id' hidden={ true } isKey={ true } dataSort filter={ { type: 'TextFilter', delay: 100 } }>id</TableHeaderColumn>
+       	<TableHeaderColumn dataField='contact' tdStyle={tdStyle} dataSort filter={ { type: 'TextFilter', delay: 100 } }>Contacto</TableHeaderColumn>
         <TableHeaderColumn dataField='phone' tdStyle={tdStyle} dataSort filter={ { type: 'TextFilter', delay: 100 } }>Teléfono</TableHeaderColumn>
         <TableHeaderColumn dataField='email' tdStyle={tdStyle} dataSort filter={ { type: 'TextFilter', delay: 100 } }>Email</TableHeaderColumn>
         <TableHeaderColumn dataField='city' tdStyle={tdStyle} dataSort filter={ { type: 'TextFilter', delay: 100 } }>Ciudad</TableHeaderColumn>
      </BootstrapTable>
-
 		)
   }
-
 }
 class BSTable extends React.Component {
+  constructor(props){
+    super(props)
+      this.state={
+        edited: []
+      }
+      this.onAfterSaveCell = this.onAfterSaveCell.bind(this)
+    }
 
+    onAfterSaveCell({ id }, cellName) {
+      this.setState({
+        edited: [ ...this.state.edited, { id, cellName } ]
+      })
+    }
+ updateCell(){
+    const lastIndex = this.state.edited.length
+    const data =this.state.edited[lastIndex -1]
+    const cellname = data.cellName
+    const body = {};
+    const busqueda =this.props.data.filter(element => element.id === data.id )
+    body[cellname] = busqueda[0][cellname]
+    
+    UpdateCustomer(data.id,body)
+    // const id =this.state.edited[0].id
+    // const cellname = this.state.edited[0].cellName
+    // const body = {};
+    // const busqueda =this.state.edited.filter(element => element.id === data.id )
+   
+    // body[cellname] = "hola" 
+    // console.log(busqueda)
+  }
   render() {
-
     if (this.props.data) {
-       const tdStyle={whiteSpace: 'normal'}
-    const cellEditProp = {mode: 'dbclick'}
-      return (
-        <BootstrapTable cellEdit={ cellEditProp } data={ this.props.data }>
-          <TableHeaderColumn dataField='address' tdStyle={tdStyle} isKey={ true }>Dirección</TableHeaderColumn>
+    const tdStyle={whiteSpace: 'normal'}
+    const cellEditProp = {mode: 'dbclick', blurToSave: true, afterSaveCell: this.onAfterSaveCell}
+    const hasEdited = this.state.edited.length
+    if(hasEdited) this.updateCell()
+    return (
+        <BootstrapTable 
+          cellEdit={ cellEditProp } 
+          hover 
+          condensed 
+          data={ this.props.data }>
+          <TableHeaderColumn dataField='id' hidden={ true } isKey={ true } dataSort filter={ { type: 'TextFilter', delay: 100 } }>id</TableHeaderColumn>
+          <TableHeaderColumn dataField='address' tdStyle={tdStyle}>Dirección</TableHeaderColumn>
           <TableHeaderColumn dataField='notes'tdStyle={tdStyle}>Notas</TableHeaderColumn>
         </BootstrapTable>);
     } else {
