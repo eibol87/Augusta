@@ -71,5 +71,20 @@ export function getArticles (state){
       console.log(error);
     });
 }
+export function UpdateCustomer (id,body){
+  const token = `Bearer ${getSessionStorage()}`
+   //const paramsCustomer= (customer) ? `?customer=${customer}` :''
+   const url= `${urlLocal}customer/${id}`
+    return axios.put(url,
+      body,{
+        headers: {
+           Authorization: `${token}`
+        }
+    })
+    .then(response => response.data)
+    .catch(function (error) {
+      console.log(error);
+    });
+}
 
 

@@ -12,7 +12,8 @@ class Payments extends Component {
       payments:[{
         client:'',
         plusInvoces:'',
-        plusAllPayments:''
+        plusAllPayments:'',
+        debt:''
       }]
       }
     }
@@ -24,9 +25,10 @@ class Payments extends Component {
           payments: [...response]
           .map(function (customer){
             return ({
-              plusInvoces:customer.sumAllInvoces,
+              plusInvoces:customer.plusAllInvoces,
               client:customer.client,
-              plusAllPayments:customer.sumAllPayments
+              plusAllPayments:customer.plusAllPayments,
+              debt:customer.plusAllInvoces-customer.plusAllPayments
             })
           })
         })
@@ -36,8 +38,8 @@ class Payments extends Component {
     cell =new Date(cell)
     return `${('0' + cell.getDate()).slice(-2)}/${('0' + (cell.getMonth() + 1)).slice(-2)}/${cell.getFullYear()}`;
   }
-  getDebt(){
-    return this.state.plusInvoces - this.state.plusAllPayments
+  priceFormatter(cell, row) {
+    return `${cell} <i class='glyphicon glyphicon-eur'></i>`;
   }
   
   render(){
@@ -50,9 +52,9 @@ class Payments extends Component {
       options={{defaultSortName:'client', defaultSortOrder: 'asc' }} 
       trClassName={this.rowClassNameFormat}>
         <TableHeaderColumn dataField='client' isKey dataSort filter={ { type: 'TextFilter', delay: 100 } }>Cliente</TableHeaderColumn>
-        <TableHeaderColumn dataField='plusInvoces' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Facturado</TableHeaderColumn>
-        <TableHeaderColumn dataField='plusAllPayments'  dataSort filter={ { type: 'TextFilter', delay: 100 } }>Pagado</TableHeaderColumn>
-        <TableHeaderColumn dataField='numberOfArticles'  dataSort filter={ { type: 'TextFilter', delay: 100 } }>Diferencia</TableHeaderColumn>
+        <TableHeaderColumn dataField='plusInvoces' dataFormat={ this.dateFormatter } dataSort filter={ { type: 'TextFilter', delay: 100 } }>Facturado</TableHeaderColumn>
+        <TableHeaderColumn dataField='plusAllPayments' dataFormat={ this.dateFormatter } dataSort filter={ { type: 'TextFilter', delay: 100 } }>Pagado</TableHeaderColumn>
+        <TableHeaderColumn dataField='debt' dataFormat={ this.dateFormatter } dataSort filter={ { type: 'TextFilter', delay: 100 } }>Diferencia</TableHeaderColumn>
       </BootstrapTable>
       </div>
     
