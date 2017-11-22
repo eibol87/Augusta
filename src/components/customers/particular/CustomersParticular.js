@@ -4,9 +4,10 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import CustomersParticularExpand from './CustomersParticularExpand'
 
 class CustomersParticular extends Component {
+
 	rowClassNameFormat(row, rowIdx) {
 
-    return rowIdx % 2 === 0 ? 'BootstrapTable-tr-intermitate-color' : '';}
+    return rowIdx % 2 === 0 ? 'BootstrapTable-tr-intermitate-color' : ''}
   isExpandableRow(row) {
     if ((row.count < 0)) return false;
     return true;}
@@ -25,9 +26,6 @@ class CustomersParticular extends Component {
     return (
       <div> { content } </div>
     );}
-  componentDidMount(){
-   
-  }
   render(){
     const tdStyle={whiteSpace: 'normal'}
     const cellEditProp = {mode: 'dbclick', blurToSave: true, afterSaveCell: this.props.onAfterSaveCell}
@@ -46,7 +44,7 @@ class CustomersParticular extends Component {
         autoCollapse={ { sort: true, search: true, filter: true } }
         expandColumnOptions={expandColumnOptions }
         trClassName={this.rowClassNameFormat}>
-        <TableHeaderColumn dataField='id' hidden={ true } isKey={ true } dataSort >id</TableHeaderColumn>
+        <TableHeaderColumn dataField='id' hidden={ true } isKey={ true } >id</TableHeaderColumn>
         <TableHeaderColumn dataField='contact' tdStyle={tdStyle} dataSort >Contacto</TableHeaderColumn>
         <TableHeaderColumn dataField='phone' tdStyle={tdStyle} dataSort >Teléfono</TableHeaderColumn>
         <TableHeaderColumn dataField='email' tdStyle={tdStyle} dataSort >Email</TableHeaderColumn>

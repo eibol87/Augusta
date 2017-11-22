@@ -22,32 +22,32 @@ class CustomersParticularContainer extends Component {
         }]
       }],
       edited: []
-    }
-  }
-  componentDidMount(){
-    getCustomers('particular')
-    .then(response =>
-      this.setState({
-          customer: [...response]
-          .map(function (customer){
-            return ({
-              id:customer._id,
-              entry_date:customer.entry_date,
-              contact:customer.contact,
-              email: customer.email,
-              city:customer.city,
-              contact_id: customer.contact_id,
-              phone: customer.phone,
-              expand: [{
-                 id:customer._id,
-                notes: customer.notes,
-                address:customer.address
-              }]
-                      
+    }}
+  async componentDidMount(){
+    const response = await getCustomers('particular')
+      if(response){
+        this.setState({
+            customer: [...response]
+            .map(function (customer){
+              return ({
+                id:customer._id,
+                entry_date:customer.entry_date,
+                contact:customer.contact,
+                email: customer.email,
+                city:customer.city,
+                contact_id: customer.contact_id,
+                phone: customer.phone,
+                expand: [{
+                   id:customer._id,
+                  notes: customer.notes,
+                  address:customer.address
+                }]
+                        
+              })
             })
-          })
         })
-    )}
+      }
+    }
   onAfterSaveCell = ({ id }, cellName) =>{
     this.setState({
       edited: [ ...this.state.edited, { id, cellName } ]
@@ -60,12 +60,13 @@ class CustomersParticularContainer extends Component {
     body[cellName] = findDataRowEdited[0][cellName]
     
     try {
-      await UpdateCustomer(dataEdited.id,body)
-      toastr.success( `${body[cellName]}`,'Se ha guardado:')
+     const result = await UpdateCustomer(dataEdited.id,body)
+      if(result) toastr.success( `${body[cellName]}`,'Se ha guardado:')
+      //clean state
       this.state.edited=[]
     }
       catch(e) {
-        toastr.error('No se ha podido guardar tu registro')
+        toastr.error('Error al resolver la promesa')
         this.state.edited=[]
         throw e
     }

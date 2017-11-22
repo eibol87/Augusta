@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {getSessionStorage} from './LocalStorage'
+import toastr from 'toastr'
 
 
 const urlLocal ='http://localhost:3000/'
@@ -17,6 +18,8 @@ export function getCustomers (customer){
     .then(response => response.data)
     .catch(function (error) {
       console.log(error);
+        // Display an error toast, with a title
+      toastr.error('Problema al comunicarse con el servidor')
     });
 }
 export function getCustomersPayments (){
@@ -30,6 +33,8 @@ export function getCustomersPayments (){
     .then(response => response.data)
     .catch(function (error) {
       console.log(error);
+        // Display an error toast, with a title
+      toastr.error('Problema al comunicarse con el servidor')
     });
 }
 export function getPricesList (){
@@ -43,6 +48,8 @@ export function getPricesList (){
     .then(response => response.data)
     .catch(function (error) {
       console.log(error);
+        // Display an error toast, with a title
+      toastr.error('Problema al comunicarse con el servidor')
     });}
 
 export function getDeliveryNotes (){
@@ -56,6 +63,8 @@ export function getDeliveryNotes (){
     .then(response => response.data)
     .catch(function (error) {
       console.log(error);
+        // Display an error toast, with a title
+      toastr.error('Problema al comunicarse con el servidor')
     });}
 export function getArticles (state){
   const token = `Bearer ${getSessionStorage()}`
@@ -69,11 +78,12 @@ export function getArticles (state){
     .then(response => response.data)
     .catch(function (error) {
       console.log(error);
+        // Display an error toast, with a title
+      toastr.error('Problema al comunicarse con el servidor')
     });
 }
 export function UpdateCustomer (id,body){
   const token = `Bearer ${getSessionStorage()}`
-   //const paramsCustomer= (customer) ? `?customer=${customer}` :''
    const url= `${urlLocal}customer/${id}`
     return axios.put(url,
       body,{
@@ -84,6 +94,9 @@ export function UpdateCustomer (id,body){
     .then(response => response.data)
     .catch(function (error) {
       console.log(error);
+      // Display an error toast, with a title
+      toastr.error('Problema al comunicarse con el servidor')
+
     });
 }
 

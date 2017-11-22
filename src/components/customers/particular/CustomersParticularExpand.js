@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import toastr from 'toastr'
-import {UpdateCustomer} from '../../../services/Api'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 class CustomersParticularExpand extends Component {
   constructor(){
@@ -29,9 +27,9 @@ class CustomersParticularExpand extends Component {
         hover condensed 
         cellEdit={ cellEditProp } 
         data={ this.props.data }>
-        <TableHeaderColumn dataField='id' hidden={ true } isKey={ true } dataSort filter={ { type: 'TextFilter', delay: 100 } }>id</TableHeaderColumn>
+        <TableHeaderColumn dataField='id' hidden={ true } isKey={ true }>id</TableHeaderColumn>
         <TableHeaderColumn dataField='address' tdStyle={tdStyle}>Dirección</TableHeaderColumn>
         <TableHeaderColumn dataField='notes'tdStyle={tdStyle}>Notas</TableHeaderColumn>
       </BootstrapTable>);
   }}
-  export default CustomersParticularExpand
+export default CustomersParticularExpand
