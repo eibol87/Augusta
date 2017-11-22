@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {getCustomers,UpdateCustomer} from '../../../services/Api'
+import {getCustomers,UpdateCustomer,createCustomer} from '../../../services/Api'
 import CustomersParticular from './CustomersParticular'
 import toastr from 'toastr'
 
@@ -38,7 +38,7 @@ class CustomersParticularContainer extends Component {
                 contact_id: customer.contact_id,
                 phone: customer.phone,
                 expand: [{
-                   id:customer._id,
+                  id:customer._id,
                   notes: customer.notes,
                   address:customer.address
                 }]
@@ -71,6 +71,14 @@ class CustomersParticularContainer extends Component {
         throw e
     }
   }
+  onAfterInsertRow = async (row) => {
+    delete row.id
+    row.phone= Number(row.phone)
+    row.type='particular'
+    const result = await createCustomer(row)
+    console.log(result)
+     //if(result) toastr.success( `${body[cellName]}`,'Se ha guardado:')
+  }
   
   render(){
     const hasEdited = this.state.edited.length
@@ -80,6 +88,7 @@ class CustomersParticularContainer extends Component {
         data={this.state} 
         onAfterSaveCell={this.onAfterSaveCell}
         updateCell={this.updateCell}
+        onAfterInsertRow={this.onAfterInsertRow}
       />
     )
   }

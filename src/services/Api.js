@@ -6,6 +6,22 @@ import toastr from 'toastr'
 const urlLocal ='http://localhost:3000/'
 const herokuUrl='https://api-augusta.herokuapp.com/'
 
+export function createCustomer (customer){
+  const token = `Bearer ${getSessionStorage()}`
+   const url= `${urlLocal}customer`
+    return axios.post(url,customer,{
+        headers: {
+           Authorization: `${token}`
+        }
+    })
+    .then(response => response.status)
+    .catch(function (error) {
+      console.log(error);
+        // Display an error toast, with a title
+      toastr.error('Problema al comunicarse con el servidor')
+    });
+}
+
 export function getCustomers (customer){
   const token = `Bearer ${getSessionStorage()}`
    const paramsCustomer= (customer) ? `?customer=${customer}` :''
