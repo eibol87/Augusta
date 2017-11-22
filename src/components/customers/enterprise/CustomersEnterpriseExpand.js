@@ -25,13 +25,13 @@ class CustomersEnterpriseExpand extends Component {
         hover condensed 
         cellEdit={ cellEditProp } 
         data={ this.props.data }>
-        <TableHeaderColumn dataField='id' hidden={ false } isKey={ true }>id</TableHeaderColumn>
-        <TableHeaderColumn dataField='fiscal_address' tdStyle={tdStyle}>Dirección fiscal</TableHeaderColumn>
-        <TableHeaderColumn dataField='fiscal_city' tdStyle={tdStyle}>Ciudad fiscal</TableHeaderColumn>
-        <TableHeaderColumn dataField='fiscal_id' tdStyle={tdStyle}>NIE</TableHeaderColumn>
-        <TableHeaderColumn dataField='delivery_type' tdStyle={tdStyle}>Reparto</TableHeaderColumn>
-        <TableHeaderColumn dataField='delivery_days' tdStyle={tdStyle}>Dias Reparto</TableHeaderColumn>
-        <TableHeaderColumn dataField='notes' tdStyle={tdStyle}>Notas</TableHeaderColumn>
+        <TableHeaderColumn width='150' dataField='id' hidden={ true } isKey={ true }>id</TableHeaderColumn>
+        <TableHeaderColumn width='150' dataField='fiscal_address' tdStyle={tdStyle}>Dirección fiscal</TableHeaderColumn>
+        <TableHeaderColumn width='150' dataField='fiscal_city' tdStyle={tdStyle}>Ciudad fiscal</TableHeaderColumn>
+        <TableHeaderColumn width='150' dataField='fiscal_id' tdStyle={tdStyle}>NIE</TableHeaderColumn>
+        <TableHeaderColumn width='150' dataField='delivery_type' tdStyle={tdStyle}>Reparto</TableHeaderColumn>
+        <TableHeaderColumn width='150' dataField='delivery_days' tdStyle={tdStyle}>Dias Reparto</TableHeaderColumn>
+        <TableHeaderColumn width='150' dataField='notes' tdStyle={tdStyle}>Notas</TableHeaderColumn>
     </BootstrapTable>);
   }}
 export default CustomersEnterpriseExpand

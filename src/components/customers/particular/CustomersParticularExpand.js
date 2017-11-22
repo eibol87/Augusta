@@ -27,9 +27,9 @@ class CustomersParticularExpand extends Component {
         hover condensed 
         cellEdit={ cellEditProp } 
         data={ this.props.data }>
-        <TableHeaderColumn dataField='id' hidden={ true } isKey={ true }>id</TableHeaderColumn>
-        <TableHeaderColumn dataField='address' tdStyle={tdStyle}>Dirección</TableHeaderColumn>
-        <TableHeaderColumn dataField='notes'tdStyle={tdStyle}>Notas</TableHeaderColumn>
+        <TableHeaderColumn width='150' dataField='id' hidden={ true } isKey={ true }>id</TableHeaderColumn>
+        <TableHeaderColumn width='150' dataField='address' tdStyle={tdStyle}>Dirección</TableHeaderColumn>
+        <TableHeaderColumn width='150' dataField='notes'tdStyle={tdStyle}>Notas</TableHeaderColumn>
       </BootstrapTable>);
   }}
 export default CustomersParticularExpand

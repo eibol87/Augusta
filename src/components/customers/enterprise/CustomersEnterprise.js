@@ -43,13 +43,13 @@ class CustomersEnterprise extends Component {
         autoCollapse={ { sort: true, search: true, filter: true } }
         expandColumnOptions={expandColumnOptions }
         trClassName={this.rowClassNameFormat}>
-        <TableHeaderColumn dataField='id' hidden={ true } isKey={ true }>Cliente</TableHeaderColumn>
-       	<TableHeaderColumn dataField='fiscal_name' tdStyle={tdStyle} dataSort>Empresa</TableHeaderColumn>
-        <TableHeaderColumn dataField='contact' tdStyle={tdStyle} dataSort>Contacto</TableHeaderColumn>
-        <TableHeaderColumn dataField='phone' tdStyle={tdStyle} dataSort>Teléfono</TableHeaderColumn>
-        <TableHeaderColumn dataField='email' tdStyle={tdStyle} dataSort>Email</TableHeaderColumn>
-        <TableHeaderColumn dataField='city' tdStyle={tdStyle} dataSort>Ciudad</TableHeaderColumn>
-        <TableHeaderColumn dataField='address' tdStyle={tdStyle} dataSort >Dirección</TableHeaderColumn>
+        <TableHeaderColumn width='150' dataField='id' hidden={ true } isKey={ true }>Cliente</TableHeaderColumn>
+       	<TableHeaderColumn width='150' dataField='fiscal_name' tdStyle={tdStyle} dataSort>Empresa</TableHeaderColumn>
+        <TableHeaderColumn width='150' dataField='contact' tdStyle={tdStyle} dataSort>Contacto</TableHeaderColumn>
+        <TableHeaderColumn width='90' dataField='phone' tdStyle={tdStyle} dataSort>Teléfono</TableHeaderColumn>
+        <TableHeaderColumn width='150' dataField='email' tdStyle={tdStyle} dataSort>Email</TableHeaderColumn>
+        <TableHeaderColumn width='150' dataField='city' tdStyle={tdStyle} dataSort>Ciudad</TableHeaderColumn>
+        <TableHeaderColumn width='150' dataField='address' tdStyle={tdStyle} dataSort >Dirección</TableHeaderColumn>
      </BootstrapTable>
 
 		)}
