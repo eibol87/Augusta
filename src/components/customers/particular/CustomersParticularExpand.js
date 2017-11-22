@@ -14,29 +14,14 @@ class CustomersParticularExpand extends Component {
     this.setState({
       edited: [ ...this.state.edited, { id, cellName } ]
   })}
-  updateCell = async () => {
-    const body = {}
-    const dataEdited =this.state.edited[0]
-    const cellname = dataEdited.cellName
-    const findDataRowEdited =this.props.data.filter(element => element.id === dataEdited.id )
-    
-    body[cellname] = findDataRowEdited[0][cellname]
-    
-    try {
-      await UpdateCustomer(dataEdited.id,body)
-      toastr.success( `${body[cellname]}`,'Se ha guardado:')
-      this.state.edited=[]
-    }
-      catch(e) {
-        toastr.error('No se ha podido guardar tu registro')
-        this.state.edited=[]
-        throw e
-    }
-  }
   render() {
     const hasEdited = this.state.edited.length
-    if(hasEdited) this.updateCell()
-      
+    if(hasEdited){
+      const dataEdited=this.state.edited[0]
+      const cellName=this.state.edited[0].cellName
+      const data=this.props.data
+      this.props.updateCell(dataEdited,cellName,data)
+    }
     const tdStyle={whiteSpace: 'normal'}
     const cellEditProp = {mode: 'dbclick', blurToSave: true, afterSaveCell: this.onAfterSaveCell}
     return (

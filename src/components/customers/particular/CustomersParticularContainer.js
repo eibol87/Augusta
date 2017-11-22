@@ -53,18 +53,15 @@ class CustomersParticularContainer extends Component {
       edited: [ ...this.state.edited, { id, cellName } ]
     })}
 
-   updateCell = async () => {
+   updateCell = async (dataEdited,cellName,data) => {
     const body = {};
-    const dataEdited = this.state.edited[0]
-    const {cellname} = dataEdited
-
-    const findDataRowEdited = this.state.customer.filter(element => element.id === dataEdited.id )
+    const findDataRowEdited = data.filter(element => element.id === dataEdited.id )
     
-    body[cellname] = findDataRowEdited[0][cellname]
+    body[cellName] = findDataRowEdited[0][cellName]
     
     try {
       await UpdateCustomer(dataEdited.id,body)
-      toastr.success( `${body[cellname]}`,'Se ha guardado:')
+      toastr.success( `${body[cellName]}`,'Se ha guardado:')
       this.state.edited=[]
     }
       catch(e) {
@@ -76,7 +73,7 @@ class CustomersParticularContainer extends Component {
   
   render(){
     const hasEdited = this.state.edited.length
-    if(hasEdited) this.updateCell() 
+    if(hasEdited) this.updateCell(this.state.edited[0],this.state.edited[0].cellName,this.state.customer) 
     return(
       <CustomersParticular
         data={this.state} 
