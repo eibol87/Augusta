@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {getCustomers} from '../../services/Api'
-import PanelContainer from '../panelContainer/PanelContainer.js'
+import {getCustomers} from '../../../services/Api'
+import PanelContainer from '../../panelContainer/PanelContainer.js'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 let count = 0
 class BSTable extends React.Component {

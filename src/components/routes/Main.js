@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom'
-import CustomersEnterprise from '../customers/CustomersEnterprise.js'
-import CustomersParticular from '../customers/CustomersParticular.js'
+import CustomersEnterprise from '../customers/enterprise/CustomersEnterprise.js'
+import CustomersParticularContainer from '../customers/particular/CustomersParticularContainer.js'
 import Payments from '../customers/Payments.js'
 import PricesList from '../pricesList/PricesList.js'
 import Articles from '../articles/Articles.js'
@@ -21,7 +21,7 @@ const Main = (props) => {
         <Route path='/login' component={Login} />
         <Route path='/logout' component={Logout}  />
         <PrivateRoute path="/customers/empresa" component={CustomersEnterprise}/>
-        <PrivateRoute path="/customers/particular" component={CustomersParticular}/>
+        <PrivateRoute path="/customers/particular" component={CustomersParticularContainer}/>
         <PrivateRoute path="/customers/payments" component={Payments}/>
         <PrivateRoute path="/priceslist" component={PricesList}/>
         <PrivateRoute path="/deliveryNotes" component={DeliveryNotes}/>

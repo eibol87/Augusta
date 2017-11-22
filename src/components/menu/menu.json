@@ -17,16 +17,15 @@
 		"category": "Acciones",
 		"items":[
 			{"id": 4, "title": "Finalizar", "link": "/articles/pending", "icon": "fa fa-check-square-o"},
-			{"id": 4, "title": "Entregar", "link": "/articles/finalized", "icon": "fa fa-car"}
-			
+			{"id": 4, "title": "Entregar", "link": "/articles/finalized", "icon": "fa fa-car"},
+			{"id": 4, "title": "Facturar", "link": "/articles/delivered", "icon": "fa fa-list-alt"}	
 		]
 	},
 	{
 		"category": "Contabilidad",
 		"items":[
 			{"id": 3, "title": "Albaran", "link": "/deliveryNotes", "icon": "fa fa-sticky-note-o"},
-			{"id": 4, "title": "Cobros", "link": "/customers/payments", "icon": "fa fa-money"},
-			{"id": 4, "title": "Facturas", "link": "/articles/delivered", "icon": "fa fa-list-alt"}
+			{"id": 4, "title": "Cobros", "link": "/customers/payments", "icon": "fa fa-money"}
 		]
 	},
 	{
