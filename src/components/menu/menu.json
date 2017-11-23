@@ -9,7 +9,7 @@
 	{
 		"category": "Artículos",
 		"items":[
-			{"id": 3, "title": "Buscar", "link": "/findarticles", "icon": "fa fa-search"},
+			{"id": 3, "title": "Buscar", "link": "/articles/all", "icon": "fa fa-search"},
 			{"id": 2, "title": "Tarifa de precios", "link": "/priceslist", "icon": "fa fa-list-ol"}
 		]
 	},

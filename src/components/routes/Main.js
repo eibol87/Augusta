@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import CustomersEnterpriseContainer from '../customers/enterprise/CustomersEnterpriseContainer.js'
 import CustomersParticularContainer from '../customers/particular/CustomersParticularContainer.js'
 import Payments from '../customers/Payments.js'
-import PricesList from '../pricesList/PricesList.js'
+import PricesListContainer from '../pricesList/PricesListContainer.js'
 import Articles from '../articles/Articles.js'
 import PendingArticles from '../articles/PendingArticles.js'
 import FinalizedArticles from '../articles/FinalizedArticles.js'
@@ -23,9 +23,9 @@ const Main = (props) => {
         <PrivateRoute path="/customers/empresa" component={CustomersEnterpriseContainer}/>
         <PrivateRoute path="/customers/particular" component={CustomersParticularContainer}/>
         <PrivateRoute path="/customers/payments" component={Payments}/>
-        <PrivateRoute path="/priceslist" component={PricesList}/>
+        <PrivateRoute path="/priceslist" component={PricesListContainer}/>
         <PrivateRoute path="/deliveryNotes" component={DeliveryNotes}/>
-        <PrivateRoute path="/findarticles" component={Articles}/>
+        <PrivateRoute path="/articles/all" component={Articles}/>
         <PrivateRoute path="/articles/pending" component={PendingArticles}/>
         <PrivateRoute path="/articles/finalized" component={FinalizedArticles}/>
         <PrivateRoute path="/articles/delivered" component={DeliveredArticles}/>

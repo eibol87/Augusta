@@ -1,14 +1,11 @@
 import axios from 'axios'
 import {getSessionStorage} from './LocalStorage'
 import toastr from 'toastr'
-
-
-const urlLocal ='http://localhost:3000/'
-const herokuUrl='https://api-augusta.herokuapp.com/'
+const {REACT_APP_API_SERVER} = process.env
+const token = `Bearer ${getSessionStorage()}`
 
 export function createCustomer (customer){
-  const token = `Bearer ${getSessionStorage()}`
-   const url= `${urlLocal}customer`
+   const url= `${REACT_APP_API_SERVER}customer`
     return axios.post(url,customer,{
         headers: {
            Authorization: `${token}`
@@ -23,9 +20,8 @@ export function createCustomer (customer){
 }
 
 export function getCustomers (customer){
-  const token = `Bearer ${getSessionStorage()}`
    const paramsCustomer= (customer) ? `?customer=${customer}` :''
-   const url= `${urlLocal}customers/${paramsCustomer}`
+   const url= `${REACT_APP_API_SERVER}customers/${paramsCustomer}`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
@@ -39,8 +35,7 @@ export function getCustomers (customer){
     });
 }
 export function getCustomersPayments (){
-  const token = `Bearer ${getSessionStorage()}`
-   const url= `${urlLocal}customers/payments`
+   const url= `${REACT_APP_API_SERVER}customers/payments`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
@@ -54,8 +49,7 @@ export function getCustomersPayments (){
     });
 }
 export function getPricesList (){
-   const token = `Bearer ${getSessionStorage()}`
-   const url= `${urlLocal}pricesList`
+   const url= `${REACT_APP_API_SERVER}pricesList`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
@@ -69,8 +63,7 @@ export function getPricesList (){
     });}
 
 export function getDeliveryNotes (){
-   const token = `Bearer ${getSessionStorage()}`
-   const url= `${urlLocal}deliveryNotes`
+   const url= `${REACT_APP_API_SERVER}deliveryNotes`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
@@ -83,9 +76,8 @@ export function getDeliveryNotes (){
       toastr.error('Problema al comunicarse con el servidor')
     });}
 export function getArticles (state){
-  const token = `Bearer ${getSessionStorage()}`
   const paramsState= (state) ? `?state=${state}` :''
-   const url= `${urlLocal}articles/${paramsState}`
+   const url= `${REACT_APP_API_SERVER}articles/${paramsState}`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
@@ -99,8 +91,7 @@ export function getArticles (state){
     });
 }
 export function UpdateCustomer (id,body){
-  const token = `Bearer ${getSessionStorage()}`
-   const url= `${urlLocal}customer/${id}`
+   const url= `${REACT_APP_API_SERVER}customer/${id}`
     return axios.put(url,
       body,{
         headers: {
