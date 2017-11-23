@@ -19,6 +19,7 @@ class CustomersParticularExpand extends Component {
       const cellName=this.state.edited[0].cellName
       const data=this.props.data
       this.props.updateCell(dataEdited,cellName,data)
+      this.state.edited = []
     }
     const tdStyle={whiteSpace: 'normal'}
     const cellEditProp = {mode: 'dbclick', blurToSave: true, afterSaveCell: this.onAfterSaveCell}

@@ -35,6 +35,19 @@ class CustomersParticular extends Component {
         </div>
       </div>
     )}
+  createCustomModalHeader(onClose, onSave) {
+    const headerStyle = {
+      fontWeight: 'bold',
+      fontSize: 'large',
+      textAlign: 'center',
+      backgroundColor: '#eeeeee'
+    };
+    return (
+      <div className='modal-header' style={ headerStyle }>
+        <h3>Añadir nuevo cliente particular</h3>
+      </div>
+    );
+  }
   
   render(){
     const tdStyle={whiteSpace: 'normal'}
@@ -46,7 +59,8 @@ class CustomersParticular extends Component {
       insertText: 'Añadir cliente',
       searchPosition: 'right',  // right or left
       toolBar: this.createCustomToolBar,
-      afterInsertRow: this.props.onAfterInsertRow
+      afterInsertRow: this.props.onAfterInsertRow,
+      insertModalHeader: this.createCustomModalHeader
     }
     const expandColumnOptions={ 
       expandColumnVisible: true, 
@@ -56,6 +70,7 @@ class CustomersParticular extends Component {
     
     return(
       <BootstrapTable 
+        height='360'
         insertRow
         cellEdit={ cellEditProp }
        	className="BootstrapTable-style" 

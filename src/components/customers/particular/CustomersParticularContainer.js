@@ -74,12 +74,12 @@ class CustomersParticularContainer extends Component {
     }
   }
   onAfterInsertRow = async (row) => {
-    delete row.id
+    delete row.id //delete id because if not needed pass to mongodb
     row.phone= Number(row.phone)
     row.type='particular'
     const result = await createCustomer(row)
+    if(result === 200) toastr.success(`Se ha añadido el cliente ${row.contact}`)
     this.getCustomers()
-     //if(result) toastr.success( `${body[cellName]}`,'Se ha guardado:')
   }
   phoneStatusValidator(value, row) {
     const response = { isValid: true, notification: { type: 'success', msg: '', title: '' } };
