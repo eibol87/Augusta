@@ -68,9 +68,9 @@ class CustomersParticular extends Component {
         expandColumnOptions={expandColumnOptions }
         trClassName={this.rowClassNameFormat}>
         <TableHeaderColumn width='150' dataField='id' hiddenOnInsert autoValue={ true } hidden={ true } isKey={ true } >id</TableHeaderColumn>
-        <TableHeaderColumn width='150' dataField='contact' tdStyle={tdStyle} dataSort >Contacto</TableHeaderColumn>
-        <TableHeaderColumn width='90' dataField='phone' tdStyle={tdStyle} dataSort >Teléfono</TableHeaderColumn>
-        <TableHeaderColumn width='150' dataField='email' tdStyle={tdStyle} dataSort >Email</TableHeaderColumn>
+        <TableHeaderColumn width='150' dataField='contact' editable={ { validator: this.props.fielRequireddStatusValidator }} tdStyle={tdStyle} dataSort >Contacto</TableHeaderColumn>
+        <TableHeaderColumn width='90' dataField='phone'  editable={ { validator: this.props.phoneStatusValidator } } tdStyle={tdStyle} dataSort >Teléfono</TableHeaderColumn>
+        <TableHeaderColumn width='150' dataField='email' editable={ { validator: this.props.emailStatusValidator }} tdStyle={tdStyle} dataSort >Email</TableHeaderColumn>
         <TableHeaderColumn width='100' dataField='city' tdStyle={tdStyle} dataSort >Ciudad</TableHeaderColumn>
         <TableHeaderColumn hidden={ true } dataField='notes' >Notas</TableHeaderColumn>
         <TableHeaderColumn hidden={ true } dataField='address' >Dirección</TableHeaderColumn>
