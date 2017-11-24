@@ -75,7 +75,6 @@ class PricesListContainer extends Component {
     const findDataRowEdited = data.filter(element => element.id === dataEdited.id )
     
     body[cellName] = findDataRowEdited[0][cellName]
-    console.log(dataEdited)
     try {
      const result = await UpdatePriceToPriceList(dataEdited.id,body)
       if(result) toastr.success( `${body[cellName]}`,'Se ha guardado:')

@@ -32,7 +32,7 @@ class PricesList extends Component {
 	
   render(){
     const options={
-      defaultSortName:'contact',
+      defaultSortName:'type',
       defaultSortOrder: 'asc',
       expandBy: 'column',
       insertText: 'Añadir cliente',
@@ -44,12 +44,14 @@ class PricesList extends Component {
     const cellEditProp = {mode: 'dbclick', blurToSave: true, afterSaveCell: this.props.onAfterSaveCell}
     return(
     	<BootstrapTable
-      cellEdit={ cellEditProp } 
-     	className="BootstrapTable-style" 
-     	striped hover condensed search insertRow
-     	data={ this.props.data.pricesList } 
-     	options={{defaultSortName:'type', defaultSortOrder: 'asc' }} 
-     	trClassName={this.rowClassNameFormat}>
+        height='360'
+        insertRow
+        cellEdit={ cellEditProp }
+        className="BootstrapTable-style" 
+        hover condensed search striped
+        data={ this.props.data.pricesList }
+        options={options} 
+        trClassName={this.rowClassNameFormat}>
 	     	<TableHeaderColumn dataField='id' hiddenOnInsert autoValue={ true } hidden={ true } isKey={ true } >id</TableHeaderColumn>
         <TableHeaderColumn dataField='type' editable={ false } dataSort >Tipo</TableHeaderColumn>
 	      <TableHeaderColumn dataField='leather' editable={ false } dataSort >Categoría</TableHeaderColumn>

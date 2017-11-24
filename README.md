@@ -1,4 +1,4 @@
 ## Descargar versión electron
 [here](
-https://drive.google.com/file/d/13vnY4wHB_8tGHpsHASXa8QihRWwBsWnq/view?usp=sharing
+https://drive.google.com/file/d/1Wm5nKamgWN5vBMi13-1GZTHu0dqJeymH/view?usp=sharing
 ).

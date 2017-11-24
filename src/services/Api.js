@@ -2,10 +2,9 @@ import axios from 'axios'
 import {getSessionStorage} from './LocalStorage'
 import toastr from 'toastr'
 const {REACT_APP_API_SERVER} = process.env
-const token = `Bearer ${getSessionStorage()}`
-
 
 export function createCustomer (customer){
+  const token = `Bearer ${getSessionStorage()}`
    const url= `${REACT_APP_API_SERVER}customer`
     return axios.post(url,customer,{
         headers: {
@@ -14,13 +13,13 @@ export function createCustomer (customer){
     })
     .then(response => response.status)
     .catch(function (error) {
-      console.log(error);
         // Display an error toast, with a title
       toastr.error('Problema al comunicarse con el servidor')
     });
 }
 
 export function getCustomers (customer){
+  const token = `Bearer ${getSessionStorage()}`
    const paramsCustomer= (customer) ? `?customer=${customer}` :''
    const url= `${REACT_APP_API_SERVER}customers/${paramsCustomer}`
     return axios.get(url,{
@@ -30,12 +29,12 @@ export function getCustomers (customer){
     })
     .then(response => response.data)
     .catch(function (error) {
-      console.log(error);
         // Display an error toast, with a title
       toastr.error('Problema al comunicarse con el servidor')
     });
 }
 export function getCustomersPayments (){
+  const token = `Bearer ${getSessionStorage()}`
    const url= `${REACT_APP_API_SERVER}customers/payments`
     return axios.get(url,{
         headers: {
@@ -44,12 +43,12 @@ export function getCustomersPayments (){
     })
     .then(response => response.data)
     .catch(function (error) {
-      console.log(error);
         // Display an error toast, with a title
       toastr.error('Problema al comunicarse con el servidor')
     });
 }
 export function getPricesList (){
+  const token = `Bearer ${getSessionStorage()}`
    const url= `${REACT_APP_API_SERVER}pricesList`
     return axios.get(url,{
         headers: {
@@ -58,12 +57,12 @@ export function getPricesList (){
     })
     .then(response => response.data)
     .catch(function (error) {
-      console.log(error);
         // Display an error toast, with a title
       toastr.error('Problema al comunicarse con el servidor')
     });}
 
 export function getDeliveryNotes (){
+  const token = `Bearer ${getSessionStorage()}`
    const url= `${REACT_APP_API_SERVER}deliveryNotes`
     return axios.get(url,{
         headers: {
@@ -72,11 +71,11 @@ export function getDeliveryNotes (){
     })
     .then(response => response.data)
     .catch(function (error) {
-      console.log(error);
         // Display an error toast, with a title
       toastr.error('Problema al comunicarse con el servidor')
     });}
 export function getArticles (state){
+  const token = `Bearer ${getSessionStorage()}`
   const paramsState= (state) ? `?state=${state}` :''
    const url= `${REACT_APP_API_SERVER}articles/${paramsState}`
     return axios.get(url,{
@@ -86,12 +85,12 @@ export function getArticles (state){
     })
     .then(response => response.data)
     .catch(function (error) {
-      console.log(error);
         // Display an error toast, with a title
       toastr.error('Problema al comunicarse con el servidor')
     });
 }
 export function UpdateCustomer (id,body){
+  const token = `Bearer ${getSessionStorage()}`
    const url= `${REACT_APP_API_SERVER}customer/${id}`
     return axios.put(url,
       body,{
@@ -101,13 +100,13 @@ export function UpdateCustomer (id,body){
     })
     .then(response => response.data)
     .catch(function (error) {
-      console.log(error);
       // Display an error toast, with a title
       toastr.error('Problema al comunicarse con el servidor')
 
     });
 }
 export function UpdatePriceToPriceList (id,price){
+  const token = `Bearer ${getSessionStorage()}`
   const url= `${REACT_APP_API_SERVER}pricesList/${id}`
     return axios.put(url,
       price,{
@@ -117,7 +116,6 @@ export function UpdatePriceToPriceList (id,price){
     })
     .then(response => response.data)
     .catch(function (error) {
-      console.log(error);
       // Display an error toast, with a title
       toastr.error('Problema al comunicarse con el servidor')
 
