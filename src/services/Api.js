@@ -59,7 +59,20 @@ export function getPricesList (){
     .catch(function (error) {
         // Display an error toast, with a title
       toastr.error('Problema al comunicarse con el servidor')
-    });}
+});}
+export function getListArticleType (type){
+  const token = `Bearer ${getSessionStorage()}`
+   const url= `${REACT_APP_API_SERVER}listArticlesType/${type}`
+    return axios.get(url,{
+        headers: {
+           Authorization: `${token}`
+        }
+    })
+    .then(response => response.data)
+    .catch(function (error) {
+        // Display an error toast, with a title
+      toastr.error('Problema al comunicarse con el servidor')
+});}
 
 export function getDeliveryNotes (){
   const token = `Bearer ${getSessionStorage()}`

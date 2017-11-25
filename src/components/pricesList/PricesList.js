@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PanelContainer from '../panelContainer/PanelContainer.js'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import PricesListModal from './PricesListModal'
 
 class PricesList extends Component {
 	
 	priceFormatter(cell, row) {
+
 	  return `${cell} <i class='glyphicon glyphicon-eur'></i>`;
 	}
   createCustomToolBar = props => {
@@ -29,6 +31,14 @@ class PricesList extends Component {
       </div>
     );
   }
+  createCustomModalBody = (columns, validateState, ignoreEditable,hiddenOnInsert) => {
+    return (
+      <PricesListModal columns={ columns }
+        validateState={ validateState }
+        ignoreEditable={ ignoreEditable }
+        hiddenOnInsert={hiddenOnInsert}/>
+    );
+  }
 	
   render(){
     const options={
@@ -39,7 +49,8 @@ class PricesList extends Component {
       searchPosition: 'right',  // right or left
       toolBar: this.createCustomToolBar,
       afterInsertRow: this.props.onAfterInsertRow,
-      insertModalHeader: this.createCustomModalHeader
+      insertModalHeader: this.createCustomModalHeader,
+      insertModalBody: this.createCustomModalBody
     }
     const cellEditProp = {mode: 'dbclick', blurToSave: true, afterSaveCell: this.props.onAfterSaveCell}
     return(
@@ -56,7 +67,7 @@ class PricesList extends Component {
         <TableHeaderColumn dataField='type' editable={ false } dataSort >Tipo</TableHeaderColumn>
 	      <TableHeaderColumn dataField='leather' editable={ false } dataSort >Categoría</TableHeaderColumn>
 	      <TableHeaderColumn dataField='base_price' editable={ { validator: this.props.basePriceStatusValidator } } dataFormat={ this.priceFormatter } dataSort>Precio Base</TableHeaderColumn>
-	      <TableHeaderColumn dataField='prices_per_customer' editable={ false } dataFormat={ this.priceFormatter } dataSort>Precio Medio</TableHeaderColumn>
+	      <TableHeaderColumn dataField='prices_per_customer' hiddenOnInsert editable={ false } dataFormat={ this.priceFormatter } dataSort>Precio Medio</TableHeaderColumn>
       </BootstrapTable>
     )
   }
