@@ -33,9 +33,9 @@ class ArticlesContainer extends Component {
   componentDidMount(){
    this.getData()
   }
-  getData(){
-   getArticles()
-      .then(response =>
+  async getData(){
+    const response = await getArticles()
+      if(response){
         this.setState({
           articles: [...response]
           .map(function (article){
@@ -57,7 +57,7 @@ class ArticlesContainer extends Component {
             })
           })
         })
-        )
+      }
   }
   render(){
     return (
