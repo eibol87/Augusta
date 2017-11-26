@@ -56,6 +56,7 @@ class Articles extends Component {
 	    <TableHeaderColumn dataField='type' dataSort>Artículo</TableHeaderColumn>
 	    <TableHeaderColumn dataField='leather'dataSort>Tipo</TableHeaderColumn>
 	    <TableHeaderColumn dataField='entry_date' width='245'dataFormat={ this.dateFormatter } dataSort filter={ { type: 'DateFilter', delay: 100 } }>Alta</TableHeaderColumn>
+     	<TableHeaderColumn dataField='entry_date' width='245'dataFormat={ this.dateFormatter } dataSort filter={ { type: 'DateFilter', delay: 100 } }>Alta</TableHeaderColumn>
      	<TableHeaderColumn dataField='state' dataSort filterFormatted dataFormat={ this.enumFormatter } formatExtraData={ this.props.data.states } filter={ { type: 'SelectFilter', options: this.props.data.states } }>Estado</TableHeaderColumn>
       </BootstrapTable>
 	    )
