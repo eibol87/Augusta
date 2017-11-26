@@ -6,7 +6,6 @@ import CustomersParticularExpand from './CustomersParticularExpand'
 class CustomersParticular extends Component {
 
 	rowClassNameFormat(row, rowIdx) {
-
     return rowIdx % 2 === 0 ? 'BootstrapTable-tr-intermitate-color' : ''}
   isExpandableRow(row) {
     if ((row.count < 0)) return false;

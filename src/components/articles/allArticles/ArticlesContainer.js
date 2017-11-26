@@ -14,7 +14,7 @@ class ArticlesContainer extends Component {
        delivered: 'delivered'
       },
       articles:[{
-        _id:'',
+        id:'',
         final_customer_code:'',
         type:'',
         leather:'',

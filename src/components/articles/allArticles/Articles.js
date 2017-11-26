@@ -7,7 +7,9 @@ import Moment from 'moment'
 
 
 class Articles extends Component {
-	
+	rowClassNameFormat(row, rowIdx) {
+    return rowIdx % 2 === 0 ? 'BootstrapTable-tr-intermitate-color' : ''}
+ 
 	dateFormatter(cell, row) {
 		cell =new Date(cell)
 		return `${('0' + cell.getDate()).slice(-2)}/${('0' + (cell.getMonth() + 1)).slice(-2)}/${cell.getFullYear()}`;
@@ -52,7 +54,8 @@ class Articles extends Component {
      	autoCollapse={ { sort: true, search: true, filter: true } }
      	options={{defaultSortName:'entry_date', defaultSortOrder: 'asc', expandBy: 'column', }} 
      	trClassName={this.rowClassNameFormat}>
-	    <TableHeaderColumn dataField='customer_contact' isKey dataSort>Cliente</TableHeaderColumn>
+	    <TableHeaderColumn width='150' dataField='id' autoValue={ true } hidden={ true } isKey={ true }>Cliente</TableHeaderColumn>
+      <TableHeaderColumn dataField='customer_contact'  dataSort>Cliente</TableHeaderColumn>
 	    <TableHeaderColumn dataField='type' dataSort>Artículo</TableHeaderColumn>
 	    <TableHeaderColumn dataField='leather'dataSort>Tipo</TableHeaderColumn>
 	    <TableHeaderColumn dataField='entry_date' width='245'dataFormat={ this.dateFormatter } dataSort filter={ { type: 'DateFilter', delay: 100 } }>Alta</TableHeaderColumn>
