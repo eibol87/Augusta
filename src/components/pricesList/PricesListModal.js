@@ -1,40 +1,78 @@
 import React, { Component } from 'react';
+import {getListArticleType} from '../../services/Api'
 import { FormGroup, ControlLabel,FormControl } from 'react-bootstrap'
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
-class CustomersEnterpriseModal extends React.Component {
- state = {
-    selectedOption: '',
-  }
-  handleChange = (selectedOption) => {
-    this.setState({ selectedOption });
-    console.log(`Selected: ${selectedOption.label}`);
-  }
+class PricesListModal extends React.Component {
+  constructor(){
+    super()
+    this.state={
+      type:'',
+      leather:'',
+      selectedOption:{value:'',label:''},
+      selectedOptionLether:{value:'',label:''},
+      selectedOptionType:{value:'',label:''}
+    }}
+  state = {
+    selectedOptionType: '',
+    selectedOptionLeather: '',}
   getFieldValue() {
     const newRow = {};
-
     this.props.columns.forEach((column, i) => {
       newRow[column.field] = this.refs[column.field].value;
     }, this);
-    return newRow;
-  }
+    return newRow;}
+  async getData(){
+    let type = await getListArticleType('type')
+    let leather = await getListArticleType('leather')
+    type = type.map((value) =>({valeu:value, label:value}))
+    leather = leather.map((value) =>({valeu:value, label:value}))
+    
+    this.setState({
+      type:type,
+      leather:leather 
+    })}
+  componentDidMount(){
+
+    this.getData()}
+  handleChange = (selectedOption,type) => {
+    if(type === 'type'){
+      const selectedOptionType = selectedOption
+      this.setState({ selectedOptionType });
+      console.log(`Selected: ${selectedOptionType.label}`);
+    }else if(type === 'leather'){
+      const selectedOptionLether = selectedOption
+      this.setState({ selectedOptionLether });
+      console.log(`Selected: ${selectedOptionLether.label}`);
+    }else{
+      this.setState({ selectedOption });
+      console.log(`Selected: ${selectedOption.label}`);
+    }
+  }  
   render() {
     const { columns, validateState } = this.props;
     return (
       <div className='modal-body'>
-        <h2 style={ { color: 'red' } }>Custom body</h2>
         <div>
+          <label>Tipos ya creados</label>
+            <Select
+              name="type"
+              value={this.state.selectedOption}
+              onChange={(e) => this.handleChange(e,"type")}
+              searchable={true}
+              options={this.state.type}/>
+     
+          <label>Categorías ya creadas</label>
+            <Select
+              name="leather"
+              value={this.state.selectedOptionLeather}
+               onChange={(e) => this.handleChange(e,"leather")}
+              searchable={true}
+              options={this.state.leather}/>
           {
             this.props.columns.map((column, i) => {
-              const {
-                editable,
-                format,
-                field,
-                name,
-                hiddenOnInsert
-              } = column;
-             
+              const {editable, format, field, name, hiddenOnInsert} = column;
               if (hiddenOnInsert) {
                 // when you want same auto generate value
                 // and not allow edit, for example ID field
@@ -43,50 +81,53 @@ class CustomersEnterpriseModal extends React.Component {
               const error = validateState[field] ?
                 (<span className='help-block bg-danger'>{ validateState[field] }</span>) :
                 null;
-              return (
-                <div className='form-group' key={ field }>
-                  <label>{ name }</label>
-                  <input ref={field} type='text' />
-                  { error }
-                </div>
-              );
+              if(field === 'type' ){
+                return (
+                  <div key={ field }>
+                    <label>{ name }</label>
+                    <input
+                      className="form-control" 
+                      ref={field} 
+                      type='text' 
+                      onChange={(e) => this.handleChange(e,field)} 
+                      value={this.state.selectedOptionType.label} />
+                      { error }
+                  </div>
+                )
+              }else if(field === 'leather'){
+                return (
+                  <div key={ field }>
+                    <label>{ name }</label>
+                    <input
+                      className="form-control" 
+                      ref={field} 
+                      type='text' 
+                      onChange={(e) => this.handleChange(e,field)} 
+                      value={this.state.selectedOptionLether.label} />
+                      { error }
+                  </div>
+                )
+              }else{
+                return (
+                  <div key={ field }>
+                    <label>{ name }</label>
+                    <input
+                      className="form-control" 
+                      ref={field} 
+                      type='text' 
+                      onChange={(e) => this.handleChange(e,field)} 
+                      value={this.state.selectedOption.label} />
+                      { error }
+                  </div>
+                )
+              }
             })
           }
         </div>
-        <Select
-          name="form-field-name"
-          value={this.state.selectedOption}
-          onChange={this.handleChange}
-          searchable={true}
-          options={[
-            { value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },
-            { value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },{ value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' },
-          ]}
-      />
+        
       </div>
     );
   }
 }
 
-export default CustomersEnterpriseModal
+export default PricesListModal

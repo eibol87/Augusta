@@ -64,8 +64,8 @@ class PricesList extends Component {
         options={options} 
         trClassName={this.rowClassNameFormat}>
 	     	<TableHeaderColumn dataField='id' hiddenOnInsert autoValue={ true } hidden={ true } isKey={ true } >id</TableHeaderColumn>
-        <TableHeaderColumn dataField='type' editable={ false } dataSort >Tipo</TableHeaderColumn>
-	      <TableHeaderColumn dataField='leather' editable={ false } dataSort >Categoría</TableHeaderColumn>
+        <TableHeaderColumn dataField='type'  editable={ false } dataSort >Tipo</TableHeaderColumn>
+	      <TableHeaderColumn dataField='leather'  editable={ false } dataSort >Categoría</TableHeaderColumn>
 	      <TableHeaderColumn dataField='base_price' editable={ { validator: this.props.basePriceStatusValidator } } dataFormat={ this.priceFormatter } dataSort>Precio Base</TableHeaderColumn>
 	      <TableHeaderColumn dataField='prices_per_customer' hiddenOnInsert editable={ false } dataFormat={ this.priceFormatter } dataSort>Precio Medio</TableHeaderColumn>
       </BootstrapTable>
