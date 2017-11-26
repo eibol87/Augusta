@@ -46,7 +46,7 @@ class Articles extends Component {
   	  return(
     	<BootstrapTable 
      	className="BootstrapTable-style" 
-     	striped hover condensed 
+     	hover condensed 
      	expandableRow={ this.isExpandableRow }
       expandComponent={ this.expandComponent }
      	data={ this.props.data.articles } 
