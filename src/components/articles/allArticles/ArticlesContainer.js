@@ -22,13 +22,13 @@ class ArticlesContainer extends Component {
         price:'',
         complements:[],
         entry_date:'',
-        output_date:'',
         customer_contact:'',
         customer_fiscal_name:'',
         expand:[{
           id:'',
           barcode:'',
-          color:''
+          color:'',
+          output_date:''
         }]
       }]
       }
@@ -52,12 +52,12 @@ class ArticlesContainer extends Component {
               complements:[...article.complements],
               customer_contact:(article.customer_id.fiscal_name) ? article.customer_id.fiscal_name : article.customer_id.contact,
               customer_fiscal_name:article.customer_id.fiscal_name,
-              output_date:Moment(article.output_date).format('L'),  
               entry_date:Moment(article.entry_date).format('L'),
               expand: [{
                 id:article._id,
                 barcode:article.barcode,
-                color: article.color
+                color: article.color,
+                output_date:Moment(article.output_date).format('L')
               }]
             
             })
