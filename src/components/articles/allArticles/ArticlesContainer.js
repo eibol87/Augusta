@@ -16,17 +16,20 @@ class ArticlesContainer extends Component {
       articles:[{
         _id:'',
         final_customer_code:'',
-        barcode:'',
         type:'',
         leather:'',
-        color:'',
         state:'',
         price:'',
         complements:[],
         entry_date:'',
         output_date:'',
         customer_contact:'',
-        customer_fiscal_name:''
+        customer_fiscal_name:'',
+        expand:[{
+          id:'',
+          barcode:'',
+          color:''
+        }]
       }]
       }
     }
@@ -40,19 +43,22 @@ class ArticlesContainer extends Component {
           articles: [...response]
           .map(function (article){
             return ({
-              _id:article._id,
+              id:article._id,
               final_customer_code:article.final_customer_code,
-              barcode:article.barcode,
               type:article.type,
               leather:article.leather,
-              color:article.color,
               state:article.state,
               price:article.price,
               complements:[...article.complements],
               customer_contact:(article.customer_id.fiscal_name) ? article.customer_id.fiscal_name : article.customer_id.contact,
               customer_fiscal_name:article.customer_id.fiscal_name,
               output_date:Moment(article.output_date).format('L'),  
-              entry_date:Moment(article.entry_date).format('L')
+              entry_date:Moment(article.entry_date).format('L'),
+              expand: [{
+                id:article._id,
+                barcode:article.barcode,
+                color: article.color
+              }]
             
             })
           })
