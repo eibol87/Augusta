@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {getPricesList,UpdatePriceToPriceList} from '../../services/Api'
+import {getPricesList,UpdatePriceToPriceList,createArticle} from '../../services/Api'
 import PricesList from './PricesList'
 import toastr from 'toastr'
 
@@ -44,22 +44,22 @@ class PricesListContainer extends Component {
         })
       }
   }
-    updateCell = async (dataEdited,cellName,data) => {
+  updateCell = async (dataEdited,cellName,data) => {
     const body = {};
     const findDataRowEdited = data.filter(element => element.id === dataEdited.id )
-    
+      
     body[cellName] = findDataRowEdited[0][cellName]
-    
+      
     try {
-     const result = await UpdatePriceToPriceList(dataEdited.id,body)
+      const result = await UpdatePriceToPriceList(dataEdited.id,body)
       if(result) toastr.success( `${body[cellName]}`,'Se ha guardado:')
       //clean state
       this.state.edited=[]
     }
-      catch(e) {
-        toastr.error('Error al resolver la promesa')
-        this.state.edited=[]
-        throw e
+    catch(e) {
+      toastr.error('Error al resolver la promesa')
+      this.state.edited=[]
+    throw e
     }
   }
   basePriceStatusValidator(value, row) {
@@ -87,6 +87,14 @@ class PricesListContainer extends Component {
         throw e
     }
   }
+  onAfterInsertRow = async (row) => {
+    delete row.id //delete id because if not needed pass to mongodb
+    delete row.prices_per_customer
+    const result = await createArticle(row)
+    if(result === 201) toastr.warning(`El artículo ${row.type} ya existe`)
+    if(result === 200) toastr.success(`Se ha añadido el artículo ${row.type}`)
+    this.getPriceList()
+  }
   render(){
     const hasEdited = this.state.edited.length
     if(hasEdited) this.updateCell(this.state.edited[0],this.state.edited[0].cellName,this.state.pricesList) 
@@ -95,6 +103,7 @@ class PricesListContainer extends Component {
         data={this.state} 
         onAfterSaveCell={this.onAfterSaveCell}
         updateCell={this.updateCell}
+        onAfterInsertRow={this.onAfterInsertRow}
         basePriceStatusValidator={this.basePriceStatusValidator}
       />
     )

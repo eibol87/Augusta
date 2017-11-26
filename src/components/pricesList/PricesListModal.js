@@ -3,7 +3,7 @@ import {getListArticleType} from '../../services/Api'
 import { FormGroup, ControlLabel,FormControl } from 'react-bootstrap'
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
-
+let number = 1
 class PricesListModal extends React.Component {
   constructor(){
     super()
@@ -11,7 +11,7 @@ class PricesListModal extends React.Component {
       type:'',
       leather:'',
       selectedOption:{value:'',label:''},
-      selectedOptionLether:{value:'',label:''},
+      selectedOptionLeather:{value:'',label:''},
       selectedOptionType:{value:'',label:''}
     }}
   state = {
@@ -42,9 +42,9 @@ class PricesListModal extends React.Component {
       this.setState({ selectedOptionType });
       console.log(`Selected: ${selectedOptionType.label}`);
     }else if(type === 'leather'){
-      const selectedOptionLether = selectedOption
-      this.setState({ selectedOptionLether });
-      console.log(`Selected: ${selectedOptionLether.label}`);
+      const selectedOptionLeather = selectedOption
+      this.setState({ selectedOptionLeather });
+      console.log(`Selected: ${selectedOptionLeather.label}`);
     }else{
       this.setState({ selectedOption });
       console.log(`Selected: ${selectedOption.label}`);
@@ -58,8 +58,9 @@ class PricesListModal extends React.Component {
           <label>Tipos ya creados</label>
             <Select
               name="type"
-              value={this.state.selectedOption}
+              value={this.state.selectedOptionType}
               onChange={(e) => this.handleChange(e,"type")}
+              clearable={false}
               searchable={true}
               options={this.state.type}/>
      
@@ -67,7 +68,8 @@ class PricesListModal extends React.Component {
             <Select
               name="leather"
               value={this.state.selectedOptionLeather}
-               onChange={(e) => this.handleChange(e,"leather")}
+              onChange={(e) => this.handleChange(e,"leather")}
+              clearable={false}
               searchable={true}
               options={this.state.leather}/>
           {
@@ -76,7 +78,7 @@ class PricesListModal extends React.Component {
               if (hiddenOnInsert) {
                 // when you want same auto generate value
                 // and not allow edit, for example ID field
-                return  <input type="hidden" ref={column.field} value='1'/>;
+                return  <input type="hidden" ref={column.field} value={number++}/>;
               }
               const error = validateState[field] ?
                 (<span className='help-block bg-danger'>{ validateState[field] }</span>) :
@@ -103,7 +105,7 @@ class PricesListModal extends React.Component {
                       ref={field} 
                       type='text' 
                       onChange={(e) => this.handleChange(e,field)} 
-                      value={this.state.selectedOptionLether.label} />
+                      value={this.state.selectedOptionLeather.label} />
                       { error }
                   </div>
                 )

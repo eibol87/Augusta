@@ -4,7 +4,7 @@ import CustomersEnterpriseContainer from '../customers/enterprise/CustomersEnter
 import CustomersParticularContainer from '../customers/particular/CustomersParticularContainer.js'
 import Payments from '../customers/Payments.js'
 import PricesListContainer from '../pricesList/PricesListContainer.js'
-import Articles from '../articles/Articles.js'
+import ArticlesContainer from '../articles/allArticles/ArticlesContainer.js'
 import PendingArticles from '../articles/PendingArticles.js'
 import FinalizedArticles from '../articles/FinalizedArticles.js'
 import DeliveredArticles from '../articles/DeliveredArticles.js'
@@ -25,7 +25,7 @@ const Main = (props) => {
         <PrivateRoute path="/customers/payments" component={Payments}/>
         <PrivateRoute path="/priceslist" component={PricesListContainer}/>
         <PrivateRoute path="/deliveryNotes" component={DeliveryNotes}/>
-        <PrivateRoute path="/articles/all" component={Articles}/>
+        <PrivateRoute path="/articles/all" component={ArticlesContainer}/>
         <PrivateRoute path="/articles/pending" component={PendingArticles}/>
         <PrivateRoute path="/articles/finalized" component={FinalizedArticles}/>
         <PrivateRoute path="/articles/delivered" component={DeliveredArticles}/>

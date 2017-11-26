@@ -27,7 +27,7 @@ class PricesList extends Component {
     };
     return (
       <div className='modal-header' style={ headerStyle }>
-        <h3>Añadir nuevo cliente particular</h3>
+        <h3>Añadir nuevo artículo</h3>
       </div>
     );
   }
@@ -45,7 +45,7 @@ class PricesList extends Component {
       defaultSortName:'type',
       defaultSortOrder: 'asc',
       expandBy: 'column',
-      insertText: 'Añadir cliente',
+      insertText: 'Añadir artículo',
       searchPosition: 'right',  // right or left
       toolBar: this.createCustomToolBar,
       afterInsertRow: this.props.onAfterInsertRow,
