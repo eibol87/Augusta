@@ -3,6 +3,7 @@ import PanelContainer from '../../panelContainer/PanelContainer.js'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import CustomersEnterpriseExpand from './CustomersEnterpriseExpand'
 import CustomersEnterpriseModal from './CustomersEnterpriseModal'
+import MySearchField from '../../forms/MySearchField'
 
 class CustomersEnterprise extends Component {
 	 
@@ -68,8 +69,9 @@ class CustomersEnterprise extends Component {
       searchPosition: 'right',  // right or left
       toolBar: this.createCustomToolBar,
       afterInsertRow: this.props.onAfterInsertRow,
-      insertModalHeader: this.createCustomModalHeader
-       }
+      insertModalHeader: this.createCustomModalHeader,
+      searchField: (props) => (<MySearchField { ...props }/>)
+    }
     const expandColumnOptions={ expandColumnVisible: true, expandColumnComponent: this.expandColumnComponent,columnWidth: 25}
     const Dias = [ 'Lunes mañana', 'Lunes tarde', 'Martes mañana', 'Martes tarde','Miércoles mañana', 'Miérciles tarde','Jueves mañana', 'Jueves tarde','Viernes mañana', 'Viernes tarde' ];
     return(

@@ -16,10 +16,10 @@ class PendingArticles extends Component {
 	     	data={ this.props.data.articles } 
 	     	options={{defaultSortName:'customer_contact', defaultSortOrder: 'asc' }} 
 	     	trClassName={this.rowClassNameFormat}>
-		  <TableHeaderColumn dataField='customer_contact' isKey dataSort filter={ { type: 'TextFilter', delay: 100 } }>Cliente</TableHeaderColumn>
-		  <TableHeaderColumn dataField='type' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Artículo</TableHeaderColumn>
-		 	<TableHeaderColumn dataField='leather'dataSort filter={ { type: 'TextFilter', delay: 100 } }>Tipo</TableHeaderColumn>
-		  <TableHeaderColumn dataField='color' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Color</TableHeaderColumn>
+		  <TableHeaderColumn dataField='customer_contact' isKey dataSort>Cliente</TableHeaderColumn>
+		  <TableHeaderColumn dataField='type' dataSort>Artículo</TableHeaderColumn>
+		 	<TableHeaderColumn dataField='leather'dataSort>Tipo</TableHeaderColumn>
+		  <TableHeaderColumn dataField='color' dataSort>Color</TableHeaderColumn>
 	  	<TableHeaderColumn dataField='entry_date' width='245'dataFormat={ this.dateFormatter } dataSort filter={ { type: 'DateFilter', delay: 100 } }>Alta</TableHeaderColumn>
 	  	<TableHeaderColumn dataField='barcode' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Código de barras</TableHeaderColumn> 
 	    </BootstrapTable>

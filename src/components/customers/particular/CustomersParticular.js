@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PanelContainer from '../../panelContainer/PanelContainer.js'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import CustomersParticularExpand from './CustomersParticularExpand'
+import MySearchField from '../../forms/MySearchField'
 
 class CustomersParticular extends Component {
 
@@ -47,7 +48,7 @@ class CustomersParticular extends Component {
       </div>
     );
   }
-  
+
   render(){
     const tdStyle={whiteSpace: 'normal'}
     const cellEditProp = {mode: 'dbclick', blurToSave: true, afterSaveCell: this.props.onAfterSaveCell}
@@ -59,14 +60,14 @@ class CustomersParticular extends Component {
       searchPosition: 'right',  // right or left
       toolBar: this.createCustomToolBar,
       afterInsertRow: this.props.onAfterInsertRow,
-      insertModalHeader: this.createCustomModalHeader
+      insertModalHeader: this.createCustomModalHeader,
+      searchField: (props) => (<MySearchField { ...props }/>)
     }
     const expandColumnOptions={ 
       expandColumnVisible: true, 
       expandColumnComponent: this.expandColumnComponent,
       columnWidth: 25
     }
-    
     return(
       <BootstrapTable 
         height='360'

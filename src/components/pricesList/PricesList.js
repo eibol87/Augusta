@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PanelContainer from '../panelContainer/PanelContainer.js'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import PricesListModal from './PricesListModal'
+import MySearchField from '../forms/MySearchField'
 
 class PricesList extends Component {
 	
@@ -50,7 +51,8 @@ class PricesList extends Component {
       toolBar: this.createCustomToolBar,
       afterInsertRow: this.props.onAfterInsertRow,
       insertModalHeader: this.createCustomModalHeader,
-      insertModalBody: this.createCustomModalBody
+      insertModalBody: this.createCustomModalBody,
+      searchField: (props) => (<MySearchField { ...props }/>)
     }
     const cellEditProp = {mode: 'dbclick', blurToSave: true, afterSaveCell: this.props.onAfterSaveCell}
     return(
