@@ -5,9 +5,9 @@ import CustomersParticularContainer from '../customers/particular/CustomersParti
 import Payments from '../customers/Payments.js'
 import PricesListContainer from '../pricesList/PricesListContainer.js'
 import ArticlesContainer from '../articles/allArticles/ArticlesContainer.js'
-import PendingArticles from '../articles/PendingArticles.js'
-import FinalizedArticles from '../articles/FinalizedArticles.js'
-import DeliveredArticles from '../articles/DeliveredArticles.js'
+import PendingArticlesContainer from '../articles/pendingArticles/PendingArticlesContainer.js'
+import FinalizedArticlesContainer from '../articles/finalizedArticles/FinalizedArticlesContainer.js'
+import DeliveredArticlesContainer from '../articles/deliveredArticles/DeliveredArticlesContainer.js'
 import DeliveryNotes from '../deliveryNotes/DeliveryNotes.js'
 import Login from '../login/Login.js'
 import Logout from '../login/Logout.js'
@@ -26,9 +26,9 @@ const Main = (props) => {
         <PrivateRoute path="/priceslist" component={PricesListContainer}/>
         <PrivateRoute path="/deliveryNotes" component={DeliveryNotes}/>
         <PrivateRoute path="/articles/all" component={ArticlesContainer}/>
-        <PrivateRoute path="/articles/pending" component={PendingArticles}/>
-        <PrivateRoute path="/articles/finalized" component={FinalizedArticles}/>
-        <PrivateRoute path="/articles/delivered" component={DeliveredArticles}/>
+        <PrivateRoute path="/articles/pending" component={PendingArticlesContainer}/>
+        <PrivateRoute path="/articles/finalized" component={FinalizedArticlesContainer}/>
+        <PrivateRoute path="/articles/delivered" component={DeliveredArticlesContainer}/>
       </Switch>
     </div>
   )
