@@ -7,8 +7,6 @@ class ArticlesExpand extends Component {
     return `${('0' + cell.getDate()).slice(-2)}/${('0' + (cell.getMonth() + 1)).slice(-2)}/${cell.getFullYear()}`;
   }
   render() {
-    const tdStyle={whiteSpace: 'normal'}
-    const cellEditProp = {mode: 'dbclick', blurToSave: true, afterSaveCell: this.onAfterSaveCell}
     return (
       <BootstrapTable 
         hover condensed 

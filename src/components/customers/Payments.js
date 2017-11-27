@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import {getCustomersPayments} from '../../services/Api'
 import PanelContainer from '../panelContainer/PanelContainer.js'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import Moment from 'moment'
-
 
 class Payments extends Component {
   constructor(){

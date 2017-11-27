@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import {getArticles} from '../../../services/Api'
 import PanelContainer from '../../panelContainer/PanelContainer.js'
 import ArticlesExpand from './ArticlesExpand'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import Moment from 'moment'
+import MySearchField from '../../forms/MySearchField'
 
 
 class Articles extends Component {
@@ -35,7 +34,15 @@ class Articles extends Component {
     return (
       <ArticlesExpand data={ row.expand } updateCell={this.props.updateCell} />
     );}
-
+  createCustomToolBar = props => {
+    return (
+      <div style={ { margin: '0px 0px 10px 0px' } }>
+        { props.components.btnGroup }
+        <div className='col-xs-8 col-sm-4 col-md-4 col-lg-2'>
+          { props.components.searchPanel }
+        </div>
+      </div>
+  )}
 	
   render(){
   	const expandColumnOptions={ 
@@ -43,16 +50,23 @@ class Articles extends Component {
       expandColumnComponent: this.expandColumnComponent,
       columnWidth: 25
     }
+    const options ={
+      defaultSortName:'entry_date',
+      defaultSortOrder: 'asc',
+      expandBy: 'column',
+      toolBar: this.createCustomToolBar,
+      searchField: (props) => (<MySearchField { ...props }/>) 
+    }
   	  return(
     	<BootstrapTable 
      	className="BootstrapTable-style" 
-     	hover condensed 
+     	hover condensed search
      	expandableRow={ this.isExpandableRow }
       expandComponent={ this.expandComponent }
      	data={ this.props.data.articles } 
      	expandColumnOptions={expandColumnOptions }
      	autoCollapse={ { sort: true, search: true, filter: true } }
-     	options={{defaultSortName:'entry_date', defaultSortOrder: 'asc', expandBy: 'column', }} 
+     	options={options}
      	trClassName={this.rowClassNameFormat}>
 	    <TableHeaderColumn width='150' dataField='id' autoValue={ true } hidden={ true } isKey={ true }>Cliente</TableHeaderColumn>
       <TableHeaderColumn dataField='customer_contact'  dataSort>Cliente</TableHeaderColumn>

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import {getListArticleType} from '../../services/Api'
-import { FormGroup, ControlLabel,FormControl } from 'react-bootstrap'
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 let number = 1
-class PricesListModal extends React.Component {
+class PricesListModal extends Component {
   constructor(){
     super()
     this.state={
@@ -51,7 +50,7 @@ class PricesListModal extends React.Component {
     }
   }  
   render() {
-    const { columns, validateState } = this.props;
+    const { validateState } = this.props;
     return (
       <div className='modal-body'>
         <div>
@@ -74,7 +73,7 @@ class PricesListModal extends React.Component {
               options={this.state.leather}/>
           {
             this.props.columns.map((column, i) => {
-              const {editable, format, field, name, hiddenOnInsert} = column;
+              const {field, name, hiddenOnInsert} = column;
               if (hiddenOnInsert) {
                 // when you want same auto generate value
                 // and not allow edit, for example ID field

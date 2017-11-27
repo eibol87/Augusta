@@ -10,29 +10,29 @@
 		"category": "Artículos",
 		"items":[
 			{"id": 3, "title": "Buscar", "link": "/articles/all", "icon": "fa fa-search"},
-			{"id": 2, "title": "Tarifa de precios", "link": "/priceslist", "icon": "fa fa-list-ol"}
+			{"id": 4, "title": "Tarifa de precios", "link": "/priceslist", "icon": "fa fa-list-ol"}
 		]
 	},
 	{
 		"category": "Acciones",
 		"items":[
 			{"id": 4, "title": "Finalizar", "link": "/articles/pending", "icon": "fa fa-check-square-o"},
-			{"id": 4, "title": "Entregar", "link": "/articles/finalized", "icon": "fa fa-car"},
-			{"id": 4, "title": "Facturar", "link": "/articles/delivered", "icon": "fa fa-list-alt"}	
+			{"id": 5, "title": "Entregar", "link": "/articles/finalized", "icon": "fa fa-car"},
+			{"id": 6, "title": "Facturar", "link": "/articles/delivered", "icon": "fa fa-list-alt"}	
 		]
 	},
 	{
 		"category": "Contabilidad",
 		"items":[
-			{"id": 3, "title": "Albaran", "link": "/deliveryNotes", "icon": "fa fa-sticky-note-o"},
-			{"id": 4, "title": "Cobros", "link": "/customers/payments", "icon": "fa fa-money"}
+			{"id": 7, "title": "Albaran", "link": "/deliveryNotes", "icon": "fa fa-sticky-note-o"},
+			{"id": 8, "title": "Cobros", "link": "/customers/payments", "icon": "fa fa-money"}
 		]
 	},
 	{
 		"category": "Mi cuenta",
 		"items":[
-			{"id": 5, "title": "Login", "link": "/login", "icon": "fa fa-sign-in"},
-			{"id": 5, "title": "Logout", "link": "/logout", "icon": "fa fa-sign-out"}
+			{"id": 9, "title": "Login", "link": "/login", "icon": "fa fa-sign-in"},
+			{"id": 10, "title": "Logout", "link": "/logout", "icon": "fa fa-sign-out"}
 		]
 	}
 ]

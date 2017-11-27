@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class CustomersEnterpriseModal extends React.Component {
+class CustomersEnterpriseModal extends Component {
 
   getFieldValue() {
     const newRow = {};
@@ -11,7 +11,7 @@ class CustomersEnterpriseModal extends React.Component {
   }
 
   render() {
-    const { columns, validateState } = this.props;
+    const { validateState } = this.props;
     return (
       <div className='modal-body'>
         <h2 style={ { color: 'red' } }>Custom body</h2>
@@ -19,8 +19,6 @@ class CustomersEnterpriseModal extends React.Component {
           {
             this.props.columns.map((column, i) => {
               const {
-                editable,
-                format,
                 field,
                 name,
                 hiddenOnInsert
