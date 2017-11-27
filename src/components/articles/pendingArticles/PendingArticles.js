@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import PanelContainer from '../../panelContainer/PanelContainer.js'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import MySearchField from '../../forms/MySearchField'
-
+let resultSearch=''
 class PendingArticles extends Component {
   constructor(){
     super()
+    this.state={
+      valueSearch:''
+    }
     this.handleKeyPress = this.handleKeyPress.bind(this)
+    this.handleAfterSearch = this.handleAfterSearch.bind(this)
+
   }
 	dateFormatter(cell, row) {
 		cell =new Date(cell)
@@ -25,18 +30,36 @@ class PendingArticles extends Component {
     if(target.charCode === 13){
       alert('ABEEEEL!!!'); 
   }}
+  handleAfterSearch(searchText, result) {
+    //este variable la declaro fuera de la clase por que necesito su valor pero no puedo usar el setState
+    //me renderiza y me haria bucle infinto
+    resultSearch=result
+    return result
+    
+    if (searchText === '') {
+     this.refs.table.cleanSelected();
+    }
+  }
+  forceRender(){
+    this.setState({ valueSearch:'abel'})
+  }
+  //shouldComponentUpdate(nextProps, nextState){}
+ 
 	render(){
-		const options={
+   	 const options={
       defaultSortName:'customer_contact',
       defaultSortOrder: 'asc',
       toolBar: this.createCustomToolBar,
+      afterSearch: this.handleAfterSearch,
       searchField: (props) => (
         <MySearchField { ...props }
           placeholder={"hola"}
+          data={resultSearch}
+          forceRender={this.forceRender.bind(this)}
           onKeyPress={this.handleKeyPress}/>)
     }
   	return(
-	   	<BootstrapTable 
+	   	<BootstrapTable ref='table'
 	    	className="BootstrapTable-style" 
 	     	striped hover condensed search
 	     	data={ this.props.data.articles } 

@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import toastr from 'toastr'
+import { UpdateStateArticle } from '../../services/Api'
 
 class MySearchField extends React.Component {
   constructor(){
     super()
     this.state={
       value:'',
+      data:'',
       placeholder:'buscame'
     }
     this.handleKeyPress = this.handleKeyPress.bind(this)
@@ -24,27 +27,33 @@ class MySearchField extends React.Component {
       value:e.target.value
     })
   }
-  handleKeyPress(target) {
+  async handleKeyPress(target) {
+    //if press enter
     if(target.charCode === 13){
-      alert('Enter clicked!!!'); 
-       this.setState({
-        value:''
-       })
-       return "has entrado"
+      const id = this.props.data[0].id
+      const result = await UpdateStateArticle(id,'finalized')
+      if(result === 200){
+        toastr.success(`Se ha finalizado la prenda ${result.barcode}`)
+      } 
+      this.props.forceRender()
+      this.setState({ value:''})
   }}
+  componentWillReceiveProps(nextProps){
+    this.setState({ data:this.props.data})
+  }
   render() {
     return (
-        <input
-          className={ `form-control` }
-          type='text'
-          value={this.state.value}
-          onChange={this.handleChange}
-          autoFocus={true}
-          onKeyPress={this.handleKeyPress}
-          defaultValue={ this.state.value }
-          placeholder={this.props.placeholder || this.state.placeholder }
-          onKeyUp={ this.props.search }/>
-      
+      <input
+        className={ `form-control` }
+        type='text'
+        value={this.state.value}
+        onChange={this.handleChange}
+        autoFocus={true}
+        onKeyPress={this.handleKeyPress}
+        defaultValue={ this.state.value }
+        placeholder={this.props.placeholder || this.state.placeholder }
+        onKeyUp={ this.props.search }
+      />
     )
   }
 }

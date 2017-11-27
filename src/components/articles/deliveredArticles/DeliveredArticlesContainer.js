@@ -26,7 +26,7 @@ class DeliveredArticlesContainer extends Component {
    this.getData()
   }
   async getData(){
-    const response = await getArticles('pending')
+    const response = await getArticles('delivered')
     if(response){
       this.setState({
       articles: [...response]

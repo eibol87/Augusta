@@ -148,5 +148,21 @@ export function createArticle (article){
       toastr.error('Problema al comunicarse con el servidor')
     });
 }
+export function UpdateStateArticle (id,state){
+  const token = `Bearer ${getSessionStorage()}`
+  const url= `${REACT_APP_API_SERVER}article/${id}`
+    return axios.put(url,
+      {state:state},{
+        headers: {
+           Authorization: `${token}`
+        }
+    })
+    .then(response => response.data)
+    .catch(function (error) {
+      // Display an error toast, with a title
+      toastr.error('Problema al comunicarse con el servidor')
+
+    });
+}
 
 
