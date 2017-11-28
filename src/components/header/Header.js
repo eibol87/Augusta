@@ -13,15 +13,19 @@ const Header = () => (
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav className="Header--Nav--showMenu">
-      {data.map((menu) => {
+      {
+        data.map((menu, index) => {
         return (
-          <NavDropdown eventKey={menu.id} title={menu.category} id={menu.id}>
-            {menu.items.map((items) =>
-              <MenuItem href={items.link} eventKey={items.id}>{items.title}</MenuItem>
-            )}
+          <NavDropdown key={index} eventKey={index} title={menu.category} id={index}>
+            {
+              menu.items.map((items) =>
+               <MenuItem key={items.id}  href={items.link} eventKey={items.id}>{items.title}</MenuItem>
+              )
+          }
           </NavDropdown>
         )
-      })}
+        })
+    }
       </Nav>
     </Navbar.Collapse>
   </Navbar>

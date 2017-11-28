@@ -1,38 +1,43 @@
 [
 	{
+		"id": "66d2c622-4245-4aaf-93f2-40772cadb3a7",
 		"category": "Clientes",
 		"items":[
-			{"id": 1, "title": "Empresas", "link": "/customers/empresa", "icon": "fa fa-address-book-o"},
-			{"id": 2, "title": "Particulares", "link": "/customers/particular", "icon": "fa fa-address-book"}
+			{"id": "658e8925-9bca-42f3-bdfb-e3d635e51bb0", "title": "Empresas", "link": "/customers/empresa", "icon": "fa fa-address-book-o"},
+			{"id": "6a2c8dd1-6347-43ca-ae75-47d21d01de87", "title": "Particulares", "link": "/customers/particular", "icon": "fa fa-address-book"}
 		]
 	},
 	{
+		"id": "ada08b4b-3fce-4751-89c0-97f59b88b709",
 		"category": "Artículos",
 		"items":[
-			{"id": 3, "title": "Buscar", "link": "/articles/all", "icon": "fa fa-search"},
-			{"id": 4, "title": "Tarifa de precios", "link": "/priceslist", "icon": "fa fa-list-ol"}
+			{"id": "57f5a0a0-ed00-46b1-bc20-96b3839f0812", "title": "Buscar", "link": "/articles/all", "icon": "fa fa-search"},
+			{"id": "d2c5f092-cfd3-49ef-a603-895bbb5f9656", "title": "Tarifa de precios", "link": "/priceslist", "icon": "fa fa-list-ol"}
 		]
 	},
 	{
+		"id": "79e204ad-2cfa-4b67-8cd0-78cc6906eab7",
 		"category": "Acciones",
 		"items":[
-			{"id": 4, "title": "Finalizar", "link": "/articles/pending", "icon": "fa fa-check-square-o"},
-			{"id": 5, "title": "Entregar", "link": "/articles/finalized", "icon": "fa fa-car"},
-			{"id": 6, "title": "Facturar", "link": "/articles/delivered", "icon": "fa fa-list-alt"}	
+			{"id": "55381303-a707-4d6c-bf84-f46c1ebabca6", "title": "Finalizar", "link": "/articles/pending", "icon": "fa fa-check-square-o"},
+			{"id": "4555cff3-54ff-423e-8e21-90acebd9ec5a", "title": "Entregar", "link": "/articles/finalized", "icon": "fa fa-car"},
+			{"id": "a6672a87-2593-4ccf-8129-fbf229ed487b", "title": "Facturar", "link": "/articles/delivered", "icon": "fa fa-list-alt"}	
 		]
 	},
 	{
+		"id": "85fa7e36-1c91-4beb-a144-59be07c2608c",
 		"category": "Contabilidad",
 		"items":[
-			{"id": 7, "title": "Albaran", "link": "/deliveryNotes", "icon": "fa fa-sticky-note-o"},
-			{"id": 8, "title": "Cobros", "link": "/customers/payments", "icon": "fa fa-money"}
+			{"id": "e58466aa-8dbd-4bf6-bbd5-fa27fdfd8cda", "title": "Albaran", "link": "/deliveryNotes", "icon": "fa fa-sticky-note-o"},
+			{"id": "c36c330a-ab0f-4a60-958b-78d2d7ba822f", "title": "Cobros", "link": "/customers/payments", "icon": "fa fa-money"}
 		]
 	},
 	{
+		"id": "f398151a-1c68-41a3-afa9-bfb33622da75",
 		"category": "Mi cuenta",
 		"items":[
-			{"id": 9, "title": "Login", "link": "/login", "icon": "fa fa-sign-in"},
-			{"id": 10, "title": "Logout", "link": "/logout", "icon": "fa fa-sign-out"}
+			{"id": "fee3c443-4563-4871-be47-e17b45738729", "title": "Login", "link": "/login", "icon": "fa fa-sign-in"},
+			{"id": "1f30c08b-c796-40bd-93a7-73abb851db62", "title": "Logout", "link": "/logout", "icon": "fa fa-sign-out"}
 		]
 	}
 ]

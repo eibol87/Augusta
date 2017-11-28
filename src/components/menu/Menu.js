@@ -8,21 +8,24 @@ class Menu extends Component {
 		return(
 			<div className="Menu">
 		  	<ul className="Menu--lu">
-					{data.map((menu) => {
-						return (
-							<div>
-								<li key={menu.id} className="Menu--li--header"><span>{menu.category}</span></li>
-								{menu.items.map((items) =>
-									<li key={menu.id}>
-						      		<Link to={items.link}>
-						      			<i className={`${items.icon} Menu--glyph-icon`} aria-hidden="true"></i>
-					         			<span>{items.title}</span>
+					{
+						data.map( menu  => (
+							<div key={menu.id} >
+								<li className="Menu--li--header"><span>{menu.category}</span></li>
+								{
+									menu.items.map( submenu =>
+									<li key={submenu.id}>
+						      		<Link to={submenu.link}>
+						      			<i className={`${submenu.icon} Menu--glyph-icon`} aria-hidden="true"></i>
+					         			<span>{submenu.title}</span>
 						       		</Link>
 				         	</li>
-								)}
+								)
+							}
 							</div>
 						)
-					})}
+					)
+				}
 		    </ul>
 		  </div>
 		)

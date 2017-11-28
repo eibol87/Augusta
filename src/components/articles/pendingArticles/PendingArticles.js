@@ -34,11 +34,10 @@ class PendingArticles extends Component {
     //este variable la declaro fuera de la clase por que necesito su valor pero no puedo usar el setState
     //me renderiza y me haria bucle infinto
     resultSearch=result
-    return result
-    
     if (searchText === '') {
      this.refs.table.cleanSelected();
     }
+     return result
   }
   forceRender(){
     this.setState({ valueSearch:'abel'})

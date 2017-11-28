@@ -50,7 +50,6 @@ class MySearchField extends React.Component {
         onChange={this.handleChange}
         autoFocus={true}
         onKeyPress={this.handleKeyPress}
-        defaultValue={ this.state.value }
         placeholder={this.props.placeholder || this.state.placeholder }
         onKeyUp={ this.props.search }
       />
