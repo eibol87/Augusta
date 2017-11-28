@@ -70,12 +70,16 @@ class PendingArticlesContainer extends Component {
     }
     return true
   }
+  handleMultipleSelection(dato){
+    console.log(dato)
+  }
   render(){
     return(
       <PendingArticles 
         data={this.state} 
         updateData={this.updateData}
         handleKeyPress={this.handleKeyPress}
+        handleMultipleSelection={this.handleMultipleSelection}
       />
     )
   }

@@ -2,15 +2,20 @@ import React, { Component } from 'react';
 import PanelContainer from '../../panelContainer/PanelContainer.js'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import MySearchField from '../../forms/MySearchField'
+import MyButtonAction from '../../forms/MyButtonAction'
+
 let resultSearch=''
+
+
 class PendingArticles extends Component {
   constructor(){
     super()
     this.state={
-      valueSearch:''
+      valueSearch:'',
+      selected:[]
     }
     this.handleAfterSearch = this.handleAfterSearch.bind(this)
-
+    this.onRowSelect = this.onRowSelect.bind(this)
   }
 	dateFormatter(cell, row) {
 		cell =new Date(cell)
@@ -34,11 +39,36 @@ class PendingArticles extends Component {
     }
      return result
   }
+  createCustomButtonGroup = props => {
+    return (
+      <MyButtonAction 
+        handleMultipleSelection={this.props.handleMultipleSelection}
+        data={this.state.selected}
+      />
+    );
+  }
+  onRowSelect(row, isSelected, e) {
+    //console.log("id: ",row.id);
+    let filter = this.state.selected.find(selected => selected.id === row.id );
+    console.log(filter)
+    if(filter){
+      let filter = this.state.selected.filter(selected => selected.id !== row.id );
+      this.setState({
+        selected:filter
+      })
+    }else{
+      const joined = this.state.selected.concat(row);
+      this.setState({
+        selected:joined
+      })
+    }
+  }
   
 	render(){
     const options={
       defaultSortName:'customer_contact',
       defaultSortOrder: 'asc',
+      btnGroup: this.createCustomButtonGroup,
       toolBar: this.createCustomToolBar,
       afterSearch: this.handleAfterSearch,
       searchField: (props) => (
@@ -52,7 +82,8 @@ class PendingArticles extends Component {
     const selectRowProp = {
       mode: 'checkbox',
       bgColor: 'pink',
-      clickToSelect: true  // enable click to select
+      clickToSelect: true,
+      onSelect: this.onRowSelect,
     };
   	return(
 	   	<BootstrapTable 
