@@ -36,26 +36,35 @@ class PendingArticles extends Component {
   }
   
 	render(){
-   	 const options={
+    const options={
       defaultSortName:'customer_contact',
       defaultSortOrder: 'asc',
       toolBar: this.createCustomToolBar,
       afterSearch: this.handleAfterSearch,
       searchField: (props) => (
         <MySearchField { ...props }
+          placeholder={this.props.placeholder}
           data={resultSearch}
           updateData={this.props.updateData}
           handleKeyPress={this.props.handleKeyPress}
         />)
     }
+    const selectRowProp = {
+      mode: 'checkbox',
+      bgColor: 'pink',
+      clickToSelect: true  // enable click to select
+    };
   	return(
-	   	<BootstrapTable ref='table'
+	   	<BootstrapTable 
+        selectRow={ selectRowProp }
+        ref='table'
 	    	className="BootstrapTable-style" 
 	     	striped hover condensed search
 	     	data={ this.props.data.articles } 
 	     	options={options} 
 	     	trClassName={this.rowClassNameFormat}>
-		  <TableHeaderColumn dataField='customer_contact' isKey dataSort>Cliente</TableHeaderColumn>
+		  <TableHeaderColumn dataField='id' isKey hidden={ true } dataSort>Cliente</TableHeaderColumn>
+      <TableHeaderColumn dataField='customer_contact' dataSort>Cliente</TableHeaderColumn>
 		  <TableHeaderColumn dataField='type' dataSort>Artículo</TableHeaderColumn>
 		 	<TableHeaderColumn dataField='leather'dataSort>Tipo</TableHeaderColumn>
 		  <TableHeaderColumn dataField='color' dataSort>Color</TableHeaderColumn>

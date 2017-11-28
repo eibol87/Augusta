@@ -9,7 +9,7 @@ class MySearchField extends React.Component {
     this.state={
       value:'',
       data:'',
-      placeholder:'buscame'
+      placeholder:'código de barras'
     }
     this.handleKeyPress = this.handleKeyPress.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -49,7 +49,7 @@ class MySearchField extends React.Component {
         onChange={this.handleChange}
         autoFocus={true}
         onKeyPress={this.handleKeyPress}
-        placeholder={this.props.placeholder || this.state.placeholder }
+        placeholder={this.state.placeholder }
         onKeyUp={ this.props.search }
       />
     )
