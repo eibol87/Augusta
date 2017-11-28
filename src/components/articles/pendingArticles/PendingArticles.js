@@ -44,7 +44,9 @@ class PendingArticles extends Component {
       searchField: (props) => (
         <MySearchField { ...props }
           data={resultSearch}
-          updateData={this.props.updateData}/>)
+          updateData={this.props.updateData}
+          handleKeyPress={this.props.handleKeyPress}
+        />)
     }
   	return(
 	   	<BootstrapTable ref='table'

@@ -60,12 +60,25 @@ class PendingArticlesContainer extends Component {
         toastr.success(`Se ha finalizado la prenda ${result.barcode}`)
         this.getData() 
       }
- }
+  }
+  handleKeyPress(target,data) {
+    if(target.charCode === 13){
+      if(data.length === 1){
+        const id = data[0].id
+        this.updateData(id)
+      }else{
+        toastr.warning(`Hay mas de un resultado en la busqueda`)
+      }
+    }
+    return true
+  }
   render(){
     return(
       <PendingArticles 
         data={this.state} 
-        updateData={this.updateData} />
+        updateData={this.updateData}
+        handleKeyPress={this.handleKeyPress}
+      />
     )
   }
 }

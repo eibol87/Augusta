@@ -27,18 +27,14 @@ class MySearchField extends React.Component {
       value:e.target.value
     })
   }
-  async handleKeyPress(target) {
-    //if press enter
-    if(target.charCode === 13){
-      if(this.props.data.length === 1){
-        const id = this.props.data[0].id
-        this.props.updateData(id)
-        this.setState({ value:''})
-      }else{
-         toastr.warning(`Hay mas de un resultado en la busqueda`)
-      }
-      
-  }}
+  handleKeyPress(target) {
+    if(this.props.handleKeyPress){
+      this.props.handleKeyPress(target,this.props.data)
+      this.setState({ value:''})
+    } else{
+       return false
+    }
+  }
   componentWillReceiveProps(nextProps){
     this.setState({ data:this.props.data})
   }
