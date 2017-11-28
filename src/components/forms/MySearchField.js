@@ -28,11 +28,13 @@ class MySearchField extends React.Component {
     })
   }
   handleKeyPress(target) {
-    if(this.props.handleKeyPress){
-      this.props.handleKeyPress(target,this.props.data)
-      this.setState({ value:''})
-    } else{
-       return false
+    if(target.charCode === 13){
+      if(this.props.handleKeyPress){
+        this.props.handleKeyPress(target,this.props.data)
+        this.setState({ value:''})
+      } else{
+         return false
+      }
     }
   }
   componentWillReceiveProps(nextProps){

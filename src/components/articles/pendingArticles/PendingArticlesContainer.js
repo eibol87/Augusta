@@ -62,13 +62,11 @@ class PendingArticlesContainer extends Component {
       }
   }
   handleKeyPress(target,data) {
-    if(target.charCode === 13){
-      if(data.length === 1){
-        const id = data[0].id
-        this.updateData(id)
-      }else{
-        toastr.warning(`Hay mas de un resultado en la busqueda`)
-      }
+    if(data.length === 1){
+      const id = data[0].id
+      this.updateData(id)
+    }else{
+      toastr.warning(`Hay mas de un resultado en la busqueda`)
     }
     return true
   }
