@@ -16,6 +16,7 @@ class PendingArticles extends Component {
     }
     this.handleAfterSearch = this.handleAfterSearch.bind(this)
     this.onRowSelect = this.onRowSelect.bind(this)
+    this.onSelectAll =  this.onSelectAll.bind(this)
   }
 	dateFormatter(cell, row) {
 		cell =new Date(cell)
@@ -49,18 +50,21 @@ class PendingArticles extends Component {
   }
   onRowSelect(row, isSelected, e) {
     //console.log("id: ",row.id);
-    let filter = this.state.selected.find(selected => selected.id === row.id );
-    console.log(filter)
+    const filter = this.state.selected.find(selected => selected.id === row.id );
     if(filter){
-      let filter = this.state.selected.filter(selected => selected.id !== row.id );
-      this.setState({
-        selected:filter
-      })
+      const filter = this.state.selected.filter(selected => selected.id !== row.id );
+      this.setState({ selected:filter })
     }else{
       const joined = this.state.selected.concat(row);
-      this.setState({
-        selected:joined
-      })
+      this.setState({ selected:joined })
+    }
+  }
+  onSelectAll(isSelected, rows){
+    console.log(rows)
+    if((this.state.selected).length > 0 ){
+      this.setState({ selected:[] })
+    }else{
+      this.setState({ selected:rows })
     }
   }
   
@@ -84,6 +88,7 @@ class PendingArticles extends Component {
       bgColor: 'pink',
       clickToSelect: true,
       onSelect: this.onRowSelect,
+      onSelectAll: this.onSelectAll
     };
   	return(
 	   	<BootstrapTable 

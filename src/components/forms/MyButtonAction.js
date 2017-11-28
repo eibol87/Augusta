@@ -9,7 +9,7 @@ class MyButtonAction extends Component {
   }
   handleMultipleSelection(){
     if(this.props.handleMultipleSelection){
-      this.props.handleMultipleSelection("hola") 
+      this.props.handleMultipleSelection(this.props.data)
     }
   }
   render() {

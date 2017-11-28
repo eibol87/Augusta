@@ -4,6 +4,7 @@ import PendingArticles from './PendingArticles'
 import Moment from 'moment'
 import toastr from 'toastr'
 
+const PENDING = 'pending'
 class PendingArticlesContainer extends Component {
   constructor(){
     super()
@@ -25,12 +26,13 @@ class PendingArticlesContainer extends Component {
       }]
       }
       this.getData = this.getData.bind(this)
+      //this.handleMultipleSelection = this.handleMultipleSelection.bind(this)
     }
   componentDidMount(){
     this.getData()
   }
   async getData(){
-    const response = await getArticles('pending')
+    const response = await getArticles(PENDING)
     if(response){
       this.setState({
         articles: [...response]
@@ -70,8 +72,11 @@ class PendingArticlesContainer extends Component {
     }
     return true
   }
-  handleMultipleSelection(dato){
-    console.log(dato)
+  handleMultipleSelection = (data) => {
+    data.forEach(function(article){
+      console.log(article.id)
+      this.updateData(article.id)
+    },this)
   }
   render(){
     return(
