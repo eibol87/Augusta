@@ -18,7 +18,7 @@ class MyButtonAction extends Component {
         onClick={this.handleMultipleSelection}
         bsStyle="danger" 
         bsSize="small">
-        Finalizar
+        {this.props.name}
       </Button>
     )
   }

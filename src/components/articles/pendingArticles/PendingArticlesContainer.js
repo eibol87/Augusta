@@ -26,7 +26,6 @@ class PendingArticlesContainer extends Component {
       }]
       }
       this.getData = this.getData.bind(this)
-      //this.handleMultipleSelection = this.handleMultipleSelection.bind(this)
     }
   componentDidMount(){
     this.getData()
@@ -63,14 +62,8 @@ class PendingArticlesContainer extends Component {
         this.getData() 
       }
   }
-  handleKeyPress(target,data) {
-    if(data.length === 1){
-      const id = data[0].id
-      this.updateData(id)
-    }else{
-      toastr.warning(`Hay mas de un resultado en la busqueda`)
-    }
-    return true
+  handleKeyPress(id) {
+   this.updateData(id)
   }
   handleMultipleSelection = (data) => {
     data.forEach(function(article){

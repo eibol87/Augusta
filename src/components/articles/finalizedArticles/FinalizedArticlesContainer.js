@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {getArticles} from '../../../services/Api'
 import FinalizedArticles from './FinalizedArticles'
 import Moment from 'moment'
-
+const FINALIZED = 'finalized'
 class FinalizedArticlesContainer extends Component {
   constructor(){
     super()
@@ -28,7 +28,7 @@ class FinalizedArticlesContainer extends Component {
     this.getData()
   }
   async getData(){
-    const response = await getArticles('finalized')
+    const response = await getArticles(FINALIZED)
     if(response){
       this.setState({
         articles: [...response]
@@ -53,6 +53,12 @@ class FinalizedArticlesContainer extends Component {
     }
   }
 
+  handleMultipleSelection = (data) => {
+    data.forEach(function(article){
+      console.log(article.id)
+      this.updateData(article.id)
+    },this)
+  }
  
   render(){
     return(

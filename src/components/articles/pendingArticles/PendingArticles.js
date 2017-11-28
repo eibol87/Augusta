@@ -45,6 +45,7 @@ class PendingArticles extends Component {
       <MyButtonAction 
         handleMultipleSelection={this.props.handleMultipleSelection}
         data={this.state.selected}
+        name={"Finalizar"}
       />
     );
   }
