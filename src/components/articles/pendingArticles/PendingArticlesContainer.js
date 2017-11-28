@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {getArticles} from '../../../services/Api'
+import {getArticles,UpdateStateArticle} from '../../../services/Api'
 import PendingArticles from './PendingArticles'
 import Moment from 'moment'
+import toastr from 'toastr'
 
 class PendingArticlesContainer extends Component {
   constructor(){
@@ -23,6 +24,7 @@ class PendingArticlesContainer extends Component {
         customer_fiscal_name:''
       }]
       }
+      this.getData = this.getData.bind(this)
     }
   componentDidMount(){
     this.getData()
@@ -52,10 +54,18 @@ class PendingArticlesContainer extends Component {
       })
     }    
   }
- 
+  updateData = async (id) => {
+    const result = await UpdateStateArticle(id,'finalized')
+      if(result){
+        toastr.success(`Se ha finalizado la prenda ${result.barcode}`)
+        this.getData() 
+      }
+ }
   render(){
     return(
-      <PendingArticles data={this.state} />
+      <PendingArticles 
+        data={this.state} 
+        updateData={this.updateData} />
     )
   }
 }

@@ -9,7 +9,6 @@ class PendingArticles extends Component {
     this.state={
       valueSearch:''
     }
-    this.handleKeyPress = this.handleKeyPress.bind(this)
     this.handleAfterSearch = this.handleAfterSearch.bind(this)
 
   }
@@ -26,10 +25,6 @@ class PendingArticles extends Component {
         </div>
       </div>
   )}
-  handleKeyPress= (target) => {
-    if(target.charCode === 13){
-      alert('ABEEEEL!!!'); 
-  }}
   handleAfterSearch(searchText, result) {
     //este variable la declaro fuera de la clase por que necesito su valor pero no puedo usar el setState
     //me renderiza y me haria bucle infinto
@@ -39,11 +34,7 @@ class PendingArticles extends Component {
     }
      return result
   }
-  forceRender(){
-    this.setState({ valueSearch:'abel'})
-  }
-  //shouldComponentUpdate(nextProps, nextState){}
- 
+  
 	render(){
    	 const options={
       defaultSortName:'customer_contact',
@@ -52,10 +43,8 @@ class PendingArticles extends Component {
       afterSearch: this.handleAfterSearch,
       searchField: (props) => (
         <MySearchField { ...props }
-          placeholder={"hola"}
           data={resultSearch}
-          forceRender={this.forceRender.bind(this)}
-          onKeyPress={this.handleKeyPress}/>)
+          updateData={this.props.updateData}/>)
     }
   	return(
 	   	<BootstrapTable ref='table'

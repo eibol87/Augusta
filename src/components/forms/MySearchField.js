@@ -30,13 +30,14 @@ class MySearchField extends React.Component {
   async handleKeyPress(target) {
     //if press enter
     if(target.charCode === 13){
-      const id = this.props.data[0].id
-      const result = await UpdateStateArticle(id,'finalized')
-      if(result === 200){
-        toastr.success(`Se ha finalizado la prenda ${result.barcode}`)
-      } 
-      this.props.forceRender()
-      this.setState({ value:''})
+      if(this.props.data.length === 1){
+        const id = this.props.data[0].id
+        this.props.updateData(id)
+        this.setState({ value:''})
+      }else{
+         toastr.warning(`Hay mas de un resultado en la busqueda`)
+      }
+      
   }}
   componentWillReceiveProps(nextProps){
     this.setState({ data:this.props.data})
