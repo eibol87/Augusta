@@ -10,6 +10,7 @@ class MyButtonAction extends Component {
   handleMultipleSelection(){
     if(this.props.handleMultipleSelection){
       this.props.handleMultipleSelection(this.props.data)
+      this.props.resetState()
     }
   }
   render() {

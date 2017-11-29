@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import {getArticles} from '../../../services/Api'
+import {getArticles,UpdateStateArticle} from '../../../services/Api'
 import FinalizedArticles from './FinalizedArticles'
 import Moment from 'moment'
+import toastr from 'toastr'
 const FINALIZED = 'finalized'
+const DELIVERED = 'delivered'
 class FinalizedArticlesContainer extends Component {
   constructor(){
     super()
@@ -23,6 +25,7 @@ class FinalizedArticlesContainer extends Component {
         customer_fiscal_name:''
       }]
       }
+       this.getData = this.getData.bind(this)
     }
   componentDidMount(){
     this.getData()
@@ -52,7 +55,16 @@ class FinalizedArticlesContainer extends Component {
       })
     }
   }
-
+  updateData = async (id) => {
+    const result = await UpdateStateArticle(id,DELIVERED)
+      if(result){
+        toastr.success(`Se ha finalizado la prenda ${result.barcode}`)
+        this.getData() 
+      }
+  }
+  handleKeyPress(id) {
+   this.updateData(id)
+  }
   handleMultipleSelection = (data) => {
     data.forEach(function(article){
       console.log(article.id)
@@ -62,7 +74,10 @@ class FinalizedArticlesContainer extends Component {
  
   render(){
     return(
-      <FinalizedArticles data={this.state}/>
+      <FinalizedArticles data={this.state}
+        updateData={this.updateData}
+        handleKeyPress={this.handleKeyPress}
+        handleMultipleSelection={this.handleMultipleSelection}/>
     )
   }
 }

@@ -5,6 +5,7 @@ import Moment from 'moment'
 import toastr from 'toastr'
 
 const PENDING = 'pending'
+const FINALIZED = 'finalized'
 class PendingArticlesContainer extends Component {
   constructor(){
     super()
@@ -56,7 +57,7 @@ class PendingArticlesContainer extends Component {
     }    
   }
   updateData = async (id) => {
-    const result = await UpdateStateArticle(id,'finalized')
+    const result = await UpdateStateArticle(id,FINALIZED)
       if(result){
         toastr.success(`Se ha finalizado la prenda ${result.barcode}`)
         this.getData() 

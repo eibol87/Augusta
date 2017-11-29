@@ -6,7 +6,6 @@ import MyButtonAction from '../../forms/MyButtonAction'
 
 let resultSearch=''
 
-
 class PendingArticles extends Component {
   constructor(){
     super()
@@ -17,6 +16,7 @@ class PendingArticles extends Component {
     this.handleAfterSearch = this.handleAfterSearch.bind(this)
     this.onRowSelect = this.onRowSelect.bind(this)
     this.onSelectAll =  this.onSelectAll.bind(this)
+    this.resetState =  this.resetState.bind(this)
   }
 	dateFormatter(cell, row) {
 		cell =new Date(cell)
@@ -46,11 +46,11 @@ class PendingArticles extends Component {
         handleMultipleSelection={this.props.handleMultipleSelection}
         data={this.state.selected}
         name={"Finalizar"}
+        resetState={this.resetState}
       />
     );
   }
   onRowSelect(row, isSelected, e) {
-    //console.log("id: ",row.id);
     const filter = this.state.selected.find(selected => selected.id === row.id );
     if(filter){
       const filter = this.state.selected.filter(selected => selected.id !== row.id );
@@ -61,12 +61,14 @@ class PendingArticles extends Component {
     }
   }
   onSelectAll(isSelected, rows){
-    console.log(rows)
     if((this.state.selected).length > 0 ){
       this.setState({ selected:[] })
     }else{
       this.setState({ selected:rows })
     }
+  }
+  resetState(){
+    this.setState({ selected:[] })
   }
   
 	render(){
