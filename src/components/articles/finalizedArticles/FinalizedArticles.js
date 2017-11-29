@@ -14,6 +14,7 @@ class FinalizedArticles extends Component {
     this.handleAfterSearch = this.handleAfterSearch.bind(this)
     this.onRowSelect = this.onRowSelect.bind(this)
     this.onSelectAll =  this.onSelectAll.bind(this)
+    this.resetState =  this.resetState.bind(this)
   }
   dateFormatter(cell, row) {
     cell =new Date(cell)
@@ -63,9 +64,13 @@ class FinalizedArticles extends Component {
       <MyButtonAction 
         handleMultipleSelection={this.props.handleMultipleSelection}
         data={this.state.selected}
-        name={"Finalizar"}
+        name={"Entregar"}
+        resetState={this.resetState}
       />
     );
+  }
+  resetState(){
+    this.setState({ selected:[] })
   }
   render(){
     const options = {

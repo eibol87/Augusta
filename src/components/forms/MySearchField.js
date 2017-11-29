@@ -34,7 +34,7 @@ class MySearchField extends React.Component {
           const id = this.props.data[0].id
           this.props.handleKeyPress(id)
         }else{
-          toastr.warning(`Hay mas de un resultado en la busqueda`)
+          toastr.warning(`Solo puede haber un resultado en la búsqueda`)
         }
         this.setState({ value:''})
       } else{
