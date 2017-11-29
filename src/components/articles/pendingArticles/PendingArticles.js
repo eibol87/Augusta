@@ -35,6 +35,7 @@ class PendingArticles extends Component {
     //este variable la declaro fuera de la clase por que necesito su valor pero no puedo usar el setState
     //me renderiza y me haria bucle infinto
     resultSearch=result
+   // this.setState({valueSearch: result})
     if (searchText === '') {
      this.refs.table.cleanSelected();
     }
@@ -80,6 +81,7 @@ class PendingArticles extends Component {
       afterSearch: this.handleAfterSearch,
       searchField: (props) => (
         <MySearchField { ...props }
+          resetState={this.resetState}
           placeholder={this.props.placeholder}
           data={resultSearch}
           updateData={this.props.updateData}

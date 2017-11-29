@@ -79,7 +79,13 @@ class FinalizedArticles extends Component {
       btnGroup: this.createCustomButtonGroup,
       toolBar: this.createCustomToolBar,
       afterSearch: this.handleAfterSearch,
-      searchField: (props) => (<MySearchField { ...props }/>) }
+      searchField: (props) => (
+        <MySearchField { ...props }
+          placeholder={this.props.placeholder}
+          data={resultSearch}
+          updateData={this.props.updateData}
+          handleKeyPress={this.props.handleKeyPress}
+        />) }
     const selectRowProp = {
       mode: 'checkbox',
       bgColor: 'pink',
@@ -89,6 +95,7 @@ class FinalizedArticles extends Component {
     };
     return(
       <BootstrapTable
+      ref='table'
       selectRow={ selectRowProp }  
       className="BootstrapTable-style"
       striped hover condensed search
