@@ -12,7 +12,7 @@ class PendingArticlesContainer extends Component {
     this.state={
       articles:[],
       selected:[]
-      }
+    }
       this.getData = this.getData.bind(this)
       this.updateSelectedRows = this.updateSelectedRows.bind(this)
     }

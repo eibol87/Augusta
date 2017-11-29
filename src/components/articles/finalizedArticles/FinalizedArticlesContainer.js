@@ -9,23 +9,11 @@ class FinalizedArticlesContainer extends Component {
   constructor(){
     super()
     this.state={
-      articles:[{
-        id:'',
-        final_customer_code:'',
-        barcode:'',
-        type:'',
-        leather:'',
-        color:'',
-        state:'',
-        price:'',
-        complements:[],
-        entry_date:'',
-        output_date:'',
-        customer_contact:'',
-        customer_fiscal_name:''
-      }]
-      }
+      articles:[],
+      selected:[]
+    }
        this.getData = this.getData.bind(this)
+       this.updateSelectedRows = this.updateSelectedRows.bind(this)
     }
   componentDidMount(){
     this.getData()
@@ -71,10 +59,16 @@ class FinalizedArticlesContainer extends Component {
       this.updateData(article.id)
     },this)
   }
+  updateSelectedRows(selected){
+     this.setState({selected:selected})
+
+  }
  
   render(){
     return(
       <FinalizedArticles data={this.state}
+        updateSelectedRows={this.updateSelectedRows}
+        selected={this.state.selected}
         updateData={this.updateData}
         handleKeyPress={this.handleKeyPress}
         handleMultipleSelection={this.handleMultipleSelection}/>
