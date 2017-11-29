@@ -9,10 +9,6 @@ let resultSearch=''
 class PendingArticles extends Component {
   constructor(){
     super()
-    this.state={
-      valueSearch:'',
-      selected:[]
-    }
     this.handleAfterSearch = this.handleAfterSearch.bind(this)
     this.onRowSelect = this.onRowSelect.bind(this)
     this.onSelectAll =  this.onSelectAll.bind(this)
@@ -45,31 +41,31 @@ class PendingArticles extends Component {
     return (
       <MyButtonAction 
         handleMultipleSelection={this.props.handleMultipleSelection}
-        data={this.state.selected}
+        data={this.props.selected}
         name={"Finalizar"}
         resetState={this.resetState}
       />
     );
   }
   onRowSelect(row, isSelected, e) {
-    const filter = this.state.selected.find(selected => selected.id === row.id );
+    const filter = this.props.selected.find(selected => selected.id === row.id );
     if(filter){
-      const filter = this.state.selected.filter(selected => selected.id !== row.id );
-      this.setState({ selected:filter })
+      const filter = this.props.selected.filter(selected => selected.id !== row.id );
+      this.props.updateSelectedRows(filter)
     }else{
-      const joined = this.state.selected.concat(row);
-      this.setState({ selected:joined })
+      const joined = this.props.selected.concat(row);
+      this.props.updateSelectedRows(joined)
     }
   }
   onSelectAll(isSelected, rows){
-    if((this.state.selected).length > 0 ){
-      this.setState({ selected:[] })
+    if((this.props.selected).length > 0 ){
+       this.props.updateSelectedRows([])
     }else{
-      this.setState({ selected:rows })
+      this.props.updateSelectedRows(rows)
     }
   }
   resetState(){
-    this.setState({ selected:[] })
+    this.props.updateSelectedRows([])
   }
   
 	render(){

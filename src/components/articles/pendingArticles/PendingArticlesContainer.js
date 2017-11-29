@@ -10,23 +10,11 @@ class PendingArticlesContainer extends Component {
   constructor(){
     super()
     this.state={
-      articles:[{
-        id:'',
-        final_customer_code:'',
-        barcode:'',
-        type:'',
-        leather:'',
-        color:'',
-        state:'',
-        price:'',
-        complements:[],
-        entry_date:'',
-        output_date:'',
-        customer_contact:'',
-        customer_fiscal_name:''
-      }]
+      articles:[],
+      selected:[]
       }
       this.getData = this.getData.bind(this)
+      this.updateSelectedRows = this.updateSelectedRows.bind(this)
     }
   componentDidMount(){
     this.getData()
@@ -68,13 +56,21 @@ class PendingArticlesContainer extends Component {
   }
   handleMultipleSelection = (data) => {
     data.forEach(function(article){
-      console.log(article.id)
       this.updateData(article.id)
     },this)
+  }
+  componentWillUpdate(nextProps, nextState){
+    console.log(nextState)
+  }
+  updateSelectedRows(selected){
+     this.setState({selected:selected})
+
   }
   render(){
     return(
       <PendingArticles 
+        updateSelectedRows={this.updateSelectedRows}
+        selected={this.state.selected}
         data={this.state} 
         updateData={this.updateData}
         handleKeyPress={this.handleKeyPress}
