@@ -3,7 +3,9 @@ import PanelContainer from '../../panelContainer/PanelContainer.js'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import MySearchField from '../../forms/MySearchField'
 import MyButtonAction from '../../forms/MyButtonAction'
+
 let resultSearch=''
+
 class FinalizedArticles extends Component {
   constructor(){
     super()
@@ -21,6 +23,7 @@ class FinalizedArticles extends Component {
     return `${('0' + cell.getDate()).slice(-2)}/${('0' + (cell.getMonth() + 1)).slice(-2)}/${cell.getFullYear()}`;
   }
   priceFormatter(cell, row) {
+
     return `${cell} <i class='glyphicon glyphicon-eur'></i>`;
   }
   createCustomToolBar = props => {
@@ -53,11 +56,12 @@ class FinalizedArticles extends Component {
   handleAfterSearch(searchText, result) {
     //este variable la declaro fuera de la clase por que necesito su valor pero no puedo usar el setState
     //me renderiza y me haria bucle infinto
-    resultSearch=result
     if (searchText === '') {
-     this.refs.table.cleanSelected();
-    }
+      this.refs.table.cleanSelected();
+    }else{
+      resultSearch = result
      return result
+    }
   }
   createCustomButtonGroup = props => {
     return (
@@ -81,6 +85,7 @@ class FinalizedArticles extends Component {
       afterSearch: this.handleAfterSearch,
       searchField: (props) => (
         <MySearchField { ...props }
+          resetState={this.resetState}
           placeholder={this.props.placeholder}
           data={resultSearch}
           updateData={this.props.updateData}
