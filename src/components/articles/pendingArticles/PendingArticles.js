@@ -34,12 +34,12 @@ class PendingArticles extends Component {
   handleAfterSearch(searchText, result) {
     //este variable la declaro fuera de la clase por que necesito su valor pero no puedo usar el setState
     //me renderiza y me haria bucle infinto
-    resultSearch=result
-   // this.setState({valueSearch: result})
     if (searchText === '') {
-     this.refs.table.cleanSelected();
-    }
+      this.refs.table.cleanSelected();
+    }else{
+      resultSearch = result
      return result
+    }
   }
   createCustomButtonGroup = props => {
     return (

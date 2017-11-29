@@ -30,7 +30,7 @@ class MySearchField extends React.Component {
   handleKeyPress(target) {
     if(target.charCode === 13){
       if(this.props.handleKeyPress){
-        if(this.props.data.length === 1){
+        if(this.props.data.length === 1 &&  this.state.value.length > 0){
           const id = this.props.data[0].id
           this.props.handleKeyPress(id)
           this.props.resetState()
