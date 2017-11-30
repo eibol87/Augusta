@@ -13,28 +13,27 @@ class PricesListModal extends Component {
       selectedOptionLeather:{value:'',label:''},
       selectedOptionType:{value:'',label:''}
     }}
-  state = {
-    selectedOptionType: '',
-    selectedOptionLeather: '',}
+
   getFieldValue() {
     const newRow = {};
     this.props.columns.forEach((column, i) => {
       newRow[column.field] = this.refs[column.field].value;
     }, this);
     return newRow;}
+
   async getData(){
     let type = await getListArticleType('type')
     let leather = await getListArticleType('leather')
-    type = type.map((value) =>({valeu:value, label:value}))
-    leather = leather.map((value) =>({valeu:value, label:value}))
+    type = type.map((value) =>({value:value, label:value}))
+    leather = leather.map((value) =>({value:value, label:value}))
     
     this.setState({
       type:type,
       leather:leather 
     })}
   componentDidMount(){
-
-    this.getData()}
+    this.getData()
+  }
   handleChange = (selectedOption,type) => {
     if(type === 'type'){
       const selectedOptionType = selectedOption

@@ -47,9 +47,13 @@ export function getCustomersPayments (){
       toastr.error('Problema al comunicarse con el servidor')
     });
 }
-export function getPricesList (){
+export function getPricesList (type,leather){
+  let query = '' 
+  if(type && leather){ 
+    query = `?type=${type.label}&leather=${leather.label}`
+  }
   const token = `Bearer ${getSessionStorage()}`
-   const url= `${REACT_APP_API_SERVER}pricesList`
+   const url= `${REACT_APP_API_SERVER}pricesList${query}`
     return axios.get(url,{
         headers: {
            Authorization: `${token}`
@@ -162,6 +166,35 @@ export function UpdateStateArticle (id,state){
       // Display an error toast, with a title
       toastr.error('Problema al comunicarse con el servidor')
 
+    });
+}
+
+export function getColors (){
+  const token = `Bearer ${getSessionStorage()}`
+   const url= `${REACT_APP_API_SERVER}colors`
+    return axios.get(url,{
+        headers: {
+           Authorization: `${token}`
+        }
+    })
+    .then(response => response.data)
+    .catch(function (error) {
+        // Display an error toast, with a title
+      toastr.error('Problema al comunicarse con el servidor')
+    });
+}
+export function getComplements (){
+  const token = `Bearer ${getSessionStorage()}`
+   const url= `${REACT_APP_API_SERVER}complements`
+    return axios.get(url,{
+        headers: {
+           Authorization: `${token}`
+        }
+    })
+    .then(response => response.data)
+    .catch(function (error) {
+        // Display an error toast, with a title
+      toastr.error('Problema al comunicarse con el servidor')
     });
 }
 

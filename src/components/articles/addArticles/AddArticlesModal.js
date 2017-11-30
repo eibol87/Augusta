@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {getListArticleType} from '../../../services/Api'
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 let number = 1
@@ -9,13 +8,19 @@ class AddArticlesModal extends Component {
     this.state={
       type:'',
       leather:'',
+      customers:'',
+      colors:'',
+      price:false,
+      complements:'',
       selectedOption:{value:'',label:''},
-      selectedOptionLeather:{value:'',label:''},
-      selectedOptionType:{value:'',label:''}
+      selectedOptionLeather:false,
+      selectedOptionType:false,
+      selectedOptionCustomers:{value:'',label:''},
+      selectedOptionColors:{value:'',label:''},
+      selectedOptionComplements:{value:'',label:''},
+      selectedOptionPrice:{value:'',label:''}
     }}
-  state = {
-    selectedOptionType: '',
-    selectedOptionLeather: '',}
+  
   getFieldValue() {
     const newRow = {};
     this.props.columns.forEach((column, i) => {
@@ -23,46 +28,84 @@ class AddArticlesModal extends Component {
     }, this);
     return newRow;}
   async getData(){
-    let type = await getListArticleType('type')
-    let leather = await getListArticleType('leather')
-    type = type.map((value) =>({valeu:value, label:value}))
-    leather = leather.map((value) =>({valeu:value, label:value}))
-    
+    const type = await this.props.getListArticle('type')
+    const leather = await this.props.getListArticle('leather')
+    const customers = await this.props.getListCustomers()
+    const colors = await this.props.getColors()
+    const complements = await this.props.getComplements()
     this.setState({
       type:type,
-      leather:leather 
+      leather:leather,
+      customers:customers,
+      colors:colors,
+      complements:complements
     })}
   componentDidMount(){
     this.getData()}
-  handleChange = (selectedOption,type) => {
+  handleChange = async (selectedOption,type) => {
     if(type === 'type'){
       const selectedOptionType = selectedOption
-      this.setState({ selectedOptionType });
-      console.log(`Selected: ${selectedOptionType.label}`);
-    }else if(type === 'leather'){
+      this.setState({ selectedOptionType});
+      const price = await this.getPrice()
+      await this.setState({ selectedOptionPrice:{value:price,label:price}})
+    } else if(type === 'leather'){
       const selectedOptionLeather = selectedOption
-      this.setState({ selectedOptionLeather });
-      console.log(`Selected: ${selectedOptionLeather.label}`);
+      await this.setState({ selectedOptionLeather});
+      const price = await this.getPrice()
+      this.setState({ selectedOptionPrice:{value:price,label:price}})
+    } else if(type === 'customers'){
+      const selectedOptionCustomers = selectedOption
+      this.setState({ selectedOptionCustomers });
+    }else if(type === 'colors'){
+      const selectedOptionColors = selectedOption
+      this.setState({ selectedOptionColors });
+    }else if(type === 'price'){
+      const selectedOptionPrice = selectedOption
+      this.setState({ selectedOptionPrice });
+    }else if(type === 'complements'){
+      const selectedOptionComplements = selectedOption
+      this.setState({ selectedOptionComplements });
     }else{
       this.setState({ selectedOption });
-      console.log(`Selected: ${selectedOption.label}`);
     }
   }  
+   getPrice= async () =>{
+    const typeState = this.state.selectedOptionType
+    const leatherState = this.state.selectedOptionLeather
+    console.log("get:",typeState,leatherState)
+    if(typeState && leatherState){
+    console.log("ENTRO:",typeState,leatherState)
+      const price = await this.props.getPriceArticle(typeState,leatherState)
+      return price
+    }else{
+      return false
+    }
+
+  }
   render() {
     const { validateState } = this.props;
     return (
       <div className='modal-body'>
         <div>
-          <label>Tipos ya creados</label>
+         <label>Clientes</label>
+          <Select
+              name="customers"
+              autoFocus
+              value={this.state.selectedOptionCustomers}
+              onChange={(e) => this.handleChange(e,"customers")}
+              clearable={false}
+              searchable={true}
+              options={this.state.customers}/>
+          <label>Tipo</label>
             <Select
               name="type"
               value={this.state.selectedOptionType}
               onChange={(e) => this.handleChange(e,"type")}
-              clearable={false}
+              clearable={true}
               searchable={true}
               options={this.state.type}/>
      
-          <label>Categorías ya creadas</label>
+          <label>Categorías</label>
             <Select
               name="leather"
               value={this.state.selectedOptionLeather}
@@ -70,6 +113,23 @@ class AddArticlesModal extends Component {
               clearable={false}
               searchable={true}
               options={this.state.leather}/>
+          <label>Colores</label>
+            <Select
+              name="colors"
+              value={this.state.selectedOptionColors}
+              onChange={(e) => this.handleChange(e,"colors")}
+              clearable={false}
+              searchable={true}
+              options={this.state.colors}/>
+          <label>Complementos</label>
+            <Select
+              name="complements"
+              value={this.state.selectedOptionComplements}
+              onChange={(e) => this.handleChange(e,"complements")}
+              clearable={false}
+              searchable={true}
+              options={this.state.complements}/>
+         
           {
             this.props.columns.map((column, i) => {
               const {field, name, hiddenOnInsert} = column;
@@ -81,46 +141,34 @@ class AddArticlesModal extends Component {
               const error = validateState[field] ?
                 (<span className='help-block bg-danger'>{ validateState[field] }</span>) :
                 null;
-              if(field === 'type' ){
-                return (
-                  <div key={ field }>
-                    <label>{ name }</label>
-                    <input
-                      className="form-control" 
-                      ref={field} 
-                      type='text' 
-                      onChange={(e) => this.handleChange(e,field)} 
-                      value={this.state.selectedOptionType.label} />
-                      { error }
-                  </div>
-                )
-              }else if(field === 'leather'){
-                return (
-                  <div key={ field }>
-                    <label>{ name }</label>
-                    <input
-                      className="form-control" 
-                      ref={field} 
-                      type='text' 
-                      onChange={(e) => this.handleChange(e,field)} 
-                      value={this.state.selectedOptionLeather.label} />
-                      { error }
-                  </div>
-                )
-              }else{
-                return (
-                  <div key={ field }>
-                    <label>{ name }</label>
-                    <input
-                      className="form-control" 
-                      ref={field} 
-                      type='text' 
-                      onChange={(e) => this.handleChange(e,field)} 
-                      value={this.state.selectedOption.label} />
-                      { error }
-                  </div>
-                )
-              }
+                if(field == 'price'){
+                  return (
+                    <div key={ field }>
+                      <label>{ name }</label>
+                      <input
+                        className="form-control" 
+                        ref={field} 
+                        type='text' 
+                        onChange={(e) => this.handleChange(e,field)} 
+                        value={this.state.selectedOptionPrice.label} />
+                        { error }
+                    </div>
+                  )
+                }else{
+                  return (
+                    <div key={ field }>
+                      <label>{ name }</label>
+                      <input
+                        className="form-control" 
+                        ref={field} 
+                        type='text' 
+                        onChange={(e) => this.handleChange(e,field)} 
+                        value={this.state.selectedOption.label} />
+                        { error }
+                    </div>
+                  )
+                }
+              
             })
           }
         </div>

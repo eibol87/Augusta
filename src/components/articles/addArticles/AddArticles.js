@@ -28,7 +28,12 @@ class AddArticles extends Component {
   createCustomModalBody = (columns, validateState, ignoreEditable) => {
     return (
       <AddArticlesModal 
+        getPriceArticle={this.props.getPriceArticle}
         columns={ columns }
+        getComplements={this.props.getComplements}
+        getColors={this.props.getColors} 
+        getListCustomers={this.props.getListCustomers}
+        getListArticle={this.props.getListArticle}
         validateState={ validateState }
         ignoreEditable={ ignoreEditable }/>
     );
@@ -49,12 +54,12 @@ class AddArticles extends Component {
         data={ this.props.articles } 
         options={options}>
         <TableHeaderColumn dataField='id' hiddenOnInsert isKey autoValue={ true } hidden={ true }>id</TableHeaderColumn>
-        <TableHeaderColumn dataField='customer_id'>Cliente</TableHeaderColumn>
+        <TableHeaderColumn dataField='customer_id' hiddenOnInsert>Cliente</TableHeaderColumn>
+        <TableHeaderColumn dataField='type' hiddenOnInsert >Tipo</TableHeaderColumn>
+        <TableHeaderColumn dataField='leather' hiddenOnInsert >Categoría</TableHeaderColumn>
+        <TableHeaderColumn dataField='color' hiddenOnInsert>Color</TableHeaderColumn>
+        <TableHeaderColumn dataField='complements' hiddenOnInsert>Complementos</TableHeaderColumn>
         <TableHeaderColumn dataField='final_customer_code'>Código Cliente</TableHeaderColumn>
-        <TableHeaderColumn dataField='type'>Tipo</TableHeaderColumn>
-        <TableHeaderColumn dataField='leather'>Categoría</TableHeaderColumn>
-        <TableHeaderColumn dataField='color'>Color</TableHeaderColumn>
-        <TableHeaderColumn dataField='complements'>Complementos</TableHeaderColumn>
         <TableHeaderColumn dataField='barcode'>Código barras</TableHeaderColumn>
         <TableHeaderColumn dataField='price'>Precio</TableHeaderColumn>
       </BootstrapTable>
