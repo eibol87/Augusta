@@ -88,5 +88,10 @@ electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/
 
 en la carpeta release-builds está el ejecutable
 
+__devtool en electron__:
 
+src/electron-starter.js
+```sh
+descomentar la línea
+ // mainWindow.webContents.openDevTools();
 
