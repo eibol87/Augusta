@@ -19,6 +19,7 @@
 		"id": "79e204ad-2cfa-4b67-8cd0-78cc6906eab7",
 		"category": "Acciones",
 		"items":[
+			{"id": "55381303-a706-4d6c-bf24-f46caebabca6", "title": "Registrar", "link": "/articles/add", "icon": "fa fa-plus"},
 			{"id": "55381303-a707-4d6c-bf84-f46c1ebabca6", "title": "Finalizar", "link": "/articles/pending", "icon": "fa fa-check-square-o"},
 			{"id": "4555cff3-54ff-423e-8e21-90acebd9ec5a", "title": "Entregar", "link": "/articles/finalized", "icon": "fa fa-car"},
 			{"id": "a6672a87-2593-4ccf-8129-fbf229ed487b", "title": "Facturar", "link": "/articles/delivered", "icon": "fa fa-list-alt"}	

@@ -3,13 +3,19 @@ import PanelContainer from '../../panelContainer/PanelContainer.js'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import MySearchField from '../../forms/MySearchField'
 import MyButtonAction from '../../forms/MyButtonAction'
+import CountRowsSelected from '../../forms/CountRowsSelected'
 
-let resultSearch=''
+
+let resultSearch='abe'
 
 class PendingArticles extends Component {
-  constructor(){
-    super()
-    this.handleAfterSearch = this.handleAfterSearch.bind(this)
+  constructor(props){
+    super(props)
+    this.state = {
+      selected: [],
+      currPage: 1
+    };
+    //this.handleAfterSearch = this.handleAfterSearch.bind(this)
     this.onRowSelect = this.onRowSelect.bind(this)
     this.onSelectAll =  this.onSelectAll.bind(this)
     this.resetState =  this.resetState.bind(this)
@@ -27,16 +33,17 @@ class PendingArticles extends Component {
         </div>
       </div>
   )}
-  handleAfterSearch(searchText, result) {
-    //este variable la declaro fuera de la clase por que necesito su valor pero no puedo usar el setState
-    //me renderiza y me haria bucle infinto
-    if (searchText === '') {
-      this.refs.table.cleanSelected();
-    }else{
-      resultSearch = result
-     return result
-    }
-  }
+  // handleAfterSearch(searchText, result) {
+  //   //este variable la declaro fuera de la clase por que necesito su valor pero no puedo usar el setState
+  //   //me renderiza y me haria bucle infinto
+  //   if (searchText === '') {
+  //     this.refs.table.cleanSelected();
+  //   }else{
+  //     // this.props.updateStateSelected()
+  //     resultSearch = result
+  //    return result
+  //   }
+  // }
   createCustomButtonGroup = props => {
     return (
       <MyButtonAction 
@@ -74,7 +81,7 @@ class PendingArticles extends Component {
       defaultSortOrder: 'asc',
       btnGroup: this.createCustomButtonGroup,
       toolBar: this.createCustomToolBar,
-      afterSearch: this.handleAfterSearch,
+      afterSearch: this.props.handleAfterSearch,
       searchField: (props) => (
         <MySearchField { ...props }
           resetState={this.resetState}
@@ -92,23 +99,25 @@ class PendingArticles extends Component {
       onSelectAll: this.onSelectAll
     };
   	return(
-	   	<BootstrapTable 
-        selectRow={ selectRowProp }
-        ref='table'
-	    	className="BootstrapTable-style" 
-	     	striped hover condensed search
-	     	data={ this.props.data.articles } 
-	     	options={options} 
-	     	trClassName={this.rowClassNameFormat}>
-		  <TableHeaderColumn dataField='id' isKey hidden={ true } dataSort>Cliente</TableHeaderColumn>
-      <TableHeaderColumn dataField='customer_contact' dataSort>Cliente</TableHeaderColumn>
-		  <TableHeaderColumn dataField='type' dataSort>Artículo</TableHeaderColumn>
-		 	<TableHeaderColumn dataField='leather'dataSort>Tipo</TableHeaderColumn>
-		  <TableHeaderColumn dataField='color' dataSort>Color</TableHeaderColumn>
-	  	<TableHeaderColumn dataField='entry_date' dataFormat={ this.dateFormatter } dataSort>Alta</TableHeaderColumn>
-	  	<TableHeaderColumn dataField='barcode' dataSort>Código de barras</TableHeaderColumn> 
-	    </BootstrapTable>
-	  )
+      <div>
+         	<BootstrapTable 
+            selectRow={ selectRowProp }
+            ref='table'
+    	    	className="BootstrapTable-style" 
+    	     	striped hover condensed search
+    	     	data={ this.props.data.articles } 
+    	     	options={options} 
+    	     	trClassName={this.rowClassNameFormat}>
+    		  <TableHeaderColumn dataField='id' isKey hidden={ true } dataSort>Cliente</TableHeaderColumn>
+          <TableHeaderColumn dataField='customer_contact' dataSort>Cliente</TableHeaderColumn>
+    		  <TableHeaderColumn dataField='type' dataSort>Artículo</TableHeaderColumn>
+    		 	<TableHeaderColumn dataField='leather'dataSort>Tipo</TableHeaderColumn>
+    		  <TableHeaderColumn dataField='color' dataSort>Color</TableHeaderColumn>
+    	  	<TableHeaderColumn dataField='entry_date' dataFormat={ this.dateFormatter } dataSort>Alta</TableHeaderColumn>
+    	  	<TableHeaderColumn dataField='barcode' dataSort>Código de barras</TableHeaderColumn> 
+    	    </BootstrapTable>
+	     </div>
+    )
   }
 }
 

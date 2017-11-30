@@ -15,6 +15,7 @@ class PendingArticlesContainer extends Component {
     }
       this.getData = this.getData.bind(this)
       this.updateSelectedRows = this.updateSelectedRows.bind(this)
+      
     }
   componentDidMount(){
     this.getData()
@@ -59,16 +60,13 @@ class PendingArticlesContainer extends Component {
       this.updateData(article.id)
     },this)
   }
-  componentWillUpdate(nextProps, nextState){
-    console.log(nextState)
-  }
   updateSelectedRows(selected){
      this.setState({selected:selected})
 
   }
   render(){
     return(
-      <PendingArticles 
+      <PendingArticles
         updateSelectedRows={this.updateSelectedRows}
         selected={this.state.selected}
         data={this.state} 
