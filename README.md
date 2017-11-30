@@ -81,7 +81,7 @@ electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons
 versión windows
 electron-packager . --overwrite --platform=win32 --arch=x64 --icon=assets/icons/mac/icon.icns --prune=false --out=release-builds
 
-versión linus
+versión linux
 electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/mac/icon.icns --prune=false --out=release-builds
 
 ```
