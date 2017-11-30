@@ -75,11 +75,14 @@ __Iniciar proyecto electron__:
 npm install
 npm run build
 
-versión mac os: electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=false --out=release-builds
+versión mac os
+electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=false --out=release-builds
 
-versión windows: electron-packager . --overwrite --platform=win32 --arch=x64 --icon=assets/icons/mac/icon.icns --prune=false --out=release-builds
+versión windows
+electron-packager . --overwrite --platform=win32 --arch=x64 --icon=assets/icons/mac/icon.icns --prune=false --out=release-builds
 
-versión linus: electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/mac/icon.icns --prune=false --out=release-builds
+versión linus
+electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/mac/icon.icns --prune=false --out=release-builds
 
 ```
 
