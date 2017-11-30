@@ -1,10 +1,9 @@
 ## Augusta CRM
 
-Augusta CRM es un aplicación especializada para el sector de la lavandería.
+
+Augusta CRM es un aplicación especializada para el sector de la lavandería. Aplicación javascript enpaquetada en [electron](https://github.com/electron/electron). El backend es una API REST en express con una base de datos mongodb, [aquí](https://github.com/eibol87/api-augusta) puedes ver el proyecto.
 
 ## Feactures
-
-Augusta CRM es un aplicación javascript enpaquetada en [electron](https://github.com/electron/electron). El backend es una API REST en express con una base de datos mongodb, [aquí](https://github.com/eibol87/api-augusta) puedes ver el proyecto.
 
 __Clientes__
 
