@@ -60,13 +60,30 @@ Crear un archivo `.env.production` en la raiz del proyecto.
 REACT_APP_API_SERVER=URL_SERVER_PRODUCTION
 ```
 
-__Iniciar proyecto__:
+__Iniciar proyecto web__:
 
 
 ```sh
 npm install
 npm start
 ```
+
+__Iniciar proyecto electron__:
+
+
+```sh
+npm install
+npm run build
+
+versión mac os: electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=false --out=release-builds
+
+versión windows: electron-packager . --overwrite --platform=win32 --arch=x64 --icon=assets/icons/mac/icon.icns --prune=false --out=release-builds
+
+versión linus: electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/mac/icon.icns --prune=false --out=release-builds
+
+```
+
+en la carpeta release-builds está el ejecutable
 
 
 
