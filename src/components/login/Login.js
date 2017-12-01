@@ -68,7 +68,7 @@ class Login extends Component{
 	      </Col>
 	    </FormGroup>
 	      {
-        this.state.login ? <Redirect to="/" push /> : ''
+        this.state.login ? <Redirect to="/articles/add" push /> : ''
       }
       
 	  </Form>

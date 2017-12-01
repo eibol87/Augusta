@@ -18,7 +18,7 @@ const Main = (props) => {
   return (
     <div>
       <Switch>
-        <Route exact path='/' />
+        <Route exact path='/' component={Login}/>
         <Route path='/login' component={Login} />
         <Route path='/logout' component={Logout}  />
         <PrivateRoute path="/customers/empresa" component={CustomersEnterpriseContainer}/>
