@@ -23,8 +23,8 @@ class FinalizedArticles extends Component {
   )}
   render(){
     const options={
-      defaultSortName:'customer_contact',
-      defaultSortOrder: 'asc',
+      defaultSortName:'output_date',
+      defaultSortOrder: 'desc',
       toolBar: this.createCustomToolBar,
       searchField: (props) => (<MySearchField { ...props }/>)
     }
