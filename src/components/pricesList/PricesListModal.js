@@ -36,16 +36,23 @@ class PricesListModal extends Component {
   }
   handleChange = (selectedOption,type) => {
     if(type === 'type'){
-      const selectedOptionType = selectedOption
+      let selectedOptionType=''
+      if(selectedOption === null){
+        selectedOptionType ={value:'',label:''}
+      }else{
+        selectedOptionType = selectedOption
+      }
       this.setState({ selectedOptionType });
-      console.log(`Selected: ${selectedOptionType.label}`);
     }else if(type === 'leather'){
-      const selectedOptionLeather = selectedOption
+      let selectedOptionLeather=''
+      if(selectedOption === null){
+        selectedOptionLeather ={value:'',label:''}
+      }else{
+        selectedOptionLeather = selectedOption
+      }
       this.setState({ selectedOptionLeather });
-      console.log(`Selected: ${selectedOptionLeather.label}`);
     }else{
       this.setState({ selectedOption });
-      console.log(`Selected: ${selectedOption.label}`);
     }
   }  
   render() {
