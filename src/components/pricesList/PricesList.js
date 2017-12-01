@@ -7,7 +7,7 @@ import MySearchField from '../forms/MySearchField'
 class PricesList extends Component {
 	
 	priceFormatter(cell, row) {
-
+    console.log("liena:",row)
 	  return `${cell} <i class='glyphicon glyphicon-eur'></i>`;
 	}
   createCustomToolBar = props => {

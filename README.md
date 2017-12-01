@@ -33,13 +33,13 @@ __Contabilidd__
 
 ## Demo
 Versión MacOs: [Download](
-https://drive.google.com/drive/folders/1l4nc2bRUVszrGUAxkKenM-j8nQYLAXAW?usp=sharing
+https://drive.google.com/file/d/1nrr3He6O54IHxWPYwQiLpXj6DRbNFhGH/view?usp=sharing
 ).
 Versión Linux: [Download](
-https://drive.google.com/drive/folders/1zJ16TmHyuWYEwfEuZ-T2v-BSwxZ0KrPD?usp=sharing
+https://drive.google.com/file/d/17SY8MPg5lUufNiMUOBITmumsALUyPIxT/view?usp=sharing
 ).
 Versión Windows: [Download](
-https://drive.google.com/drive/folders/1s5MqgSkmuBf-GPQMP0-tk83MzpOWgNW9?usp=sharing
+https://drive.google.com/file/d/1h6dByB8QDVnc-5bqzdZg4rgNzfnbT19N/view?usp=sharing
 ).
 
 
