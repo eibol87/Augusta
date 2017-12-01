@@ -45,7 +45,8 @@ class AddArticles extends Component {
       expandBy: 'column',
       insertText: 'Añadir artículo',
       insertModalHeader: this.createCustomModalHeader,
-      insertModalBody: this.createCustomModalBody
+      insertModalBody: this.createCustomModalBody,
+      afterInsertRow: this.props.onAfterInsertRow
     }
     return (
       <BootstrapTable 
@@ -54,7 +55,7 @@ class AddArticles extends Component {
         data={ this.props.articles } 
         options={options}>
         <TableHeaderColumn dataField='id' hiddenOnInsert isKey autoValue={ true } hidden={ true }>id</TableHeaderColumn>
-        <TableHeaderColumn dataField='customer_id' hiddenOnInsert>Cliente</TableHeaderColumn>
+        <TableHeaderColumn dataField='customer_contact' hiddenOnInsert>Cliente</TableHeaderColumn>
         <TableHeaderColumn dataField='type' hiddenOnInsert >Tipo</TableHeaderColumn>
         <TableHeaderColumn dataField='leather' hiddenOnInsert >Categoría</TableHeaderColumn>
         <TableHeaderColumn dataField='color' hiddenOnInsert>Color</TableHeaderColumn>

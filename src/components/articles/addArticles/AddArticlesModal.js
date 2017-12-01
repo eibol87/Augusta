@@ -26,6 +26,13 @@ class AddArticlesModal extends Component {
     this.props.columns.forEach((column, i) => {
       newRow[column.field] = this.refs[column.field].value;
     }, this);
+    newRow['customer_id']=this.state.selectedOptionCustomers.customer_id
+    newRow['customer_contact']=this.state.selectedOptionCustomers.label
+    newRow['type']=this.state.selectedOptionType.label
+    newRow['leather']=this.state.selectedOptionLeather.label
+    newRow['color']=this.state.selectedOptionColors.label
+    newRow['complements']=this.state.selectedOptionComplements.label
+
     return newRow;}
   async getData(){
     const type = await this.props.getListArticle('type')
@@ -69,12 +76,10 @@ class AddArticlesModal extends Component {
       this.setState({ selectedOption });
     }
   }  
-   getPrice= async () =>{
+  getPrice= async () =>{
     const typeState = this.state.selectedOptionType
     const leatherState = this.state.selectedOptionLeather
-    console.log("get:",typeState,leatherState)
     if(typeState && leatherState){
-    console.log("ENTRO:",typeState,leatherState)
       const price = await this.props.getPriceArticle(typeState,leatherState)
       return price
     }else{
@@ -89,7 +94,8 @@ class AddArticlesModal extends Component {
         <div>
          <label>Clientes</label>
           <Select
-              name="customers"
+              name="customer_contact"
+              ref={'customer_contact'}
               autoFocus
               value={this.state.selectedOptionCustomers}
               onChange={(e) => this.handleChange(e,"customers")}
@@ -99,6 +105,7 @@ class AddArticlesModal extends Component {
           <label>Tipo</label>
             <Select
               name="type"
+              ref={'type'}
               value={this.state.selectedOptionType}
               onChange={(e) => this.handleChange(e,"type")}
               clearable={true}
@@ -108,6 +115,7 @@ class AddArticlesModal extends Component {
           <label>Categorías</label>
             <Select
               name="leather"
+              ref={'leather'}
               value={this.state.selectedOptionLeather}
               onChange={(e) => this.handleChange(e,"leather")}
               clearable={false}
@@ -116,6 +124,7 @@ class AddArticlesModal extends Component {
           <label>Colores</label>
             <Select
               name="colors"
+              ref={'color'}
               value={this.state.selectedOptionColors}
               onChange={(e) => this.handleChange(e,"colors")}
               clearable={false}
@@ -124,6 +133,7 @@ class AddArticlesModal extends Component {
           <label>Complementos</label>
             <Select
               name="complements"
+              ref={'complements'}
               value={this.state.selectedOptionComplements}
               onChange={(e) => this.handleChange(e,"complements")}
               clearable={false}

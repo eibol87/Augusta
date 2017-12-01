@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {getPricesList,UpdatePriceToPriceList,createArticle} from '../../services/Api'
+import {getPricesList,UpdatePriceToPriceList,createPriceList} from '../../services/Api'
 import PricesList from './PricesList'
 import toastr from 'toastr'
 
@@ -90,7 +90,7 @@ class PricesListContainer extends Component {
   onAfterInsertRow = async (row) => {
     delete row.id //delete id because if not needed pass to mongodb
     delete row.prices_per_customer
-    const result = await createArticle(row)
+    const result = await createPriceList(row)
     if(result === 201) toastr.warning(`El artículo ${row.type} ya existe`)
     if(result === 200) toastr.success(`Se ha añadido el artículo ${row.type}`)
     this.getPriceList()

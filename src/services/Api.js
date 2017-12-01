@@ -138,9 +138,23 @@ export function UpdatePriceToPriceList (id,price){
 
     });
 }
-export function createArticle (article){
+export function createPriceList (article){
   const token = `Bearer ${getSessionStorage()}`
    const url= `${REACT_APP_API_SERVER}pricesList`
+    return axios.post(url,article,{
+        headers: {
+           Authorization: `${token}`
+        }
+    })
+    .then(response => response.status)
+    .catch(function (error) {
+        // Display an error toast, with a title
+      toastr.error('Problema al comunicarse con el servidor')
+    });
+}
+export function createArticle (article){
+  const token = `Bearer ${getSessionStorage()}`
+   const url= `${REACT_APP_API_SERVER}articles`
     return axios.post(url,article,{
         headers: {
            Authorization: `${token}`
