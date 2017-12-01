@@ -74,8 +74,8 @@ class FinalizedArticles extends Component {
   }
   render(){
     const options = {
-      defaultSortName:'customer_contact',
-      defaultSortOrder: 'asc',
+      defaultSortName:'output_date',
+      defaultSortOrder: 'desc',
       btnGroup: this.createCustomButtonGroup,
       toolBar: this.createCustomToolBar,
       afterSearch: this.handleAfterSearch,
@@ -108,7 +108,7 @@ class FinalizedArticles extends Component {
         <TableHeaderColumn dataField='type' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Artículo</TableHeaderColumn>
         <TableHeaderColumn dataField='leather'dataSort filter={ { type: 'TextFilter', delay: 100 } }>Tipo</TableHeaderColumn>
         <TableHeaderColumn dataField='color' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Color</TableHeaderColumn>
-        <TableHeaderColumn dataField='entry_date' width='245'dataFormat={ this.dateFormatter } dataSort filter={ { type: 'DateFilter', delay: 100 } }>Alta</TableHeaderColumn>
+        <TableHeaderColumn dataField='output_date' width='245'dataFormat={ this.dateFormatter } dataSort filter={ { type: 'DateFilter', delay: 100 } }>Finalizado</TableHeaderColumn>
         <TableHeaderColumn dataField='price' dataSort dataFormat={ this.priceFormatter } filter={ { type: 'TextFilter', delay: 100 } }>Precio</TableHeaderColumn> 
         <TableHeaderColumn dataField='barcode' dataSort filter={ { type: 'TextFilter', delay: 100 } }>Código de barras</TableHeaderColumn> 
       </BootstrapTable>
