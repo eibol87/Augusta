@@ -15,7 +15,10 @@ class AddArticlesContainer extends Component {
   }
   async getListCustomers(){
     const result = await getCustomers()
-    return result.map((value) =>({customer_id:value._id,value:value.contact, label:value.contact}))
+    return result.map((value) =>
+      (
+        {value:(value.fiscal_name) ? value.fiscal_name : value.contact, customer_id:value._id, label:(value.fiscal_name) ? value.fiscal_name : value.contact}
+      ))
   }
   async getColors(){
     const result = await getColors()
