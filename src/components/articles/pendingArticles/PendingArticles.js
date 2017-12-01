@@ -6,7 +6,7 @@ import MyButtonAction from '../../forms/MyButtonAction'
 import CountRowsSelected from '../../forms/CountRowsSelected'
 
 
-let resultSearch='abe'
+let resultSearch=''
 
 class PendingArticles extends Component {
   constructor(props){
@@ -15,7 +15,7 @@ class PendingArticles extends Component {
       selected: [],
       currPage: 1
     };
-    //this.handleAfterSearch = this.handleAfterSearch.bind(this)
+    this.handleAfterSearch = this.handleAfterSearch.bind(this)
     this.onRowSelect = this.onRowSelect.bind(this)
     this.onSelectAll =  this.onSelectAll.bind(this)
     this.resetState =  this.resetState.bind(this)
@@ -33,17 +33,19 @@ class PendingArticles extends Component {
         </div>
       </div>
   )}
-  // handleAfterSearch(searchText, result) {
-  //   //este variable la declaro fuera de la clase por que necesito su valor pero no puedo usar el setState
-  //   //me renderiza y me haria bucle infinto
-  //   if (searchText === '') {
-  //     this.refs.table.cleanSelected();
-  //   }else{
-  //     // this.props.updateStateSelected()
-  //     resultSearch = result
-  //    return result
-  //   }
-  // }
+  handleAfterSearch(searchText, result) {
+    //este variable la declaro fuera de la clase por que necesito su valor pero no puedo usar el setState
+    //me renderiza y me haria bucle infinto
+     console.log(result)
+    if (searchText === '') {
+      this.refs.table.cleanSelected();
+    }else{
+      // this.props.updateStateSelected()
+
+      resultSearch = result
+     return result
+    }
+  }
   createCustomButtonGroup = props => {
     return (
       <MyButtonAction 
@@ -81,7 +83,7 @@ class PendingArticles extends Component {
       defaultSortOrder: 'asc',
       btnGroup: this.createCustomButtonGroup,
       toolBar: this.createCustomToolBar,
-      afterSearch: this.props.handleAfterSearch,
+      afterSearch: this.handleAfterSearch,
       searchField: (props) => (
         <MySearchField { ...props }
           resetState={this.resetState}
