@@ -52,7 +52,7 @@ class AddArticlesContainer extends Component {
     const result = await createArticle(row)
     console.log(result)
     // if(result === 201) toastr.warning(`El artículo ${row.type} ya existe`)
-    // if(result === 200) toastr.success(`Se ha añadido el artículo ${row.type}`)
+    if(result === 200) toastr.success(`Se ha añadido el artículo ${row.type}`)
     // this.getPriceList()
   }
   render(){

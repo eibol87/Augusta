@@ -148,9 +148,7 @@ class AddArticlesModal extends Component {
                 // and not allow edit, for example ID field
                 return  <input type="hidden" ref={column.field} value={number++}/>;
               }
-              const error = validateState[field] ?
-                (<span className='help-block bg-danger'>{ validateState[field] }</span>) :
-                null;
+              
                 if(field == 'price'){
                   return (
                     <div key={ field }>
@@ -161,7 +159,7 @@ class AddArticlesModal extends Component {
                         type='text' 
                         onChange={(e) => this.handleChange(e,field)} 
                         value={this.state.selectedOptionPrice.label} />
-                        { error }
+                        
                     </div>
                   )
                 }else{
@@ -174,7 +172,7 @@ class AddArticlesModal extends Component {
                         type='text' 
                         onChange={(e) => this.handleChange(e,field)} 
                         value={this.state.selectedOption.label} />
-                        { error }
+                        
                     </div>
                   )
                 }
