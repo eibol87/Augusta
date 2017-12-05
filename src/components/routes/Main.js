@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, browserHistory } from 'react-router'
 import CustomersEnterpriseContainer from '../customers/enterprise/CustomersEnterpriseContainer.js'
 import CustomersParticularContainer from '../customers/particular/CustomersParticularContainer.js'
 import Payments from '../customers/Payments.js'

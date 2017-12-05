@@ -75,7 +75,7 @@ class CustomersParticular extends Component {
         cellEdit={ cellEditProp }
        	className="BootstrapTable-style" 
        	hover condensed search
-        data={ this.props.data.customer }
+        data={ this.props.data }
        	options={options} 
         expandableRow={ this.isExpandableRow }
         expandComponent={ this.expandComponent }

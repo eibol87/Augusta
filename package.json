@@ -15,11 +15,16 @@
     "react-dom": "^16.0.0",
     "react-icons-kit": "^1.0.7",
     "react-moment": "^0.6.8",
+    "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
+    "react-router-redux": "^4.0.8",
     "react-scripts": "1.0.14",
     "react-select": "^1.0.1",
     "react-sidenav": "^2.1.2",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
     "toastr": "^2.1.2"
   },
   "homepage": "./",
@@ -34,6 +39,7 @@
   },
   "devDependencies": {
     "electron": "1.7.9",
-    "electron-winstaller": "^2.6.3"
+    "electron-winstaller": "^2.6.3",
+    "redux-devtools-extension": "^2.13.2"
   }
 }

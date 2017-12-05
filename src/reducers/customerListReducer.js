@@ -1,0 +1,82 @@
+import {
+  FETCH_CUSTOMERS_PARTICULAR_INIT,
+  FETCH_CUSTOMERS_ENTERPRISE_INIT,
+  FETCH_CUSTOMERS_SUCCESS,
+  FETCH_CUSTOMERS_FAILURE,
+  SAVE_CUSTOMER_INIT,
+  SAVE_CUSTOMER_SUCCESS,
+  SAVE_CUSTOMER_FAILURE,
+  UPDATE_CUSTOMER_INIT,
+  UPDATE_CUSTOMER_SUCCESS,
+  UPDATE_CUSTOMER_FAILURE
+} from '../actions/types'
+
+import initialState from './initialState'
+
+export default function customerListReduce(state = initialState.customerList, action){
+  switch (action.type) {
+    case FETCH_CUSTOMERS_PARTICULAR_INIT:
+      return {
+        ...state,
+        loading: true
+      }
+    case FETCH_CUSTOMERS_ENTERPRISE_INIT:
+      return {
+        ...state,
+        loading: true
+      }
+    case FETCH_CUSTOMERS_FAILURE:
+      return {
+        ...state,
+        customers: [],
+        error: action.payload,
+        loading: false
+
+      }
+    case FETCH_CUSTOMERS_SUCCESS:
+      return {
+        ...state,
+        customer: action.payload,
+        error: null,
+        loading: false
+      }
+    case SAVE_CUSTOMER_INIT:
+      return{
+        ...state,
+        loading:true
+      } 
+    case SAVE_CUSTOMER_FAILURE:
+      return{
+        ...state,
+        error: action.payload,
+        loading: false
+      }
+    case SAVE_CUSTOMER_SUCCESS:
+      return{
+        ...state,
+        customer: [...state.customer,action.payload],
+        error:null,
+        loading: true
+      }
+    case UPDATE_CUSTOMER_INIT:
+      return{
+        ...state,
+        loading:true
+      }
+    case UPDATE_CUSTOMER_FAILURE:
+      return{
+        ...state,
+        error: action.payload,
+        loading: false
+      }
+    case UPDATE_CUSTOMER_SUCCESS:
+      return{
+        ...state,
+        customer: [...state.customer,action.payload],
+        error:null,
+        loading: true
+      }
+    default:
+      return state
+  }
+}

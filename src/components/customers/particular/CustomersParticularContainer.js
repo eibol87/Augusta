@@ -2,54 +2,22 @@ import React, { Component } from 'react';
 import {getCustomers,UpdateCustomer,createCustomer} from '../../../services/Api'
 import CustomersParticular from './CustomersParticular'
 import toastr from 'toastr'
+import * as customerActions from '../../../actions/customerActions'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 class CustomersParticularContainer extends Component {
   constructor(){
     super()
     this.state={
-      customer:[{
-        id:'',
-        entry_date:'',
-        contact:'',
-        email: '',
-        city:'',
-        contact_id: '',
-        phone: '',
-        expand:[{
-          id:'',
-          address:'',
-          notes: '',
-        }]
-      }],
       edited: []
-    }}
-  componentDidMount(){
-   this.getCustomers()
-  }
-  async getCustomers(){
-    const response = await getCustomers('particular')
-      if(response){
-        this.setState({
-          customer: [...response]
-          .map(function (customer){
-            return ({
-              id:customer._id,
-              entry_date:customer.entry_date,
-              contact:customer.contact,
-              email: customer.email,
-              city:customer.city,
-              contact_id: customer.contact_id,
-              phone: customer.phone,
-              expand: [{
-                id:customer._id,
-                notes: customer.notes,
-                address:customer.address
-              }]                    
-            })
-          })
-        })
-      }   
     }
+  }
+  
+  async componentWillMount(){
+    await this.props.customerActions.fetchCustomersParticular('particular')
+  }
+
   onAfterSaveCell = ({ id }, cellName) =>{
     this.setState({
       edited: [ ...this.state.edited, { id, cellName } ]
@@ -115,14 +83,13 @@ class CustomersParticularContainer extends Component {
       response.notification.title = 'Campos requeridos*';
     }
      return response;
-
   }
   render(){
     const hasEdited = this.state.edited.length
     if(hasEdited) this.updateCell(this.state.edited[0],this.state.edited[0].cellName,this.state.customer) 
     return(
       <CustomersParticular
-        data={this.state} 
+        data={this.props.customers} 
         onAfterSaveCell={this.onAfterSaveCell}
         updateCell={this.updateCell}
         onAfterInsertRow={this.onAfterInsertRow}
@@ -133,4 +100,17 @@ class CustomersParticularContainer extends Component {
     )
   }
 }
-export default CustomersParticularContainer
+
+function mapStateToProps(state){
+  return {
+    customers: state.customerList.customer,
+    loading: state.customerList.loading
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    customerActions: bindActionCreators(customerActions,dispatch)
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(CustomersParticularContainer)
