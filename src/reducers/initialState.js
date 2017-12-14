@@ -4,6 +4,9 @@ const initialState = {
     edited:[],
     loading:false,
     error: null
+  },
+  expandRow:{
+    edited:[]
   }
 }
 

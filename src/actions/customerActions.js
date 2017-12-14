@@ -1,6 +1,6 @@
 import {
   FETCH_CUSTOMERS_PARTICULAR_INIT,
-  FETCH_CUSTOMERS_ENTERPRISE_INIT,
+  //FETCH_CUSTOMERS_ENTERPRISE_INIT,
   FETCH_CUSTOMERS_SUCCESS,
   FETCH_CUSTOMERS_FAILURE,
   SAVE_CUSTOMER_INIT,
@@ -8,7 +8,9 @@ import {
   SAVE_CUSTOMER_FAILURE,
   UPDATE_CUSTOMER_INIT,
   UPDATE_CUSTOMER_SUCCESS,
-  UPDATE_CUSTOMER_FAILURE
+  UPDATE_CUSTOMER_FAILURE,
+  UPDATE_STATE_CUSTOMER,
+  RESET_STATE_CUSTOMER_EDITED
 
 } from './types'
 
@@ -18,6 +20,13 @@ import {
 } from '../services/Api'
 
 // Actions Creations
+
+export function resetStateCustomerEdited(){
+  return {
+    type: RESET_STATE_CUSTOMER_EDITED
+  }
+}
+
 export function fetchCustomersSuccess(customers){
   return {
     type: FETCH_CUSTOMERS_SUCCESS,
@@ -99,15 +108,23 @@ export function updateCustomer(id,customer){
         type: UPDATE_CUSTOMER_INIT
       }
     })
-
+    
     try {
-      const data = await UpdateCustomer(id,customer)
+      await UpdateCustomer(id,customer)
       return dispatch(updateCustomerSuccess())
     } catch (error){
       return dispatch(saveCustomerFailure(error))
     }
   }
 }
+
+export function updateStateCustomer (id,customer) {
+  return {
+    type: UPDATE_STATE_CUSTOMER,
+    payload: id,customer
+  };
+}
+
 export function saveCustomer(customer){
   return async (dispatch) => {
     dispatch(() => {
@@ -117,7 +134,7 @@ export function saveCustomer(customer){
     })
 
     try {
-      const data = await UpdateCustomer(customer)
+      await UpdateCustomer(customer)
       return dispatch(saveCustomerSuccess())
     } catch (error){
       return dispatch(saveCustomerFailure(error))

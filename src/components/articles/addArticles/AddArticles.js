@@ -10,14 +10,6 @@ class AddArticles extends Component {
       fontSize: 'large',
       textAlign: 'center',
       backgroundColor: '#eeeeee'
-    }
-  }
-  createCustomModalHeader(onClose, onSave) {
-    const headerStyle = {
-      fontWeight: 'bold',
-      fontSize: 'large',
-      textAlign: 'center',
-      backgroundColor: '#eeeeee'
     };
     return (
       <div className='modal-header' style={ headerStyle }>

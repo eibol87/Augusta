@@ -88,7 +88,6 @@ class AddArticlesModal extends Component {
 
   }
   render() {
-    const { validateState } = this.props;
     return (
       <div className='modal-body'>
         <div>
@@ -149,7 +148,7 @@ class AddArticlesModal extends Component {
                 return  <input type="hidden" ref={column.field} value={number++}/>;
               }
               
-                if(field == 'price'){
+                if(field === 'price'){
                   return (
                     <div key={ field }>
                       <label>{ name }</label>

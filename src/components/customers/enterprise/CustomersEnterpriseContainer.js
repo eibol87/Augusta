@@ -64,7 +64,8 @@ class CustomersEnterpriseContainer extends Component {
   onAfterSaveCell = ({ id }, cellName) =>{
     this.setState({
       edited: [ ...this.state.edited, { id, cellName } ]
-    })}
+    })
+  }
 
    updateCell = async (dataEdited,cellName,data) => {
     const body = {};

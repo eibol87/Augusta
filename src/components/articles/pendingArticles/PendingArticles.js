@@ -3,8 +3,6 @@ import PanelContainer from '../../panelContainer/PanelContainer.js'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import MySearchField from '../../forms/MySearchField'
 import MyButtonAction from '../../forms/MyButtonAction'
-import CountRowsSelected from '../../forms/CountRowsSelected'
-
 
 let resultSearch=''
 

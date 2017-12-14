@@ -8,7 +8,9 @@ import {
   SAVE_CUSTOMER_FAILURE,
   UPDATE_CUSTOMER_INIT,
   UPDATE_CUSTOMER_SUCCESS,
-  UPDATE_CUSTOMER_FAILURE
+  UPDATE_CUSTOMER_FAILURE,
+  UPDATE_STATE_CUSTOMER,
+  RESET_STATE_CUSTOMER_EDITED
 } from '../actions/types'
 
 import initialState from './initialState'
@@ -72,9 +74,19 @@ export default function customerListReduce(state = initialState.customerList, ac
     case UPDATE_CUSTOMER_SUCCESS:
       return{
         ...state,
-        customer: [...state.customer,action.payload],
+        customer: [...state.customer],
         error:null,
         loading: true
+      }
+    case UPDATE_STATE_CUSTOMER:
+      return {
+        ...state,
+        edited: [...state.edited,action.payload]
+      }
+    case RESET_STATE_CUSTOMER_EDITED:
+      return {
+        ...state,
+        edited: []
       }
     default:
       return state

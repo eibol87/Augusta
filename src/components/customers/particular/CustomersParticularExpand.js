@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import * as expandRowActions from '../../../actions/expandRowActions'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
 class CustomersParticularExpand extends Component {
   constructor(){
     super()
-      this.state={
-        edited: []
-      }
     }
-
+  componentWillMount(){
+    this.props.expandRowActions.loadExpandRow()
+  }
   onAfterSaveCell = ({ id }, cellName) => {
-    this.setState({
-      edited: [ ...this.state.edited, { id, cellName } ]
-  })}
+    this.props.expandRowActions.updateStateExpand( { id, cellName })
+  
+  }
+
   render() {
-    const hasEdited = this.state.edited.length
+    const hasEdited = this.props.edited.edited.length
     if(hasEdited){
-      const dataEdited=this.state.edited[0]
-      const cellName=this.state.edited[0].cellName
+      const dataEdited=this.props.edited.edited[0]
+      const cellName=this.props.edited.edited[0].cellName
       const data=this.props.data
+
       this.props.updateCell(dataEdited,cellName,data)
-      this.state.edited = []
+      this.props.expandRowActions.initStateExpand()
+     
     }
     const tdStyle={whiteSpace: 'normal'}
     const cellEditProp = {mode: 'dbclick', blurToSave: true, afterSaveCell: this.onAfterSaveCell}
@@ -33,4 +39,16 @@ class CustomersParticularExpand extends Component {
         <TableHeaderColumn width='150' dataField='notes'tdStyle={tdStyle}>Notas</TableHeaderColumn>
       </BootstrapTable>);
   }}
-export default CustomersParticularExpand
+
+function mapStateToProps(state){
+  return {
+    edited: state.expandRow
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    expandRowActions: bindActionCreators(expandRowActions,dispatch)
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(CustomersParticularExpand)

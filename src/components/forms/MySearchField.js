@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import toastr from 'toastr'
-import { UpdateStateArticle } from '../../services/Api'
 
 class MySearchField extends React.Component {
   constructor(){

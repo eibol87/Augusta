@@ -5,7 +5,7 @@ const PanelContainer = (ComposedComponent) => class extends Component {
   	render() {
     return (
       <div>
-        <h2 className="PanelContainer-title"></h2>
+        <h2 className="PanelContainer-title">Título</h2>
 	      <div className="PanelContainer-panel">
 	       <ComposedComponent {...this.props} { ...this.state } /> 
 	      </div>

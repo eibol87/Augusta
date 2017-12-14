@@ -7,47 +7,54 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 class CustomersParticularContainer extends Component {
-  constructor(){
-    super()
-    this.state={
-      edited: []
-    }
-  }
   
   async componentWillMount(){
+
     await this.props.customerActions.fetchCustomersParticular('particular')
+
   }
 
   onAfterSaveCell = ({ id }, cellName) =>{
-    this.setState({
-      edited: [ ...this.state.edited, { id, cellName } ]
-    })}
 
+    this.props.customerActions.updateStateCustomer({ id, cellName })
+
+  }
+  // componentDidCatch(error, info){
+  //   console.log("ERROR: ",error)
+  //   console.log("INFO: ",info)
+  // }
   updateCell = async (dataEdited,cellName,data) => {
+
     const body = {};
     const findDataRowEdited = data.filter(element => element.id === dataEdited.id )
-    
     body[cellName] = findDataRowEdited[0][cellName]
     
     try {
-     const result = await UpdateCustomer(dataEdited.id,body)
+
+      const result = await this.props.customerActions.updateCustomer(dataEdited.id,body)
+      
       if(result) toastr.success( `${body[cellName]}`,'Se ha guardado:')
-      //clean state
-      this.state.edited=[]
+    
     }
       catch(e) {
+
         toastr.error('Error al resolver la promesa')
-        this.state.edited=[]
+
+        this.props.customerActions.resetStateCustomerEdited()
+
         throw e
+
     }
+
   }
+  
   onAfterInsertRow = async (row) => {
-    delete row.id //delete id because if not needed pass to mongodb
-    row.phone= Number(row.phone)
-    row.type='particular'
-    const result = await createCustomer(row)
-    if(result === 200) toastr.success(`Se ha añadido el cliente ${row.contact}`)
-    this.getCustomers()
+    // delete row.id //delete id because if not needed pass to mongodb
+    // row.phone= Number(row.phone)
+    // row.type='particular'
+    // const result = await createCustomer(row)
+    // if(result === 200) toastr.success(`Se ha añadido el cliente ${row.contact}`)
+    // this.getCustomers()
   }
   phoneStatusValidator(value, row) {
     const response = { isValid: true, notification: { type: 'success', msg: '', title: '' } };
@@ -85,9 +92,15 @@ class CustomersParticularContainer extends Component {
      return response;
   }
   render(){
-    const hasEdited = this.state.edited.length
-    if(hasEdited) this.updateCell(this.state.edited[0],this.state.edited[0].cellName,this.state.customer) 
+
+    if(this.props.edited.length){
+      
+      this.updateCell(this.props.edited[0],this.props.edited[0].cellName,this.props.customers) 
+      this.props.customerActions.resetStateCustomerEdited()
+
+    }
     return(
+
       <CustomersParticular
         data={this.props.customers} 
         onAfterSaveCell={this.onAfterSaveCell}
@@ -97,20 +110,29 @@ class CustomersParticularContainer extends Component {
         emailStatusValidator={this.emailStatusValidator}
         fielRequireddStatusValidator={this.fielRequireddStatusValidator}
       />
+
     )
   }
 }
 
 function mapStateToProps(state){
+
   return {
+
     customers: state.customerList.customer,
-    loading: state.customerList.loading
+    loading: state.customerList.loading,
+    edited: state.customerList.edited
   }
+
 }
 
 function mapDispatchToProps(dispatch){
+
   return {
+
     customerActions: bindActionCreators(customerActions,dispatch)
   }
+
 }
+
 export default connect(mapStateToProps,mapDispatchToProps)(CustomersParticularContainer)
