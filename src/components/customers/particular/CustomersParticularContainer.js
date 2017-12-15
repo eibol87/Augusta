@@ -9,13 +9,13 @@ import CustomersParticular from './CustomersParticular'
 import * as validateFields from '../../../utils/UtilsValidators'
 import * as utilsTable from '../../../utils/UtilsTable'
 
-import toastr from 'toastr'
+const PARTICULAR = 'particular'
 
 class CustomersParticularContainer extends Component {
   
   async componentWillMount(){
 
-    await this.props.customerActions.fetchCustomersParticular('particular')
+    await this.props.customerActions.fetchCustomersParticular(PARTICULAR)
 
   }
 
@@ -32,12 +32,11 @@ class CustomersParticularContainer extends Component {
   }
 
   onAfterInsertRow = async (row) => {
-    // delete row.id //delete id because if not needed pass to mongodb
-    // row.phone= Number(row.phone)
-    // row.type='particular'
-    // const result = await createCustomer(row)
-    // if(result === 200) toastr.success(`Se ha añadido el cliente ${row.contact}`)
-    // this.getCustomers()
+    
+    utilsTable.onAfterInsertRow(row,PARTICULAR,this.props.customerActions.createCustomer)
+    
+    await this.props.customerActions.fetchCustomersParticular(PARTICULAR)
+
   }
 
   phoneStatusValidator(value, row) {

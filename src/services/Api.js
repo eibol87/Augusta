@@ -1,9 +1,11 @@
 import axios from 'axios'
 import {getSessionStorage} from './LocalStorage'
 import toastr from 'toastr'
+
 const {REACT_APP_API_SERVER} = process.env
 
-export function createCustomer (customer){
+export function newCustomer (customer){
+  
   const token = `Bearer ${getSessionStorage()}`
    const url= `${REACT_APP_API_SERVER}customer`
     return axios.post(url,customer,{

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {getCustomers,UpdateCustomer,createCustomer} from '../../../services/Api'
+import {getCustomers,UpdateCustomer,newCustomer} from '../../../services/Api'
 import CustomersEnterprise from './CustomersEnterprise'
 import toastr from 'toastr'
 
@@ -88,7 +88,7 @@ class CustomersEnterpriseContainer extends Component {
     delete row.id //delete id because if not needed pass to mongodb
     row.phone= Number(row.phone)
     row.type='empresa'
-    const result = await createCustomer(row)
+    const result = await newCustomer(row)
     if(result === 200) toastr.success(`Se ha añadido el cliente ${row.contact}`)
     this.getCustomers()
   }

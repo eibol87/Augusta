@@ -16,7 +16,8 @@ import {
 
 import {
   getCustomers,
-  UpdateCustomer
+  UpdateCustomer,
+  newCustomer
 } from '../services/Api'
 
 // Actions Creations
@@ -47,16 +48,16 @@ export function saveCustomerSuccess(){
   }
 }
 
-export function saveCustomerFailure(error){
+export function createCustomerFailure(error){
   return {
     type: CREATE_CUSTOMER_FAILURE,
     payload: error
   }
 }
 
-export function updateCustomerSuccess(){
+export function createCustomerSuccess(){
   return {
-    type: UPDATE_CUSTOMER_SUCCESS
+    type: CREATE_CUSTOMER_SUCCESS
   }
 }
 
@@ -64,6 +65,12 @@ export function updateCustomerFailure(error){
   return {
     type: UPDATE_CUSTOMER_FAILURE,
     payload: error
+  }
+}
+
+export function updateCustomerSuccess(){
+  return {
+    type: UPDATE_CUSTOMER_SUCCESS,
   }
 }
 
@@ -96,7 +103,7 @@ export function fetchCustomersParticular(particular){
         })
       return dispatch(fetchCustomersSuccess(newState))
     } catch (error){
-      return dispatch(saveCustomerFailure(error))
+      return dispatch(fetchCustomersFailure(error))
     }
   }
 }
@@ -113,7 +120,7 @@ export function updateCustomer(id,customer){
       await UpdateCustomer(id,customer)
       return dispatch(updateCustomerSuccess())
     } catch (error){
-      return dispatch(saveCustomerFailure(error))
+      return dispatch(updateCustomerFailure(error))
     }
   }
 }
@@ -125,19 +132,29 @@ export function updateStateCustomer (id,customer) {
   };
 }
 
-export function saveCustomer(customer){
+export function createCustomer(customer){
+
   return async (dispatch) => {
+
     dispatch(() => {
+
       return {
+
         type: CREATE_CUSTOMER_INIT
+
       }
     })
 
     try {
-      await UpdateCustomer(customer)
-      return dispatch(saveCustomerSuccess())
+
+      await newCustomer(customer)
+      
+      return dispatch(createCustomerSuccess())
+
     } catch (error){
-      return dispatch(saveCustomerFailure(error))
+
+      return dispatch(createCustomerFailure(error))
+
     }
   }
 }

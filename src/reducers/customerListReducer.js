@@ -83,7 +83,7 @@ export default function customerListReduce(state = initialState.customerList, ac
       return{
     
         ...state,
-        customer: [...state.customer,action.payload],
+        customer: [...state.customer],
         error:null,
         loading: true
     

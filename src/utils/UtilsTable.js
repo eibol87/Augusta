@@ -24,11 +24,15 @@ export async function updateCell(dataEdited,cellName,data,updateCustomer) {
 
 }
 
-export async function onAfterInsertRow(row){
-    // delete row.id //delete id because if not needed pass to mongodb
-    // row.phone= Number(row.phone)
-    // row.type='particular'
-    // const result = await createCustomer(row)
-    // if(result === 200) toastr.success(`Se ha añadido el cliente ${row.contact}`)
-    // this.getCustomers()
+export async function onAfterInsertRow(row,typeCustomer,createCustomer){
+    
+    delete row.id //delete id because if not needed pass to mongodb
+    
+    row.phone= Number(row.phone)
+    row.type=typeCustomer
+    
+    const result = await createCustomer(row)
+
+    if(result === 200) toastr.success(`Se ha añadido el cliente ${row.contact}`)
+   
   }
