@@ -1,7 +1,7 @@
 import {
   UPDATE_STATE_EXPAND,
   LOAD_STATE_EXPAND,
-  INIT_STATE_EXPAND
+  RESET_STATE_EXPAND_EDITED
 } from './types'
 
 export function loadExpandRow () {
@@ -17,8 +17,8 @@ export function updateStateExpand (id,customer) {
   };
 }
 
-export function initStateExpand () {
+export function resetStateExpandEdited () {
   return {
-    type: INIT_STATE_EXPAND
+    type: RESET_STATE_EXPAND_EDITED
   };
 }

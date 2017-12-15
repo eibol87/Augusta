@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import CustomersParticular from './CustomersParticular'
-import toastr from 'toastr'
-import * as customerActions from '../../../actions/customerActions'
+
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+
+import * as customerActions from '../../../actions/customerActions'
+import CustomersParticular from './CustomersParticular'
+
 import * as validateFields from '../../../utils/UtilsValidators'
 import * as utilsTable from '../../../utils/UtilsTable'
+
+import toastr from 'toastr'
 
 class CustomersParticularContainer extends Component {
   
@@ -21,9 +25,9 @@ class CustomersParticularContainer extends Component {
 
   }
   
-  updateCell = async (dataEdited,cellName,data) => {
-
-   utilsTable.updateCell(dataEdited,cellName,data,this.props.customerActions.updateCustomer)
+  updateCell(dataEdited,cellName,data) {
+    
+    utilsTable.updateCell(dataEdited,cellName,data,customerActions.updateCustomer)
 
   }
 
@@ -59,7 +63,11 @@ class CustomersParticularContainer extends Component {
     //lo reseteamos para asegurarnos que solo entra una vez se edita una celda
     if(this.props.edited.length){
      
-      this.updateCell(this.props.edited[0],this.props.edited[0].cellName,this.props.customers) 
+      const dataEdited=this.props.edited[0]
+      const cellName=this.props.edited[0].cellName
+      const data=this.props.customers
+
+      this.updateCell(dataEdited,cellName,data)
       this.props.customerActions.resetStateCustomerEdited()
 
     }
@@ -68,8 +76,8 @@ class CustomersParticularContainer extends Component {
 
       <CustomersParticular
         data={this.props.customers} 
-        onAfterSaveCell={this.onAfterSaveCell}
         updateCell={this.updateCell}
+        onAfterSaveCell={this.onAfterSaveCell}
         onAfterInsertRow={this.onAfterInsertRow}
         phoneStatusValidator={this.phoneStatusValidator}
         emailStatusValidator={this.emailStatusValidator}

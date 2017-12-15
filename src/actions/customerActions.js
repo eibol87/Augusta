@@ -3,9 +3,9 @@ import {
   //FETCH_CUSTOMERS_ENTERPRISE_INIT,
   FETCH_CUSTOMERS_SUCCESS,
   FETCH_CUSTOMERS_FAILURE,
-  SAVE_CUSTOMER_INIT,
-  SAVE_CUSTOMER_SUCCESS,
-  SAVE_CUSTOMER_FAILURE,
+  CREATE_CUSTOMER_INIT,
+  CREATE_CUSTOMER_SUCCESS,
+  CREATE_CUSTOMER_FAILURE,
   UPDATE_CUSTOMER_INIT,
   UPDATE_CUSTOMER_SUCCESS,
   UPDATE_CUSTOMER_FAILURE,
@@ -43,13 +43,13 @@ export function fetchCustomersFailure(error){
 
 export function saveCustomerSuccess(){
   return {
-    type: SAVE_CUSTOMER_SUCCESS
+    type: CREATE_CUSTOMER_SUCCESS
   }
 }
 
 export function saveCustomerFailure(error){
   return {
-    type: SAVE_CUSTOMER_FAILURE,
+    type: CREATE_CUSTOMER_FAILURE,
     payload: error
   }
 }
@@ -129,7 +129,7 @@ export function saveCustomer(customer){
   return async (dispatch) => {
     dispatch(() => {
       return {
-        type: SAVE_CUSTOMER_INIT
+        type: CREATE_CUSTOMER_INIT
       }
     })
 
