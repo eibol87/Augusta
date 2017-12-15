@@ -20,6 +20,8 @@ import {
   newCustomer
 } from '../services/Api'
 
+import API from '../services/Api'
+
 // Actions Creations
 
 export function resetStateCustomerEdited(){
@@ -83,8 +85,8 @@ export function fetchCustomersParticular(particular){
     })
 
     try {
-      const data = await getCustomers(particular)
-      const newState = [...data]
+     const data = await API.customers.getAll(particular)
+      const newState = [...data.data]
         .map(function (customer){
           return ({
             id:customer._id,

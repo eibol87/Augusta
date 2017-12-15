@@ -214,4 +214,33 @@ export function getComplements (){
     });
 }
 
+const API = {
 
+   customers: {
+     async getAll (type) {
+      const params= (type) ? `?customer=${type}` :''
+      return await axios(`${REACT_APP_API_SERVER}customers/${params}`, {
+          headers: {
+            Authorization: `Bearer ${getSessionStorage()}`
+          }
+        })
+      }
+   }
+}
+export default API
+// export function UpdateCustomer (id,body){
+//   const token = `Bearer ${getSessionStorage()}`
+//    const url= `${REACT_APP_API_SERVER}customer/${id}`
+//     return axios.put(url,
+//       body,{
+//         headers: {
+//            Authorization: `${token}`
+//         }
+//     })
+//     .then(response => response.data)
+//     .catch(function (error) {
+//       // Display an error toast, with a title
+//       toastr.error('Problema al comunicarse con el servidor')
+
+//     });
+// }
