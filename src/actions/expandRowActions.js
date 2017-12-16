@@ -1,8 +1,13 @@
 import {
   UPDATE_STATE_EXPAND,
   LOAD_STATE_EXPAND,
-  RESET_STATE_EXPAND_EDITED
+  RESET_STATE_EXPAND_EDITED,
+  UPDATE_CUSTOMER_EXPAND_INIT,
+  UPDATE_CUSTOMER_EXPAND_SUCCESS,
+  UPDATE_CUSTOMER_EXPAND_FAILURE
 } from './types'
+
+import API from '../services/Api'
 
 export function loadExpandRow () {
   return {
@@ -21,4 +26,35 @@ export function resetStateExpandEdited () {
   return {
     type: RESET_STATE_EXPAND_EDITED
   };
+}
+
+export function updateCustomerExpandFailure(error){
+  return {
+    type: UPDATE_CUSTOMER_EXPAND_FAILURE,
+    payload: error
+  }
+}
+
+export function updateCustomerExpandSuccess(){
+  return {
+    type: UPDATE_CUSTOMER_EXPAND_SUCCESS,
+  }
+}
+
+
+export function updateCustomer(id,customer){
+  return async (dispatch) => {
+    dispatch(() => {
+      return {
+        type: UPDATE_CUSTOMER_EXPAND_INIT
+      }
+    })
+    
+    try {
+      await API.customers.update(id,customer)
+      return dispatch(updateCustomerExpandSuccess())
+    } catch (error){
+      return dispatch(updateCustomerExpandFailure(error))
+    }
+  }
 }

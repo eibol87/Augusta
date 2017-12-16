@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import * as expandRowActions from '../../../actions/expandRowActions'
+import * as utilsTable from '../../../utils/UtilsTable'
 
 class CustomersParticularExpand extends Component {
   
@@ -21,8 +22,8 @@ class CustomersParticularExpand extends Component {
   }
 
   updateCell(dataEdited,cellName,data) {
-
-    this.props.updateCell(dataEdited,cellName,data)
+   
+    utilsTable.updateCell(dataEdited,cellName,data,this.props.expandRowActions.updateCustomer)
 
   }
 

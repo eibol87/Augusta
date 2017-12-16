@@ -12,7 +12,9 @@ import * as utilsTable from '../../../utils/UtilsTable'
 const PARTICULAR = 'particular'
 
 class CustomersParticularContainer extends Component {
-  
+  constructor(props) {
+    super(props)
+  }
   async componentWillMount(){
 
     await this.props.customerActions.fetchCustomersParticular(PARTICULAR)
@@ -20,14 +22,14 @@ class CustomersParticularContainer extends Component {
   }
 
   onAfterSaveCell = ({ id }, cellName) =>{
-
+  
     this.props.customerActions.updateStateCustomer({ id, cellName })
 
   }
   
   updateCell(dataEdited,cellName,data) {
-    
-    utilsTable.updateCell(dataEdited,cellName,data,customerActions.updateCustomer)
+   
+    utilsTable.updateCell(dataEdited,cellName,data,this.props.customerActions.updateCustomer)
 
   }
 

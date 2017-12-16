@@ -14,12 +14,6 @@ import {
 
 } from './types'
 
-import {
-  getCustomers,
-  UpdateCustomer,
-  newCustomer
-} from '../services/Api'
-
 import API from '../services/Api'
 
 // Actions Creations
@@ -86,7 +80,7 @@ export function fetchCustomersParticular(particular){
 
     try {
      const data = await API.customers.getAll(particular)
-      const newState = [...data.data]
+      const newState = [...data]
         .map(function (customer){
           return ({
             id:customer._id,
@@ -119,7 +113,7 @@ export function updateCustomer(id,customer){
     })
     
     try {
-      await UpdateCustomer(id,customer)
+      await API.customers.update(id,customer)
       return dispatch(updateCustomerSuccess())
     } catch (error){
       return dispatch(updateCustomerFailure(error))
@@ -135,26 +129,17 @@ export function updateStateCustomer (id,customer) {
 }
 
 export function createCustomer(customer){
-
   return async (dispatch) => {
-
     dispatch(() => {
-
       return {
-
         type: CREATE_CUSTOMER_INIT
-
       }
     })
 
     try {
-
-      await newCustomer(customer)
-      
+      await API.customers.new(customer)
       return dispatch(createCustomerSuccess())
-
     } catch (error){
-
       return dispatch(createCustomerFailure(error))
 
     }
