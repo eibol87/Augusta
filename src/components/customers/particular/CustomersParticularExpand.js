@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import * as expandRowActions from '../../../actions/expandRowActions'
+
 import * as utilsTable from '../../../utils/UtilsTable'
 
 class CustomersParticularExpand extends Component {

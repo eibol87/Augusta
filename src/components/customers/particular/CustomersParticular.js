@@ -7,51 +7,76 @@ import MySearchField from '../../forms/MySearchField'
 class CustomersParticular extends Component {
 
 	rowClassNameFormat(row, rowIdx) {
+
     return rowIdx % 2 === 0 ? 'BootstrapTable-tr-intermitate-color' : ''}
+
   isExpandableRow(row) {
+
     if ((row.count < 0)) return false;
-    return true;}
+    
+    return true
+  }
+  
   expandComponent = (row)=> {
-    return (
-      <CustomersParticularExpand data={ row.expand } updateCell={this.props.updateCell} />
-    );}
+  
+    return ( <CustomersParticularExpand data={ row.expand } /> )
+  }
+  
   expandColumnComponent({ isExpandableRow, isExpanded }) {
-    let content = '';
+
+    let content = ''
 
     if (isExpandableRow) {
-      content = (isExpanded ? '(-)' : '(+)' );
+
+      content = (isExpanded ? '(-)' : '(+)' )
+
     } else {
-      content = ' ';
+
+      content = ' '
+
     }
-    return (
-      <div> { content } </div>
-    );}
+
+    return ( <div> { content } </div> )
+  }
+
   createCustomToolBar = props => {
+    
     return (
       <div style={ { margin: '0px 0px 10px 0px' } }>
+
         { props.components.btnGroup }
+
         <div className='col-xs-8 col-sm-4 col-md-4 col-lg-2'>
           { props.components.searchPanel }
         </div>
+
       </div>
-    )}
+    )
+  }
+
   createCustomModalHeader(onClose, onSave) {
+    
     const headerStyle = {
       fontWeight: 'bold',
       fontSize: 'large',
       textAlign: 'center',
       backgroundColor: '#eeeeee'
-    };
+    }
+
     return (
+
       <div className='modal-header' style={ headerStyle }>
         <h3>Añadir nuevo cliente particular</h3>
       </div>
-    );
+
+    )
   }
 
   render(){
+
     const tdStyle={whiteSpace: 'normal'}
     const cellEditProp = {mode: 'dbclick', blurToSave: true, afterSaveCell: this.props.onAfterSaveCell}
+    
     const options={
       defaultSortName:'contact',
       defaultSortOrder: 'asc',
@@ -63,12 +88,15 @@ class CustomersParticular extends Component {
       insertModalHeader: this.createCustomModalHeader,
       searchField: (props) => (<MySearchField { ...props }/>)
     }
+
     const expandColumnOptions={ 
       expandColumnVisible: true, 
       expandColumnComponent: this.expandColumnComponent,
       columnWidth: 25
     }
+
     return(
+
       <BootstrapTable 
         height='360'
         insertRow
@@ -90,6 +118,7 @@ class CustomersParticular extends Component {
         <TableHeaderColumn hidden={ true } dataField='notes' >Notas</TableHeaderColumn>
         <TableHeaderColumn hidden={ true } dataField='address' >Dirección</TableHeaderColumn>
       </BootstrapTable>
+      
 		)
   }
 }

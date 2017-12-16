@@ -77,7 +77,6 @@ class CustomersParticularContainer extends Component {
 
       <CustomersParticular
         data={this.props.customers} 
-        updateCell={this.updateCell}
         onAfterSaveCell={this.onAfterSaveCell}
         onAfterInsertRow={this.onAfterInsertRow}
         phoneStatusValidator={this.phoneStatusValidator}
