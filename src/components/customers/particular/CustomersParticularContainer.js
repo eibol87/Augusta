@@ -12,9 +12,7 @@ import * as utilsTable from '../../../utils/UtilsTable'
 const PARTICULAR = 'particular'
 
 class CustomersParticularContainer extends Component {
-  constructor(props) {
-    super(props)
-  }
+  
   async componentWillMount(){
 
     await this.props.customerActions.fetchCustomersParticular(PARTICULAR)

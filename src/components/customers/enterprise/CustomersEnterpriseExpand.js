@@ -1,28 +1,53 @@
-import React, { Component } from 'react';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import React, { Component } from 'react'
+
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
+import * as expandRowActions from '../../../actions/expandRowActions'
+
+import * as utilsTable from '../../../utils/UtilsTable'
+
 class CustomersEnterpriseExpand extends Component {
-  constructor(){
-    super()
-      this.state={
-        edited: []
-      }
-    }
+  
+  componentWillMount(){
+
+    this.props.expandRowActions.loadExpandRow()
+
+  }
+
   onAfterSaveCell = ({ id }, cellName) => {
-    this.setState({
-      edited: [ ...this.state.edited, { id, cellName } ]})}
+
+    this.props.expandRowActions.updateStateExpand( { id, cellName })
+
+  }
+
+  updateCell(dataEdited,cellName,data) {
+   
+    utilsTable.updateCell(dataEdited,cellName,data,this.props.expandRowActions.updateCustomer)
+
+  }
+
   render() {
-    const hasEdited = this.state.edited.length
+
+    const hasEdited = this.props.edited.edited.length
+    
     if(hasEdited){
-      const dataEdited=this.state.edited[0]
-      const cellName=this.state.edited[0].cellName
+      
+      const dataEdited=this.props.edited.edited[0]
+      const cellName=this.props.edited.edited[0].cellName
       const data=this.props.data
-      this.props.updateCell(dataEdited,cellName,data)
-      this.state.edited = []
+
+      this.updateCell(dataEdited,cellName,data)
+      this.props.expandRowActions.resetStateExpandEdited()
+     
     }
+
     const Dias = [ 'Lunes mañana', 'Lunes tarde', 'Martes mañana', 'Martes tarde','Miércoles mañana', 'Miérciles tarde','Jueves mañana', 'Jueves tarde','Viernes mañana', 'Viernes tarde' ];
     const tdStyle={whiteSpace: 'normal'}
     const cellEditProp = {mode: 'dbclick', blurToSave: true, afterSaveCell: this.onAfterSaveCell}
-     return (
+    
+    return (
       <BootstrapTable 
         hover condensed 
         cellEdit={ cellEditProp } 
@@ -35,5 +60,27 @@ class CustomersEnterpriseExpand extends Component {
         <TableHeaderColumn editable={ { type: 'select', options: { values: Dias } } } width='150' dataField='delivery_days' tdStyle={tdStyle}>Dias Reparto</TableHeaderColumn>
         <TableHeaderColumn width='150' dataField='notes' tdStyle={tdStyle}>Notas</TableHeaderColumn>
     </BootstrapTable>);
-  }}
-export default CustomersEnterpriseExpand
+  }
+}
+
+function mapStateToProps(state){
+
+  return {
+
+    edited: state.expandRow
+
+  }
+
+}
+
+function mapDispatchToProps(dispatch){
+
+  return {
+
+    expandRowActions: bindActionCreators(expandRowActions,dispatch)
+
+  }
+
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CustomersEnterpriseExpand)

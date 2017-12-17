@@ -7,59 +7,92 @@ import MySearchField from '../../forms/MySearchField'
 
 class CustomersEnterprise extends Component {
 	 
-   rowClassNameFormat(row, rowIdx) {
-    return rowIdx % 2 === 0 ? 'BootstrapTable-tr-intermitate-color' : ''
-  }
+  rowClassNameFormat(row, rowIdx) {
+
+    return rowIdx % 2 === 0 ? 'BootstrapTable-tr-intermitate-color' : ''}
+
   isExpandableRow(row) {
+
     if ((row.count < 0)) return false;
-    return true;}
+    
+    return true
+  }
+
   expandComponent = (row)=> {
-    return (
-      <CustomersEnterpriseExpand data={ row.expand } updateCell={this.props.updateCell} />
-    );}
+  
+    return ( <CustomersEnterpriseExpand data={ row.expand } /> )
+  
+  }
+
   expandColumnComponent({ isExpandableRow, isExpanded }) {
-    let content = '';
+
+    let content = ''
 
     if (isExpandableRow) {
-      content = (isExpanded ? '(-)' : '(+)' );
+
+      content = (isExpanded ? '(-)' : '(+)' )
+
     } else {
-      content = ' ';
+
+      content = ' '
+
     }
-    return (
-      <div> { content } </div>
-    );}
-    createCustomToolBar = props => {
+
+    return ( <div> { content } </div> )
+  }
+
+  createCustomToolBar = props => {
+    
     return (
       <div style={ { margin: '0px 0px 10px 0px' } }>
+
         { props.components.btnGroup }
+
         <div className='col-xs-8 col-sm-4 col-md-4 col-lg-2'>
           { props.components.searchPanel }
         </div>
+
       </div>
-    )}
-    createCustomModalHeader(onClose, onSave) {
+    )
+  }
+
+  createCustomModalHeader(onClose, onSave) {
+    
     const headerStyle = {
       fontWeight: 'bold',
       fontSize: 'large',
       textAlign: 'center',
       backgroundColor: '#eeeeee'
-    };
+    }
+
     return (
+
       <div className='modal-header' style={ headerStyle }>
         <h3>Añadir nuevo cliente empresa</h3>
       </div>
-    );
+
+    )
   }
+
   createCustomModalBody = (columns, validateState, ignoreEditable) => {
+    
     return (
-      <CustomersEnterpriseModal columns={ columns }
+
+      <CustomersEnterpriseModal 
+        columns={ columns }
         validateState={ validateState }
-        ignoreEditable={ ignoreEditable }/>
-    );
+        ignoreEditable={ ignoreEditable }
+      />
+
+    )
   }
+
   render(props){
+    
     const tdStyle={whiteSpace: 'normal'}
     const cellEditProp = {mode: 'dbclick', blurToSave: true, afterSaveCell: this.props.onAfterSaveCell}
+    const expandColumnOptions={ expandColumnVisible: true, expandColumnComponent: this.expandColumnComponent,columnWidth: 25}
+    const Dias = [ 'Lunes mañana', 'Lunes tarde', 'Martes mañana', 'Martes tarde','Miércoles mañana', 'Miérciles tarde','Jueves mañana', 'Jueves tarde','Viernes mañana', 'Viernes tarde' ];
     const options={
       //insertModalBody: this.createCustomModalBody,
       defaultSortName:'contact',
@@ -70,18 +103,18 @@ class CustomersEnterprise extends Component {
       toolBar: this.createCustomToolBar,
       afterInsertRow: this.props.onAfterInsertRow,
       insertModalHeader: this.createCustomModalHeader,
-      searchField: (props) => (<MySearchField { ...props }/>)
+      searchField: (props) => ( <MySearchField { ...props }/> )
     }
-    const expandColumnOptions={ expandColumnVisible: true, expandColumnComponent: this.expandColumnComponent,columnWidth: 25}
-    const Dias = [ 'Lunes mañana', 'Lunes tarde', 'Martes mañana', 'Martes tarde','Miércoles mañana', 'Miérciles tarde','Jueves mañana', 'Jueves tarde','Viernes mañana', 'Viernes tarde' ];
+
     return(
+
       <BootstrapTable 
         cellEdit={ cellEditProp }
         height='360'
         insertRow
         className="BootstrapTable-style" 
         hover condensed search
-        data={ this.props.data.customer }
+        data={ this.props.data }
         options={options} 
         expandableRow={ this.isExpandableRow }
         expandComponent={ this.expandComponent }
@@ -101,8 +134,8 @@ class CustomersEnterprise extends Component {
         <TableHeaderColumn width='150' editable={ { type: 'checkbox', options: { values: 'Sí:No' } } } hidden={ true } dataField='delivery_type' tdStyle={tdStyle}>Reparto</TableHeaderColumn>
         <TableHeaderColumn width='150' editable={ { type: 'select', options: { values: Dias } } } hidden={ true } dataField='delivery_days' tdStyle={tdStyle}>Dias Reparto</TableHeaderColumn>
         <TableHeaderColumn width='150' hidden={ true } dataField='notes' tdStyle={tdStyle}>Notas</TableHeaderColumn>
-    
      </BootstrapTable>
-		)}
+		)
+  }
 }
 export default PanelContainer(CustomersEnterprise)

@@ -1,6 +1,6 @@
 import {
   FETCH_CUSTOMERS_PARTICULAR_INIT,
-  //FETCH_CUSTOMERS_ENTERPRISE_INIT,
+  FETCH_CUSTOMERS_ENTERPRISE_INIT,
   FETCH_CUSTOMERS_SUCCESS,
   FETCH_CUSTOMERS_FAILURE,
   CREATE_CUSTOMER_INIT,
@@ -97,6 +97,46 @@ export function fetchCustomersParticular(particular){
             }]                    
           })
         })
+      return dispatch(fetchCustomersSuccess(newState))
+    } catch (error){
+      return dispatch(fetchCustomersFailure(error))
+    }
+  }
+}
+
+export function fetchCustomersEnterprise(enterprise){
+  return async (dispatch) => {
+    dispatch(() => {
+      return {
+        type: FETCH_CUSTOMERS_ENTERPRISE_INIT
+      }
+    })
+
+    try {
+     const data = await API.customers.getAll(enterprise)
+      const newState = [...data]
+        .map(function (customer){
+            return ({
+              id:customer._id,
+              entry_date:customer.entry_date,
+              contact:customer.contact,
+              address:customer.address,
+              email: customer.email,
+              city:customer.city,
+              phone: customer.phone,
+              notes: customer.notes,
+              fiscal_name: customer.fiscal_name,
+              expand: [{
+                id:customer._id,
+                fiscal_address: customer.fiscal_address,
+                fiscal_city: customer.fiscal_city,
+                fiscal_id: customer.fiscal_id,
+                delivery_type: customer.delivery_type,
+                delivery_days: [...customer.delivery_days]
+              }]
+                      
+            })
+          })
       return dispatch(fetchCustomersSuccess(newState))
     } catch (error){
       return dispatch(fetchCustomersFailure(error))
