@@ -19,6 +19,23 @@ class CustomersEnterpriseContainer extends Component {
 
   }
 
+   componentWillReceiveProps(nextProps){
+
+    //comprobamos si hay algun registros en el state.edited, una vez que entramos
+    //lo reseteamos para asegurarnos que solo entra una vez se edita una celda
+    if(nextProps.edited.length){
+     
+      const dataEdited=nextProps.edited[0]
+      const cellName=nextProps.edited[0].cellName
+      const data=this.props.customers
+
+      this.updateCell(dataEdited,cellName,data)
+      this.props.customerActions.resetStateCustomerEdited()
+
+    }
+   
+  }
+
   onAfterSaveCell = ({ id }, cellName) =>{
   
     this.props.customerActions.updateStateCustomer({ id, cellName })
@@ -57,16 +74,7 @@ class CustomersEnterpriseContainer extends Component {
   }
 
   render(){
-     if(this.props.edited.length){
      
-      const dataEdited=this.props.edited[0]
-      const cellName=this.props.edited[0].cellName
-      const data=this.props.customers
-
-      this.updateCell(dataEdited,cellName,data)
-      this.props.customerActions.resetStateCustomerEdited()
-
-    }
     return(
       <CustomersEnterprise
         data={this.props.customers} 

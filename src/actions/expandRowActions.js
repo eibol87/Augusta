@@ -7,7 +7,7 @@ import {
   UPDATE_CUSTOMER_EXPAND_FAILURE
 } from './types'
 
-import API from '../services/Api'
+import api from '../services/Api'
 
 export function loadExpandRow () {
   return {
@@ -51,7 +51,7 @@ export function updateCustomer(id,customer){
     })
     
     try {
-      await API.customers.update(id,customer)
+      await api.customers.update(id,customer)
       return dispatch(updateCustomerExpandSuccess())
     } catch (error){
       return dispatch(updateCustomerExpandFailure(error))

@@ -14,7 +14,7 @@ import {
 
 } from './types'
 
-import API from '../services/Api'
+import api from '../services/Api'
 
 // Actions Creations
 
@@ -79,7 +79,7 @@ export function fetchCustomersParticular(particular){
     })
 
     try {
-     const data = await API.customers.getAll(particular)
+     const data = await api.customers.getAll(particular)
       const newState = [...data]
         .map(function (customer){
           return ({
@@ -113,7 +113,7 @@ export function fetchCustomersEnterprise(enterprise){
     })
 
     try {
-     const data = await API.customers.getAll(enterprise)
+     const data = await api.customers.getAll(enterprise)
       const newState = [...data]
         .map(function (customer){
             return ({
@@ -153,7 +153,7 @@ export function updateCustomer(id,customer){
     })
     
     try {
-      await API.customers.update(id,customer)
+      await api.customers.update(id,customer)
       return dispatch(updateCustomerSuccess())
     } catch (error){
       return dispatch(updateCustomerFailure(error))
@@ -177,7 +177,7 @@ export function createCustomer(customer){
     })
 
     try {
-      await API.customers.new(customer)
+      await api.customers.new(customer)
       return dispatch(createCustomerSuccess())
     } catch (error){
       return dispatch(createCustomerFailure(error))
