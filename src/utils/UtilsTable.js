@@ -34,8 +34,20 @@ export async function onAfterInsertRow(row,typeCustomer,createCustomer){
     row.phone= Number(row.phone)
     row.type=typeCustomer
     
-    const result = await createCustomer(row)
+    if(row.delivery_type === 'No'){
 
-    if(result === 200) toastr.success(`Se ha añadido el cliente ${row.contact}`)
+      row.delivery_type = false
+      row.delivery_days = ''
+
+    }
+
+    const result = await createCustomer(row)
+    
+    if(result.type === "CREATE_CUSTOMER_SUCCESS"){
+
+      toastr.success(`Se ha añadido el cliente ${row.contact}`)
+    }
+
+    return result.type
    
   }

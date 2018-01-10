@@ -17,7 +17,7 @@ class CountRowsSelected extends Component {
   handleAfterSearch(searchText, result) {
     //este variable la declaro fuera de la clase por que necesito su valor pero no puedo usar el setState
     //me renderiza y me haria bucle infinto
-    console.log(result)
+   
     if (searchText === '') {
      // this.refs.table.cleanSelected();
     }else{

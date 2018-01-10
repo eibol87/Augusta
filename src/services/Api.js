@@ -203,7 +203,7 @@ const API = {
           Authorization: `Bearer ${getSessionStorage()}`
         }
       })
-      console.log("response: ",response)
+     
       return response.data
     },
 

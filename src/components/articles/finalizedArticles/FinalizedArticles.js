@@ -32,7 +32,7 @@ class FinalizedArticles extends Component {
       </div>
   )}
   onRowSelect(row, isSelected, e) {
-    //console.log("id: ",row.id);
+   
     const filter = this.props.selected.find(selected => selected.id === row.id );
     if(filter){
       const filter = this.props.selected.filter(selected => selected.id !== row.id );

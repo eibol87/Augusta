@@ -13,10 +13,15 @@ const PARTICULAR = 'particular'
 
 class CustomersParticularContainer extends Component {
   
-  async componentWillMount(){
+  componentWillMount(){
+
+    this.fetchCustomers()
+
+  }
+  
+  async fetchCustomers(){
 
     await this.props.customerActions.fetchCustomersParticular(PARTICULAR)
-
   }
 
   onAfterSaveCell = ({ id }, cellName) =>{
@@ -52,8 +57,13 @@ class CustomersParticularContainer extends Component {
     
     utilsTable.onAfterInsertRow(row,PARTICULAR,this.props.customerActions.createCustomer)
     
-    await this.props.customerActions.fetchCustomersParticular(PARTICULAR)
+    const result = await this.props.customerActions.fetchCustomersParticular(PARTICULAR)
+    
+    if(result === "CREATE_CUSTOMER_SUCCESS"){
+      
+       this.fetchCustomers()
 
+    }
   }
 
   phoneStatusValidator(value, row) {

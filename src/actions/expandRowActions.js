@@ -29,7 +29,7 @@ export function resetStateExpandEdited () {
 }
 
 export function updateCustomerExpandFailure(error){
-  console.log("updateCustomerExpandFailure: ", error)
+
   return {
     type: UPDATE_CUSTOMER_EXPAND_FAILURE,
     payload: error
@@ -52,7 +52,7 @@ export function updateExpandCustomer(id,customer){
     })
     
     try {
-      console.log("id: ",id, "customer: ", customer)
+     
       await api.customers.update(id,customer)
       return dispatch(updateCustomerExpandSuccess())
     } catch (error){

@@ -13,10 +13,15 @@ const ENTERPRISE = 'empresa'
 
 class CustomersEnterpriseContainer extends Component {
   
-  async componentWillMount(){
+  componentWillMount(){
+
+    this.fetchCustomers()
+
+  }
+  
+  async fetchCustomers(){
 
     await this.props.customerActions.fetchCustomersEnterprise(ENTERPRISE)
-
   }
 
    componentWillReceiveProps(nextProps){
@@ -52,7 +57,13 @@ class CustomersEnterpriseContainer extends Component {
     
     utilsTable.onAfterInsertRow(row,ENTERPRISE,this.props.customerActions.createCustomer)
     
-    await this.props.customerActions.fetchCustomersParticular(ENTERPRISE)
+     const result = await this.props.customerActions.fetchCustomersEnterprise(ENTERPRISE)
+
+    if(result === "CREATE_CUSTOMER_SUCCESS"){
+      
+       this.fetchCustomers()
+
+    }
 
   }
 

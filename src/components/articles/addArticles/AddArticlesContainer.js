@@ -48,9 +48,9 @@ class AddArticlesContainer extends Component {
   onAfterInsertRow = async (row) => {
     delete row.id //delete id because if not needed pass to mongodb
     row.state='pending'
-    console.log(row)
+  
     const result = await createArticle(row)
-    console.log(result)
+   
     // if(result === 201) toastr.warning(`El artículo ${row.type} ya existe`)
     if(result === 200) toastr.success(`Se ha añadido el artículo ${row.type}`)
     // this.getPriceList()

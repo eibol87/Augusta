@@ -55,7 +55,7 @@ class FinalizedArticlesContainer extends Component {
   }
   handleMultipleSelection = (data) => {
     data.forEach(function(article){
-      console.log(article.id)
+     
       this.updateData(article.id)
     },this)
   }
