@@ -215,7 +215,22 @@ const API = {
       })
       return response.data
     }
-   }
+   },
+
+  pricesList:{
+    async getAll (type,leather) {
+      let query = ''
+      if(type && leather){ 
+        query = `?type=${type.label}&leather=${leather.label}`
+      }
+      const response = await axios(`${REACT_APP_API_SERVER}pricesList${query}`, {
+        headers: {
+          Authorization: `Bearer ${getSessionStorage()}`
+        }
+      })
+      return response.data
+    }
+    }
 }
 
 export default API

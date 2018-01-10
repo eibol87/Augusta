@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {getPricesList,UpdatePriceToPriceList,createPriceList} from '../../services/Api'
 import PricesList from './PricesList'
 import toastr from 'toastr'
+import api from '../../services/Api'
 
 class PricesListContainer extends Component {
   constructor(){
@@ -26,7 +27,8 @@ class PricesListContainer extends Component {
     })}
 
   async getPriceList(){
-     const response = await getPricesList()
+     //const response = await getPricesList()
+     const response = await api.pricesList.getAll()
       if(response){
         this.setState({
           pricesList: [...response]
