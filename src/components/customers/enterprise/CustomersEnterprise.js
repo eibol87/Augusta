@@ -20,7 +20,7 @@ class CustomersEnterprise extends Component {
 
   expandComponent = (row)=> {
   
-    return ( <CustomersEnterpriseExpand data={ row.expand } /> )
+    return ( <CustomersEnterpriseExpand data={ row.expand } allData={ this.props.data }/> )
   
   }
 

@@ -10,10 +10,26 @@ import * as utilsTable from '../../../utils/UtilsTable'
 
 class CustomersEnterpriseExpand extends Component {
   
-  componentWillMount(){
+ componentWillMount(){
 
     this.props.expandRowActions.loadExpandRow()
 
+  }
+
+  componentWillReceiveProps(nextProps){
+     
+     if(nextProps.edited.length){
+      
+      const dataEdited=nextProps.edited[0]
+      const cellName=nextProps.edited[0].cellName
+      //creo una array con todos los expand
+      const data=this.props.allData.map((row) => row.expand[0] )
+     
+      this.updateCell(dataEdited,cellName,data)
+      this.props.expandRowActions.resetStateExpandEdited()
+     
+    }
+   
   }
 
   onAfterSaveCell = ({ id }, cellName) => {
@@ -24,24 +40,11 @@ class CustomersEnterpriseExpand extends Component {
 
   updateCell(dataEdited,cellName,data) {
    
-    utilsTable.updateCell(dataEdited,cellName,data,this.props.expandRowActions.updateCustomer)
+    utilsTable.updateCell(dataEdited,cellName,data,this.props.expandRowActions.updateExpandCustomer)
 
   }
 
   render() {
-
-    const hasEdited = this.props.edited.edited.length
-    
-    if(hasEdited){
-      
-      const dataEdited=this.props.edited.edited[0]
-      const cellName=this.props.edited.edited[0].cellName
-      const data=this.props.data
-
-      this.updateCell(dataEdited,cellName,data)
-      this.props.expandRowActions.resetStateExpandEdited()
-     
-    }
 
     const Dias = [ 'Lunes mañana', 'Lunes tarde', 'Martes mañana', 'Martes tarde','Miércoles mañana', 'Miérciles tarde','Jueves mañana', 'Jueves tarde','Viernes mañana', 'Viernes tarde' ];
     const tdStyle={whiteSpace: 'normal'}
@@ -67,7 +70,7 @@ function mapStateToProps(state){
 
   return {
 
-    edited: state.expandRow
+    edited: state.expandRow.edited
 
   }
 
