@@ -19,7 +19,7 @@ class CustomersParticular extends Component {
   
   expandComponent = (row)=> {
   
-    return ( <CustomersParticularExpand data={ row.expand } /> )
+    return ( <CustomersParticularExpand data={ row.expand }  allData={ this.props.data }/> )
   }
   
   expandColumnComponent({ isExpandableRow, isExpanded }) {

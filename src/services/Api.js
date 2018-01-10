@@ -4,21 +4,6 @@ import toastr from 'toastr'
 
 const {REACT_APP_API_SERVER} = process.env
 
-export function newCustomer (customer){
-  
-  const token = `Bearer ${getSessionStorage()}`
-   const url= `${REACT_APP_API_SERVER}customer`
-    return axios.post(url,customer,{
-        headers: {
-           Authorization: `${token}`
-        }
-    })
-    .then(response => response.status)
-    .catch(function (error) {
-        // Display an error toast, with a title
-      toastr.error('Problema al comunicarse con el servidor')
-    });
-}
 
 export function getCustomers (customer){
   const token = `Bearer ${getSessionStorage()}`
@@ -108,22 +93,7 @@ export function getArticles (state){
       toastr.error('Problema al comunicarse con el servidor')
     });
 }
-export function UpdateCustomer (id,body){
-  const token = `Bearer ${getSessionStorage()}`
-   const url= `${REACT_APP_API_SERVER}customer/${id}`
-    return axios.put(url,
-      body,{
-        headers: {
-           Authorization: `${token}`
-        }
-    })
-    .then(response => response.data)
-    .catch(function (error) {
-      // Display an error toast, with a title
-      toastr.error('Problema al comunicarse con el servidor')
 
-    });
-}
 export function UpdatePriceToPriceList (id,price){
   const token = `Bearer ${getSessionStorage()}`
   const url= `${REACT_APP_API_SERVER}pricesList/${id}`
@@ -233,6 +203,7 @@ const API = {
           Authorization: `Bearer ${getSessionStorage()}`
         }
       })
+      console.log("response: ",response)
       return response.data
     },
 

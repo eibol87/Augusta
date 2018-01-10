@@ -66,7 +66,7 @@ export function updateCustomerFailure(error){
 
 export function updateCustomerSuccess(){
   return {
-    type: UPDATE_CUSTOMER_SUCCESS,
+    type: UPDATE_CUSTOMER_SUCCESS
   }
 }
 

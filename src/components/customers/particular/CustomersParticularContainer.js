@@ -34,7 +34,7 @@ class CustomersParticularContainer extends Component {
       const dataEdited=nextProps.edited[0]
       const cellName=nextProps.edited[0].cellName
       const data=this.props.customers
-
+      
       this.updateCell(dataEdited,cellName,data)
       this.props.customerActions.resetStateCustomerEdited()
 
@@ -43,7 +43,7 @@ class CustomersParticularContainer extends Component {
   }
   
   updateCell(dataEdited,cellName,data) {
-   
+  
     utilsTable.updateCell(dataEdited,cellName,data,this.props.customerActions.updateCustomer)
 
   }
