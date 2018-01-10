@@ -1,4 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
+import * as pricesListActions from '../../actions/pricesListActions'
+
 import {getPricesList,UpdatePriceToPriceList,createPriceList} from '../../services/Api'
 import PricesList from './PricesList'
 import toastr from 'toastr'
@@ -18,17 +24,20 @@ class PricesListContainer extends Component {
       edited: []
     }
   }
-  componentDidMount(){
-    this.getPriceList()
+  
+  async componentWillMount(){
+
+    await this.props.pricesListActions.fetchPricesList()
+
   }
+
   onAfterSaveCell = ({ id }, cellName) =>{
     this.setState({
       edited: [ ...this.state.edited, { id, cellName } ]
     })}
-
+  
   async getPriceList(){
-     //const response = await getPricesList()
-     const response = await api.pricesList.getAll()
+    const response = await api.pricesList.getAll()
       if(response){
         this.setState({
           pricesList: [...response]
@@ -102,7 +111,7 @@ class PricesListContainer extends Component {
     if(hasEdited) this.updateCell(this.state.edited[0],this.state.edited[0].cellName,this.state.pricesList) 
     return(
       <PricesList
-        data={this.state} 
+        data={this.props.list} 
         onAfterSaveCell={this.onAfterSaveCell}
         updateCell={this.updateCell}
         onAfterInsertRow={this.onAfterInsertRow}
@@ -112,4 +121,27 @@ class PricesListContainer extends Component {
   }
 }
 
-export default PricesListContainer
+function mapStateToProps(state){
+
+  return {
+
+    list: state.pricesList.list,
+    loading: state.pricesList.loading,
+    edited: state.pricesList.edited
+  
+  }
+
+}
+
+function mapDispatchToProps(dispatch){
+
+  return {
+
+    pricesListActions: bindActionCreators(pricesListActions,dispatch)
+
+  }
+
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(PricesListContainer)
+

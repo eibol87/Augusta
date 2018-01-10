@@ -62,7 +62,7 @@ class PricesList extends Component {
         cellEdit={ cellEditProp }
         className="BootstrapTable-style" 
         hover condensed search striped
-        data={ this.props.data.pricesList }
+        data={ this.props.data }
         options={options} 
         trClassName={this.rowClassNameFormat}>
 	     	<TableHeaderColumn dataField='id' hiddenOnInsert autoValue={ true } hidden={ true } isKey={ true } >id</TableHeaderColumn>

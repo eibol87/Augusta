@@ -8,14 +8,10 @@ const initialState = {
   expandRow:{
     edited:[]
   },
-  pricesList:[{
-    id:'',
-    type:'',
-    leather: '',
-    base_price:'',
-    prices_per_customer:'',
+  pricesList:{
+    list:[],
     edited: []
-  }],
+  },
 }
 
 export default initialState
