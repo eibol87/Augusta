@@ -5,110 +5,82 @@ import { connect } from 'react-redux'
 
 import * as pricesListActions from '../../actions/pricesListActions'
 
-import {getPricesList,UpdatePriceToPriceList,createPriceList} from '../../services/Api'
+import {createPriceList} from '../../services/Api'
 import PricesList from './PricesList'
 import toastr from 'toastr'
+import * as utilsTable from '../../utils/UtilsTable'
 import api from '../../services/Api'
 
 class PricesListContainer extends Component {
-  constructor(){
-    super()
-    this.state={
-      pricesList:[{
-        id:'',
-        type:'',
-        leather: '',
-        base_price:'',
-        prices_per_customer:''
-      }],
-      edited: []
-    }
-  }
   
-  async componentWillMount(){
+  componentWillMount(){
+
+   this.fetchPricesList()
+
+  }
+
+  async fetchPricesList(){
 
     await this.props.pricesListActions.fetchPricesList()
 
   }
 
-  onAfterSaveCell = ({ id }, cellName) =>{
-    this.setState({
-      edited: [ ...this.state.edited, { id, cellName } ]
-    })}
+  componentWillReceiveProps(nextProps){
+
+    //comprobamos si hay algun registros en el state.edited, una vez que entramos
+    //lo reseteamos para asegurarnos que solo entra una vez se edita una celda
+    if(nextProps.edited.length){
+     
+      const dataEdited=nextProps.edited[0]
+      const cellName=nextProps.edited[0].cellName
+      const data=this.props.list
+      
+      this.updateCell(dataEdited,cellName,data)
+      this.props.pricesListActions.resetStatePricesListEdited()
+
+    }
+   
+  }
   
-  async getPriceList(){
-    const response = await api.pricesList.getAll()
-      if(response){
-        this.setState({
-          pricesList: [...response]
-          .map(function (priceList){
-            const sum = (priceList.assign_prices.reduce((acc, sum) => acc + Number(sum) ,0))
-            const avg= (sum/priceList.assign_prices.length).toFixed(2)
-            return ({
-              id:priceList._id,
-              type:priceList.type,
-              leather: priceList.leather,
-              base_price:priceList.base_price,
-              prices_per_customer:avg
-            })
-          })
-        })
-      }
+  
+  updateCell(dataEdited,cellName,data) {
+  
+    utilsTable.updateCell(dataEdited,cellName,data,this.props.pricesListActions.updatePricesList)
+
   }
-  updateCell = async (dataEdited,cellName,data) => {
-    const body = {};
-    const findDataRowEdited = data.filter(element => element.id === dataEdited.id )
-      
-    body[cellName] = findDataRowEdited[0][cellName]
-      
-    try {
-      const result = await UpdatePriceToPriceList(dataEdited.id,body)
-      if(result) toastr.success( `${body[cellName]}`,'Se ha guardado:')
-      //clean state
-      this.state.edited=[]
-    }
-    catch(e) {
-      toastr.error('Error al resolver la promesa')
-      this.state.edited=[]
-    throw e
-    }
+
+  onAfterSaveCell = ({ id }, cellName) =>{
+  
+    this.props.pricesListActions.updateStatePricesList({ id, cellName })
+
   }
-  basePriceStatusValidator(value, row) {
-    const response = { isValid: true, notification: { type: 'success', msg: '', title: '' } };
-    const nan = isNaN(parseInt(value, 10)) //isNumeric
-    if (nan) {
-      return  response.notification.type = 'Solo puedes introducir números';
-    }
-    return true;
-  }
-  updateCell = async (dataEdited,cellName,data) => {
-    const body = {};
-    const findDataRowEdited = data.filter(element => element.id === dataEdited.id )
-    
-    body[cellName] = findDataRowEdited[0][cellName]
-    try {
-     const result = await UpdatePriceToPriceList(dataEdited.id,body)
-      if(result) toastr.success( `${body[cellName]}`,'Se ha guardado:')
-      //clean state
-      this.state.edited=[]
-    }
-      catch(e) {
-        toastr.error('Error al resolver la promesa')
-        this.state.edited=[]
-        throw e
-    }
-  }
+
+
   onAfterInsertRow = async (row) => {
     delete row.id //delete id because if not needed pass to mongodb
     delete row.prices_per_customer
     const result = await createPriceList(row)
     if(result === 201) toastr.warning(`El artículo ${row.type} ya existe`)
     if(result === 200) toastr.success(`Se ha añadido el artículo ${row.type}`)
-    this.getPriceList()
+    //this.getPriceList()
   }
+
+  basePriceStatusValidator(value, row) {
+    const response = { isValid: true, notification: { type: 'success', msg: '', title: '' } };
+    const nan = isNaN(parseInt(value, 10)) //isNumeric
+    
+    if (nan) {
+    
+      return  response.notification.type = 'Solo puedes introducir números';
+    
+    }
+    
+    return true;
+  
+  }
+
   render(){
-    const hasEdited = this.state.edited.length
-    if(hasEdited) this.updateCell(this.state.edited[0],this.state.edited[0].cellName,this.state.pricesList) 
+    
     return(
       <PricesList
         data={this.props.list} 

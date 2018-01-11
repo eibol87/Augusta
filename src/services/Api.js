@@ -94,22 +94,7 @@ export function getArticles (state){
     });
 }
 
-export function UpdatePriceToPriceList (id,price){
-  const token = `Bearer ${getSessionStorage()}`
-  const url= `${REACT_APP_API_SERVER}pricesList/${id}`
-    return axios.put(url,
-      price,{
-        headers: {
-           Authorization: `${token}`
-        }
-    })
-    .then(response => response.data)
-    .catch(function (error) {
-      // Display an error toast, with a title
-      toastr.error('Problema al comunicarse con el servidor')
 
-    });
-}
 export function createPriceList (article){
   const token = `Bearer ${getSessionStorage()}`
    const url= `${REACT_APP_API_SERVER}pricesList`
@@ -229,8 +214,18 @@ const API = {
         }
       })
       return response.data
-    }
-    }
+    },
+    async update (id,price) {
+      const response = await axios.put(`${REACT_APP_API_SERVER}pricesList/${id}`,price, {
+        headers: {
+          Authorization: `Bearer ${getSessionStorage()}`
+        }
+      })
+     
+      return response.data
+    },
+  }
 }
+
 
 export default API

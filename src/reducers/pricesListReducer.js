@@ -1,7 +1,12 @@
 import {
  FETCH_PRICESLIST_INIT,
  FETCH_PRICESLIST_SUCCESS,
- FETCH_PRICESLIST_FAILURE
+ FETCH_PRICESLIST_FAILURE,
+ UPDATE_PRICESLIST_INIT,
+ UPDATE_PRICESLIST_SUCCESS,
+ UPDATE_PRICESLIST_FAILURE,
+ RESET_STATE_PRICESLIST_EDITED,
+ UPDATE_STATE_PRICESLIST
 
 } from '../actions/types'
 
@@ -30,6 +35,36 @@ export default function customerListReduce(state = initialState.pricesList, acti
         list: action.payload,
         error: null,
         loading: true
+      }
+    case UPDATE_PRICESLIST_INIT:
+      return{
+        ...state,
+        loading:true
+      }
+   
+    case UPDATE_PRICESLIST_FAILURE:
+      return{
+        ...state,
+        error: action.payload,
+        loading: false
+      }
+   
+    case UPDATE_PRICESLIST_SUCCESS:
+      return{
+        ...state,
+        list: [...state.list],
+        error:null,
+        loading: true
+      }
+    case RESET_STATE_PRICESLIST_EDITED:
+      return {
+        ...state,
+        edited: []
+      }
+    case UPDATE_STATE_PRICESLIST:
+      return {
+        ...state,
+        edited: [...state.edited,action.payload]
       }
   
     default:
