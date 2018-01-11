@@ -27,7 +27,7 @@ export async function updateCell(dataEdited,cellName,data,updateCustomer) {
   }
 }
 
-export async function onAfterInsertRow(row,typeCustomer,createCustomer){
+export async function onAfterInsertRow(row,createCustomer,typeCustomer=null){
     
     delete row.id //delete id because if not needed pass to mongodb
     

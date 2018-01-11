@@ -55,17 +55,32 @@ class PricesListContainer extends Component {
 
   }
 
+  // onAfterInsertRow = async (row) => {
 
+  //   delete row.id //delete id because if not needed pass to mongodb
+  //   delete row.prices_per_customer
+
+  //   const result = await createPriceList(row)
+
+  //   if(result === 201) toastr.warning(`El artículo ${row.type} ya existe`)
+  //   if(result === 200) toastr.success(`Se ha añadido el artículo ${row.type}`)
+    
+  // }
   onAfterInsertRow = async (row) => {
-    delete row.id //delete id because if not needed pass to mongodb
-    delete row.prices_per_customer
-    const result = await createPriceList(row)
-    if(result === 201) toastr.warning(`El artículo ${row.type} ya existe`)
-    if(result === 200) toastr.success(`Se ha añadido el artículo ${row.type}`)
-    //this.getPriceList()
+    
+    utilsTable.onAfterInsertRow(row,this.props.pricesListActions.createPricesList)
+    
+    const result = await this.props.customerActions.fetchCustomersParticular()
+    
+    if(result === "CREATE_PRICESLIST_SUCCESS"){
+      
+       this.fetchCustomers()
+
+    }
   }
 
   basePriceStatusValidator(value, row) {
+
     const response = { isValid: true, notification: { type: 'success', msg: '', title: '' } };
     const nan = isNaN(parseInt(value, 10)) //isNumeric
     

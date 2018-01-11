@@ -78,6 +78,7 @@ export function getDeliveryNotes (){
         // Display an error toast, with a title
       toastr.error('Problema al comunicarse con el servidor')
     });}
+
 export function getArticles (state){
   const token = `Bearer ${getSessionStorage()}`
   const paramsState= (state) ? `?state=${state}` :''
@@ -94,21 +95,6 @@ export function getArticles (state){
     });
 }
 
-
-export function createPriceList (article){
-  const token = `Bearer ${getSessionStorage()}`
-   const url= `${REACT_APP_API_SERVER}pricesList`
-    return axios.post(url,article,{
-        headers: {
-           Authorization: `${token}`
-        }
-    })
-    .then(response => response.status)
-    .catch(function (error) {
-        // Display an error toast, with a title
-      toastr.error('Problema al comunicarse con el servidor')
-    });
-}
 export function createArticle (article){
   const token = `Bearer ${getSessionStorage()}`
    const url= `${REACT_APP_API_SERVER}articles`
@@ -224,8 +210,15 @@ const API = {
      
       return response.data
     },
+    async new (article) {
+      const response = await axios.post(`${REACT_APP_API_SERVER}pricesList`,article, {
+        headers: {
+          Authorization: `Bearer ${getSessionStorage()}`
+        }
+      })
+      return response.data
+    }
+   }
   }
-}
-
 
 export default API

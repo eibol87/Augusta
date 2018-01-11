@@ -55,13 +55,11 @@ class CustomersParticularContainer extends Component {
 
   onAfterInsertRow = async (row) => {
     
-    utilsTable.onAfterInsertRow(row,PARTICULAR,this.props.customerActions.createCustomer)
-    
-    const result = await this.props.customerActions.fetchCustomersParticular(PARTICULAR)
+    const result = await utilsTable.onAfterInsertRow(row,this.props.customerActions.createCustomer,PARTICULAR)
     
     if(result === "CREATE_CUSTOMER_SUCCESS"){
       
-       this.fetchCustomers()
+      this.fetchCustomers()
 
     }
   }

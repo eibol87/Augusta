@@ -6,7 +6,10 @@ import {
  UPDATE_PRICESLIST_SUCCESS,
  UPDATE_PRICESLIST_FAILURE,
  RESET_STATE_PRICESLIST_EDITED,
- UPDATE_STATE_PRICESLIST
+ UPDATE_STATE_PRICESLIST,
+ CREATE_PRICESLIST_INIT,
+ CREATE_PRICESLIST_SUCCESS,
+ CREATE_PRICESLIST_FAILURE
 
 } from './types'
 
@@ -52,6 +55,19 @@ export function updatePricesListSuccess(){
   }
 }
 
+export function savePricesListSuccess(){
+  return {
+    type: CREATE_PRICESLIST_SUCCESS
+  }
+}
+
+export function createPricesListFailure(error){
+  return {
+    type: CREATE_PRICESLIST_FAILURE,
+    payload: error
+  }
+}
+
 export function fetchPricesList(){
   return async (dispatch) => {
     dispatch(() => {
@@ -94,6 +110,24 @@ export function updatePricesList(id,price){
       return dispatch(updatePricesListSuccess())
     } catch (error){
       return dispatch(updatePricesListFailure(error))
+    }
+  }
+}
+
+export function createPricesList(article){
+  return async (dispatch) => {
+    dispatch(() => {
+      return {
+        type: CREATE_PRICESLIST_INIT
+      }
+    })
+
+    try {
+      await api.pricesList.new(article)
+      return dispatch(savePricesListSuccess())
+    } catch (error){
+      return dispatch(createPricesListFailure(error))
+
     }
   }
 }

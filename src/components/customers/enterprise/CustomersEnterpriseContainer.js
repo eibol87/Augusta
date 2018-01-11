@@ -53,18 +53,15 @@ class CustomersEnterpriseContainer extends Component {
 
   }
 
-   onAfterInsertRow = async (row) => {
+  onAfterInsertRow = async (row) => {
     
-    utilsTable.onAfterInsertRow(row,ENTERPRISE,this.props.customerActions.createCustomer)
+    const result = await utilsTable.onAfterInsertRow(row,this.props.customerActions.createCustomer,ENTERPRISE)
     
-     const result = await this.props.customerActions.fetchCustomersEnterprise(ENTERPRISE)
-
     if(result === "CREATE_CUSTOMER_SUCCESS"){
       
-       this.fetchCustomers()
+      this.fetchCustomers()
 
     }
-
   }
 
   phoneStatusValidator(value, row) {
