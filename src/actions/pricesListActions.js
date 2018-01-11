@@ -9,7 +9,8 @@ import {
  UPDATE_STATE_PRICESLIST,
  CREATE_PRICESLIST_INIT,
  CREATE_PRICESLIST_SUCCESS,
- CREATE_PRICESLIST_FAILURE
+ CREATE_PRICESLIST_FAILURE,
+ CREATE_PRICESLIST_WARNING
 
 } from './types'
 
@@ -68,6 +69,12 @@ export function createPricesListFailure(error){
   }
 }
 
+export function createPricesListWarning(){
+  return {
+    type: CREATE_PRICESLIST_WARNING
+  }
+}
+
 export function fetchPricesList(){
   return async (dispatch) => {
     dispatch(() => {
@@ -123,8 +130,12 @@ export function createPricesList(article){
     })
 
     try {
-      await api.pricesList.new(article)
-      return dispatch(savePricesListSuccess())
+      const result = await api.pricesList.new(article)
+      if(result === 'Article exist'){
+        return dispatch(createPricesListWarning())
+      }else{
+        return dispatch(savePricesListSuccess())
+      }
     } catch (error){
       return dispatch(createPricesListFailure(error))
 

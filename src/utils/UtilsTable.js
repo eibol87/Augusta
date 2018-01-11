@@ -30,9 +30,10 @@ export async function updateCell(dataEdited,cellName,data,updateCustomer) {
 export async function onAfterInsertRow(row,createCustomer,typeCustomer=null){
     
     delete row.id //delete id because if not needed pass to mongodb
-    
+   
     row.phone= Number(row.phone)
     row.type=typeCustomer
+
     
     if(row.delivery_type === 'No'){
 
@@ -50,4 +51,25 @@ export async function onAfterInsertRow(row,createCustomer,typeCustomer=null){
 
     return result.type
    
-  }
+}
+
+export async function onAfterInsertRowPricesList(row,createArticle){
+    
+    delete row.id //delete id because if not needed pass to mongodb
+    delete row.prices_per_customer// this is for pricesList
+
+    const result = await createArticle(row)
+    
+    if(result.type === "CREATE_PRICESLIST_SUCCESS"){
+
+      toastr.success(`Se ha añadido el articulo ${row.type}`)
+
+    }else if(result.type === "CREATE_PRICESLIST_WARNING"){
+
+     toastr.warning(`El artículo ${row.type} ya existe`)
+
+    }
+
+    return result.type
+   
+}

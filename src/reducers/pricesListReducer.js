@@ -6,7 +6,11 @@ import {
  UPDATE_PRICESLIST_SUCCESS,
  UPDATE_PRICESLIST_FAILURE,
  RESET_STATE_PRICESLIST_EDITED,
- UPDATE_STATE_PRICESLIST
+ UPDATE_STATE_PRICESLIST,
+ CREATE_PRICESLIST_INIT,
+ CREATE_PRICESLIST_SUCCESS,
+ CREATE_PRICESLIST_FAILURE,
+ CREATE_PRICESLIST_WARNING
 
 } from '../actions/types'
 
@@ -65,6 +69,34 @@ export default function customerListReduce(state = initialState.pricesList, acti
       return {
         ...state,
         edited: [...state.edited,action.payload]
+      }
+    case CREATE_PRICESLIST_INIT:
+      return{
+        ...state,
+        loading:true
+      } 
+  
+    case CREATE_PRICESLIST_FAILURE:
+      return{
+        ...state,
+        error: action.payload,
+        loading: false
+      }
+  
+    case CREATE_PRICESLIST_SUCCESS:
+      return{
+        ...state,
+        list: [...state.list],
+        error:null,
+        loading: true
+      }
+
+    case CREATE_PRICESLIST_WARNING:
+      return{
+        ...state,
+        list: [...state.list],
+        error:null,
+        loading: true
       }
   
     default:

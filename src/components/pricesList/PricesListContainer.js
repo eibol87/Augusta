@@ -68,13 +68,11 @@ class PricesListContainer extends Component {
   // }
   onAfterInsertRow = async (row) => {
     
-    utilsTable.onAfterInsertRow(row,this.props.pricesListActions.createPricesList)
-    
-    const result = await this.props.customerActions.fetchCustomersParticular()
+    const result = await utilsTable.onAfterInsertRowPricesList(row,this.props.pricesListActions.createPricesList)
     
     if(result === "CREATE_PRICESLIST_SUCCESS"){
       
-       this.fetchCustomers()
+      this.fetchPricesList()
 
     }
   }
