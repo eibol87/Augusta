@@ -1,16 +1,18 @@
 import { combineReducers } from 'redux'
 import { routerRecuder } from 'react-router-redux'
-import customerList from  './customerListReducer'
+import customer from  './customerListReducer'
 import expandRow from  './expandRowReducer'
 import pricesList from  './pricesListReducer'
+import article from  './articleReducer'
 
 const rootReducer = combineReducers({
 
   routing: 
     routerRecuder,
-    customerList,
+    customer,
     expandRow,
-    pricesList
+    pricesList,
+    article
 
 })
 

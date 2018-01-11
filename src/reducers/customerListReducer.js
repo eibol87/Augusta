@@ -15,7 +15,7 @@ import {
 
 import initialState from './initialState'
 
-export default function customerListReduce(state = initialState.customerList, action){
+export default function customerListReduce(state = initialState.customer, action){
   
   switch (action.type) {
     case FETCH_CUSTOMERS_PARTICULAR_INIT:
@@ -33,7 +33,7 @@ export default function customerListReduce(state = initialState.customerList, ac
     case FETCH_CUSTOMERS_FAILURE:
       return {
         ...state,
-        customers: [],
+        list: [],
         error: action.payload,
         loading: false
       }
@@ -41,7 +41,7 @@ export default function customerListReduce(state = initialState.customerList, ac
     case FETCH_CUSTOMERS_SUCCESS:
       return {  
         ...state,
-        customer: action.payload,
+        list: action.payload,
         error: null,
         loading: false
       }
@@ -62,7 +62,7 @@ export default function customerListReduce(state = initialState.customerList, ac
     case CREATE_CUSTOMER_SUCCESS:
       return{
         ...state,
-        customer: [...state.customer],
+        list: [...state.customer],
         error:null,
         loading: true
       }
@@ -83,7 +83,7 @@ export default function customerListReduce(state = initialState.customerList, ac
     case UPDATE_CUSTOMER_SUCCESS:
       return{
         ...state,
-        customer: [...state.customer],
+        list: [...state.customer],
         error:null,
         loading: true
       }

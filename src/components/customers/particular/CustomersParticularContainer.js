@@ -38,7 +38,7 @@ class CustomersParticularContainer extends Component {
      
       const dataEdited=nextProps.edited[0]
       const cellName=nextProps.edited[0].cellName
-      const data=this.props.customers
+      const data=this.props.list
       
       this.updateCell(dataEdited,cellName,data)
       this.props.customerActions.resetStateCustomerEdited()
@@ -86,7 +86,7 @@ class CustomersParticularContainer extends Component {
     return(
 
       <CustomersParticular
-        data={this.props.customers} 
+        data={this.props.list} 
         onAfterSaveCell={this.onAfterSaveCell}
         onAfterInsertRow={this.onAfterInsertRow}
         phoneStatusValidator={this.phoneStatusValidator}
@@ -102,9 +102,9 @@ function mapStateToProps(state){
 
   return {
 
-    customers: state.customerList.customer,
-    loading: state.customerList.loading,
-    edited: state.customerList.edited
+    list: state.customer.list,
+    loading: state.customer.loading,
+    edited: state.customer.edited
 
   }
 

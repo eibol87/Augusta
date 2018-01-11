@@ -57,13 +57,14 @@ class Articles extends Component {
       toolBar: this.createCustomToolBar,
       searchField: (props) => (<MySearchField { ...props }/>) 
     }
+    
   	  return(
     	<BootstrapTable 
      	className="BootstrapTable-style" 
      	hover condensed search
      	expandableRow={ this.isExpandableRow }
       expandComponent={ this.expandComponent }
-     	data={ this.props.data.articles } 
+     	data={ this.props.data } 
      	expandColumnOptions={expandColumnOptions }
      	autoCollapse={ { sort: true, search: true, filter: true } }
      	options={options}
@@ -74,7 +75,7 @@ class Articles extends Component {
 	    <TableHeaderColumn dataField='leather'dataSort>Tipo</TableHeaderColumn>
 	    <TableHeaderColumn dataField='entry_date' width='245'dataFormat={ this.dateFormatter } dataSort filter={ { type: 'DateFilter', delay: 100 } }>Alta</TableHeaderColumn>
      	<TableHeaderColumn dataField='entry_date' width='245'dataFormat={ this.dateFormatter } dataSort filter={ { type: 'DateFilter', delay: 100 } }>Alta</TableHeaderColumn>
-     	<TableHeaderColumn dataField='state' dataSort filterFormatted dataFormat={ this.enumFormatter } formatExtraData={ this.props.data.states } filter={ { type: 'SelectFilter', options: this.props.data.states } }>Estado</TableHeaderColumn>
+     	<TableHeaderColumn dataField='state' dataSort filterFormatted dataFormat={ this.enumFormatter } formatExtraData={ this.props.states } filter={ { type: 'SelectFilter', options: this.props.states } }>Estado</TableHeaderColumn>
       </BootstrapTable>
 	    )
   }

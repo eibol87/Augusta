@@ -1,6 +1,6 @@
 const initialState = {
-  customerList:{
-    customer:[],
+  customer:{
+    list:[],
     edited:[],
     loading:false,
     error: null
@@ -12,6 +12,14 @@ const initialState = {
     list:[],
     edited: []
   },
+  article:{
+    list:[],
+    states:{
+      pending: 'pending',
+      finalized: 'finalized',
+      delivered: 'delivered'
+    }
+  }
 }
 
 export default initialState
