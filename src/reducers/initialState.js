@@ -10,15 +10,21 @@ const initialState = {
   },
   pricesList:{
     list:[],
-    edited: []
+    edited: [],
+    loading:false
   },
   article:{
     list:[],
+    loading:false,
     states:{
       pending: 'pending',
       finalized: 'finalized',
       delivered: 'delivered'
     }
+  },
+  deliveryNotes:{
+     list:[],
+     loading:false
   }
 }
 

@@ -65,20 +65,6 @@ export function getListArticleType (type){
       toastr.error('Problema al comunicarse con el servidor')
 });}
 
-export function getDeliveryNotes (){
-  const token = `Bearer ${getSessionStorage()}`
-   const url= `${REACT_APP_API_SERVER}deliveryNotes`
-    return axios.get(url,{
-        headers: {
-           Authorization: `${token}`
-        }
-    })
-    .then(response => response.data)
-    .catch(function (error) {
-        // Display an error toast, with a title
-      toastr.error('Problema al comunicarse con el servidor')
-    });}
-
 
 export function createArticle (article){
   const token = `Bearer ${getSessionStorage()}`
@@ -139,6 +125,22 @@ export function getComplements (){
       toastr.error('Problema al comunicarse con el servidor')
     });
 }
+export function getArticles (state){
+   const token = `Bearer ${getSessionStorage()}`
+  const paramsState= (state) ? `?state=${state}` :''
+   const url= `${REACT_APP_API_SERVER}articles/${paramsState}`
+    return axios.get(url,{
+        headers: {
+           Authorization: `${token}`
+        }
+    })
+    .then(response => response.data)
+    .catch(function (error) {
+        // Display an error toast, with a title
+      toastr.error('Problema al comunicarse con el servidor')
+    });
+}
+
 
 const API = {
 
@@ -214,23 +216,18 @@ const API = {
       })
       return response.data
     }
+   },
+   deliveryNotes:{
+    async getAll() {
+      const response = await axios(`${REACT_APP_API_SERVER}deliveryNotes`, {
+        headers: {
+          Authorization: `Bearer ${getSessionStorage()}`
+        }
+      })
+      return response.data
+    }
    }
   }
 
-  export function getArticles (state){
-   const token = `Bearer ${getSessionStorage()}`
-  const paramsState= (state) ? `?state=${state}` :''
-   const url= `${REACT_APP_API_SERVER}articles/${paramsState}`
-    return axios.get(url,{
-        headers: {
-           Authorization: `${token}`
-        }
-    })
-    .then(response => response.data)
-    .catch(function (error) {
-        // Display an error toast, with a title
-      toastr.error('Problema al comunicarse con el servidor')
-    });
-}
-
+  
 export default API

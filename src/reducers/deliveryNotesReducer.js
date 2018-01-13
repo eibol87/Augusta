@@ -1,21 +1,21 @@
 import {
-  FETCH_ARTICLES_INIT,
-  FETCH_ARTICLES_SUCCESS,
-  FETCH_ARTICLES_FAILURE
+  FETCH_DELIVERYNOTES_INIT,
+  FETCH_DELIVERYNOTES_SUCCESS,
+  FETCH_DELIVERYNOTES_FAILURE
 } from '../actions/types'
 
 import initialState from './initialState'
 
-export default function articleListReduce(state = initialState.article, action){
+export default function deliveryNotesListReduce(state = initialState.deliveryNotes, action){
   
   switch (action.type) {
-    case FETCH_ARTICLES_INIT:
+    case FETCH_DELIVERYNOTES_INIT:
       return {
         ...state,
         loading: true
       }
   
-    case FETCH_ARTICLES_FAILURE:
+    case FETCH_DELIVERYNOTES_FAILURE:
       return {
         ...state,
         list: [],
@@ -23,7 +23,7 @@ export default function articleListReduce(state = initialState.article, action){
         loading: false
       }
   
-    case FETCH_ARTICLES_SUCCESS:
+    case FETCH_DELIVERYNOTES_SUCCESS:
       return {  
         ...state,
         list: action.payload,
