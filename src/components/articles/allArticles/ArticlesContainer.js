@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import * as articleActions from '../../../actions/articleActions'
-import {getArticles} from '../../../services/Api'
 
 import Articles from './Articles'
 

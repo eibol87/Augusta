@@ -5,6 +5,7 @@ import expandRow from  './expandRowReducer'
 import pricesList from  './pricesListReducer'
 import article from  './articleReducer'
 import deliveryNotes from  './deliveryNotesReducer'
+import payments from  './paymentsReducer'
 
 const rootReducer = combineReducers({
 
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     expandRow,
     pricesList,
     article,
-    deliveryNotes
+    deliveryNotes,
+    payments
 
 })
 

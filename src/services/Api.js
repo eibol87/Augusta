@@ -20,20 +20,6 @@ export function getCustomers (customer){
       toastr.error('Problema al comunicarse con el servidor')
     });
 }
-export function getCustomersPayments (){
-  const token = `Bearer ${getSessionStorage()}`
-   const url= `${REACT_APP_API_SERVER}customers/payments`
-    return axios.get(url,{
-        headers: {
-           Authorization: `${token}`
-        }
-    })
-    .then(response => response.data)
-    .catch(function (error) {
-        // Display an error toast, with a title
-      toastr.error('Problema al comunicarse con el servidor')
-    });
-}
 export function getPricesList (type,leather){
   let query = '' 
   if(type && leather){ 
@@ -226,8 +212,17 @@ const API = {
       })
       return response.data
     }
+   },
+   payments:{
+    async getAll() {
+      const response = await axios(`${REACT_APP_API_SERVER}customers/payments`, {
+        headers: {
+          Authorization: `Bearer ${getSessionStorage()}`
+        }
+      })
+      return response.data
+    }
    }
   }
 
-  
 export default API

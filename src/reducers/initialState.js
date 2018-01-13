@@ -25,6 +25,10 @@ const initialState = {
   deliveryNotes:{
      list:[],
      loading:false
+  },
+  payments:{
+     list:[],
+     loading:false
   }
 }
 

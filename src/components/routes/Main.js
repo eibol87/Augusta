@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router'
 import CustomersEnterpriseContainer from '../customers/enterprise/CustomersEnterpriseContainer.js'
 import CustomersParticularContainer from '../customers/particular/CustomersParticularContainer.js'
-import Payments from '../customers/Payments.js'
+import PaymentsContainer from '../customers/payments/PaymentsContainer.js'
 import PricesListContainer from '../pricesList/PricesListContainer.js'
 import ArticlesContainer from '../articles/allArticles/ArticlesContainer.js'
 import AddArticlesContainer from '../articles/addArticles/AddArticlesContainer.js'
@@ -23,7 +23,7 @@ const Main = (props) => {
         <Route path='/logout' component={Logout}  />
         <PrivateRoute path="/customers/empresa" component={CustomersEnterpriseContainer}/>
         <PrivateRoute path="/customers/particular" component={CustomersParticularContainer}/>
-        <PrivateRoute path="/customers/payments" component={Payments}/>
+        <PrivateRoute path="/customers/payments" component={PaymentsContainer}/>
         <PrivateRoute path="/priceslist" component={PricesListContainer}/>
         <PrivateRoute path="/deliveryNotes" component={DeliveryNotesContainer}/>
         <PrivateRoute path="/articles/add" component={AddArticlesContainer}/>
