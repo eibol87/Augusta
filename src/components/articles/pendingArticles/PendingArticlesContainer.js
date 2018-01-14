@@ -1,81 +1,96 @@
 import React, { Component } from 'react';
-import {getArticles,UpdateStateArticle} from '../../../services/Api'
+
 import PendingArticles from './PendingArticles'
-import Moment from 'moment'
-import toastr from 'toastr'
+
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
+import * as articleActions from '../../../actions/articleActions'
 
 const PENDING = 'pending'
 const FINALIZED = 'finalized'
+
 class PendingArticlesContainer extends Component {
-  constructor(){
-    super()
-    this.state={
-      articles:[],
-      selected:[]
-    }
-      this.getData = this.getData.bind(this)
-      this.updateSelectedRows = this.updateSelectedRows.bind(this)
-      
-    }
-  componentDidMount(){
+  
+  async componentWillMount(){
+    
     this.getData()
+   
   }
+
   async getData(){
-    const response = await getArticles(PENDING)
-    if(response){
-      this.setState({
-        articles: [...response]
-        .map(function (article){   
-          return ({
-            id:article._id,
-            final_customer_code:article.final_customer_code,
-            barcode:article.barcode,
-            type:article.type,
-            leather:article.leather,
-            color:article.color,
-            state:article.state,
-            price:article.price,
-            complements:[...article.complements],
-            customer_contact:(article.customer_id.fiscal_name) ? article.customer_id.fiscal_name : article.customer_id.contact,
-            customer_fiscal_name:article.customer_id.fiscal_name,
-            output_date:Moment(article.output_date).format('L'),  
-            entry_date:Moment(article.entry_date).format('L')
-          })
-        })
-      })
-    }    
+
+    await this.props.articleActions.fetchArticles(PENDING)
+
   }
+
   updateData = async (id) => {
-    const result = await UpdateStateArticle(id,FINALIZED)
-      if(result){
-        toastr.success(`Se ha finalizado la prenda ${result.barcode}`)
-        this.getData() 
-      }
+   
+    await this.props.articleActions.updateState(id,FINALIZED)
+
+    this.getData() 
+
   }
+
   handleKeyPress(id) {
+
    this.updateData(id)
+
   }
+
   handleMultipleSelection = (data) => {
+
     data.forEach(function(article){
       this.updateData(article.id)
     },this)
-  }
-  updateSelectedRows(selected){
-     this.setState({selected:selected})
 
   }
+
+  updateSelectedRows = (selected) =>{
+
+    this.props.articleActions.updateSelectRow(selected)
+
+  }
+
   render(){
+
     return(
+
       <PendingArticles
+
         updateSelectedRows={this.updateSelectedRows}
-        selected={this.state.selected}
-        data={this.state} 
+        selected={this.props.selected}
+        data={this.props.list} 
         updateData={this.updateData}
         handleKeyPress={this.handleKeyPress}
         handleMultipleSelection={this.handleMultipleSelection}
+        
       />
+
     )
+
   }
 }
 
-export default PendingArticlesContainer
+function mapStateToProps(state){
+
+  return {
+
+    list: state.article.list,
+    loading: state.article.loading,
+    selected: state.article.selected
+
+  }
+
+}
+
+function mapDispatchToProps(dispatch){
+
+  return {
+
+    articleActions: bindActionCreators(articleActions,dispatch)
+
+  }
+
+}
+export default connect(mapStateToProps,mapDispatchToProps)(PendingArticlesContainer)

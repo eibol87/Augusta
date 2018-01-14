@@ -12,7 +12,7 @@ class ArticlesContainer extends Component {
 
   async componentWillMount(){
 
-    await this.props.articleActions.fetchArticles()
+    await this.props.articleActions.fetchAllArticles()
 
   }
 

@@ -66,22 +66,6 @@ export function createArticle (article){
       toastr.error('Problema al comunicarse con el servidor')
     });
 }
-export function UpdateStateArticle (id,state){
-  const token = `Bearer ${getSessionStorage()}`
-  const url= `${REACT_APP_API_SERVER}article/${id}`
-    return axios.put(url,
-      {state:state},{
-        headers: {
-           Authorization: `${token}`
-        }
-    })
-    .then(response => response.data)
-    .catch(function (error) {
-      // Display an error toast, with a title
-      toastr.error('Problema al comunicarse con el servidor')
-
-    });
-}
 
 export function getColors (){
   const token = `Bearer ${getSessionStorage()}`
@@ -201,6 +185,14 @@ const API = {
         }
       })
       return response.data
+    },
+    async updateState (id,state) {
+      const response = await axios.put(`${REACT_APP_API_SERVER}article/${id}`,{state:state}, {
+        headers: {
+          Authorization: `Bearer ${getSessionStorage()}`
+        }
+      })
+      return response.data
     }
    },
    deliveryNotes:{
@@ -224,5 +216,22 @@ const API = {
     }
    }
   }
+
+  export function UpdateStateArticle (id,state){
+  const token = `Bearer ${getSessionStorage()}`
+  const url= `${REACT_APP_API_SERVER}article/${id}`
+    return axios.put(url,
+      {state:state},{
+        headers: {
+           Authorization: `${token}`
+        }
+    })
+    .then(response => response.data)
+    .catch(function (error) {
+      // Display an error toast, with a title
+      toastr.error('Problema al comunicarse con el servidor')
+
+    });
+}
 
 export default API

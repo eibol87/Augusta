@@ -16,6 +16,7 @@ const initialState = {
   article:{
     list:[],
     loading:false,
+    selected:[],
     states:{
       pending: 'pending',
       finalized: 'finalized',
